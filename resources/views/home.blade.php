@@ -18,16 +18,18 @@
                 <p>At SmartWaste, we make it easy to dispose of your waste responsibly while earning rewards. Whether it’s organic or non-organic waste, you can drop it off at our warehouse, complete missions to earn extra points, and redeem those points for exclusive vouchers. Join us in creating a cleaner, greener future—one smart drop at a time!</p>
             </div>
 
-            <div>
+            <!-- <div>
                 <p>How SmartWaste Works</p>
 
-                <div class="position-absolute" style="background-color: #F4F7F0;">
-                    <img class="top-0 start-50" src="{{asset('assets/dropin.png')}}" alt=""/>
+                <div style="background-color: #F4F7F0;">
+                    <div class="rounded-full p-2" style="background-color: #A0B948; width: fit-content;">
+                        <img src="{{asset('assets/dropin.png')}}" alt="" width="30" height="30"/>
+                    </div>
 
                     <p>Drop In</p>
                     <p>Dispose of your organic and non-organic waste at our SmartWaste warehouse by filling out a simple form. Every drop-off brings us closer to a cleaner environment.</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 @endsection
