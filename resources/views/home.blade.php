@@ -30,6 +30,7 @@
                     <p>Dispose of your organic and non-organic waste at our SmartWaste warehouse by filling out a simple form. Every drop-off brings us closer to a cleaner environment.</p>
                 </div>
             </div> -->
+            <p>test commit</p>
         </div>
     </div>
 @endsection
