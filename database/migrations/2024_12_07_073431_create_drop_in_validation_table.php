@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('drop_in_validation', function (Blueprint $table) {
             $table->bigIncrements('validationId');
+            $table->unsignedBigInteger('dropInId');
+            $table->foreign('dropInId')->references('dropInId')->on('drop_in')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('quantity');
             $table->integer('weight');
             $table->integer('pointsGenerated');
             $table->string('status');
             $table->date('validationDate');
-            $table->unsignedBigInteger('dropInId');
-            $table->foreign('dropInId')->references('dropInId')->on('drop_in')->onUpdate('cascade')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
