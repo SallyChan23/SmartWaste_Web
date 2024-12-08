@@ -15,6 +15,8 @@ return new class extends Migration
             $table->bigIncrements('dropInWasteTypeId');
             $table->unsignedBigInteger('wasteTypeId');
             $table->foreign('wasteTypeId')->references('wasteTypeId')->on('waste_type')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('dropInId');
+            $table->foreign('dropInId')->references('dropInId')->on('drop_in')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
