@@ -8,13 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class User extends Authenticatable
 {
     use HasFactory;
 
     protected $table ='user';
 
-    protected $fillable = ['username','email','password','phoneNumber','profilePicture','points','role'];
+    protected $fillable = [
+        'username',
+        'email',
+        'password',
+        'phoneNumber',
+        'profilePicture',
+        'points',
+        'role',
+    ];
 
     public function missionTransactions(){
         return $this->hasMany(MissionTransaction::class);
