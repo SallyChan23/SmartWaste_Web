@@ -87,10 +87,8 @@
                         <p class="text-center" style="font-size: 10px;">
                             By clicking Register, you agree to SmartWaste's User Agreement, <br>
                             including Subscription Terms and Privacy Policy.
-                        </p>
-                        
-                </div>
-                
+                        </p>   
+                </div>      
             </div>
         </div>
     </div>
