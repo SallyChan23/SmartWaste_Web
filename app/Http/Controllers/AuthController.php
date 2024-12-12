@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -18,19 +19,61 @@ class AuthController extends Controller
     
     public function login(Request $request)
     {
+
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
-
+    
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('home'); 
+    
+            // Redirect to the home page
+            return redirect()->route('home');
         }
-
+    
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
+
+        // $credentials = $request->validate([
+        //     'email' => 'required|email',
+        //     'password' => 'required|min:6',
+        // ]);
+    
+        // if (Auth::attempt($credentials)) {
+        //     // $request->session()->regenerate(); // Regenerate session ID
+        //     $request->session()->regenerate();
+
+        //     dd('Authenticated User:', Auth::user());
+    
+        //     return redirect()->intended('home');
+        // }
+
+        // //dd('Auth attempt failed');
+    
+        // // Debugging: If login fails
+        // return back()->withErrors([
+        //     'email' => 'The provided credentials do not match our records.',
+        // ]);
+
+        // $credentials = $request->validate([
+        //     'email' => 'required|email',
+        //     'password' => 'required|min:6',
+        // ]);
+
+        // // Attempt to authenticate
+        // if (Auth::attempt($credentials)) {
+        //     $request->session()->regenerate(); // Regenerate session for security
+    
+        //     // Redirect to the intended page or profile
+        //     return redirect()->intended('profile');
+        // }
+    
+        // // If login fails
+        // return back()->withErrors([
+        //     'email' => 'The provided credentials do not match our records.',
+        // ]);
     }
 
     public function showRegisterForm()
@@ -49,15 +92,25 @@ class AuthController extends Controller
         ]);
 
         // Create a new user with default values for role and points
+        // User::create([
+        //     'username' => $request->username,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password), 
+        //     'phoneNumber' => $request->phoneNumber,
+        //     'profilePicture' => null,
+        //     'points' => 0,
+        //     'role' => 'user',
+        // ]);
+
         User::create([
             'username' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($request->password), 
+            'password' => Hash::make($request->password), // Always hash passwords
             'phoneNumber' => $request->phoneNumber,
-            'profilePicture' => null,
-            'points' => 0,
             'role' => 'user',
         ]);
+
+        //dd('Session Data:', session()->all());
 
         return redirect()->route('login')->with('success', 'Registration successful! Please login.');
     }

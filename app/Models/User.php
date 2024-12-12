@@ -11,8 +11,12 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory;
+    use Notifiable;
 
     protected $table ='user';
+    protected $primaryKey = 'userId'; // Define the primary key column name
+    public $incrementing = true; // Specify the primary key is auto-incrementing
+    protected $keyType = 'int';
 
     protected $fillable = [
         'username',
@@ -22,6 +26,11 @@ class User extends Authenticatable
         'profilePicture',
         'points',
         'role',
+    ];
+    
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     public function missionTransactions(){

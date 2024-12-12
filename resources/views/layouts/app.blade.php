@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    @include('component.navbar')
+    @include('components.navbar')
 
     @yield('content')
 </body>

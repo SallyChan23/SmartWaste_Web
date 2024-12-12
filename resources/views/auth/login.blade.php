@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login.post') }}">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-8 mx-auto">

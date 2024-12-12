@@ -29,7 +29,9 @@
             </div>
 
             <div>
-                <img src="{{asset('icons/profileicon.svg')}}" alt="" width="25" height="25">
+                <a href="{{ route('profile') }}">
+                    <img src="{{ asset('icons/profileicon.svg') }}" alt="Profile" width="25" height="25">
+                </a>
             </div>
         </div>
     </nav>
