@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\MissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('home');
+    return view('smartwaste.home');
 })->name('home');
+
+
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -20,3 +23,7 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::resource('mission',MissionController::class);
+
