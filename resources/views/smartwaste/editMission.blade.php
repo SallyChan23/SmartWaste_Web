@@ -22,8 +22,10 @@
             </div>
             <div class="row">
                 <label class="mb-2" for="">Mission Picture</label>
+                <small class="text-muted">Current picture: </small>
+                <img src="{{ asset($mission->missionPicture )}}" alt="" class='img-fluid py-2'style="object-fit:contain; height: 150px; width:auto">
                 <input class="form-control" type="file" name="missionPicture" id="picture" accept="image/*">
-                <small class="text-muted">Current: {{ $mission->missionPicture }}</small>
+                
             </div>
         </div>
         <div class="d-flex justify-content-center pt-5">
