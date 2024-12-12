@@ -20,7 +20,7 @@ class MissionSeeder extends Seeder
             'title'=>'Collect Plastic Waste',
             'totalPoints'=>50 * $faker->numberBetween(6, 12),
             'description'=>'Help reduce the environmental impact of plastic pollution by collecting plastic waste from your surroundings. Plastic can take hundreds of years to decompose, and gathering 900 gram of plastic waste will contribute to cleaner communities and a healthier planet. Take action now and start cleaning up plastic litter to make a difference.',
-            'missionPicture'=>'assets/Mission -1.png'
+            'missionPicture'=>'assets/Mission - 1.png'
         ]);
 
         Mission::create([

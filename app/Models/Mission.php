@@ -10,6 +10,9 @@ class Mission extends Model
     use HasFactory;
 
     protected $table ='mission';
+    protected $primaryKey = 'missionId'; 
+    public $incrementing = true; 
+    protected $keyType = 'int';
 
     protected $fillable =['title','totalPoints','description','missionPicture'];
 
