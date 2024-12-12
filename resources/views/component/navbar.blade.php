@@ -26,7 +26,7 @@
                         <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="#">Voucher</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="#">About Us</a>
+                        <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="{{route('aboutUs')}}">About Us</a>
                     </li>
                 </ul>
             </div>
