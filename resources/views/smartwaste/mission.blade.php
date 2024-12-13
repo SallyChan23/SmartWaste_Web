@@ -7,7 +7,7 @@
             {{session('success')}}
         </div>
     @endif
-    <p class='text-center fs-1 pt-2 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>Mission</p>
+    <p class='text-center fs-1 pt-4 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>Mission</p>
 
     <div class="container d-flex justify-content-end">
         <a href="{{route('mission.create')}}" class="btn " style="background-color:var(--darkgreen)">
@@ -15,7 +15,7 @@
         </a>
     </div>
     <div class="container pt-3 pb-5" >
-        <div class="row row-cols-2 g-5" >
+        <div class="row row-cols-md-2  row-cols-sm-1 g-5" >
             @foreach ($missions as $mission )
             <div class="col ">
                 <div class="h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow " style="background-color:var(--lightgreen);min-height: 210px; font-family:var(-primaryFont)" data-bs-toggle="modal" data-bs-target="#modalMission{{ $mission->missionId }}">
