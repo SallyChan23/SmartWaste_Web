@@ -12,6 +12,7 @@
                 <ul class="list-unstyled">
                     <li><a href="{{ route('aboutUs') }}" class="text-white">About Us</a></li>
                     <li><a href="#" class="text-white">Our Service</a></li>
+                    <li><a href="{{ route('aboutUs') }}#getInTouch" class="text-white">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-md-2 mb-3">

@@ -292,7 +292,26 @@
                 @endforeach
             </div>
         </div>
-    <</div>
+    </div>
+
+    <!-- Article Section -->
+    <div class="container my-5  position-relative">
+    <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">News & Insights</h2>
+    <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
+        <div class="row">
+            @foreach($articles as $article)
+                <div class="col-md-3 mb-5 justify-content-between">
+                    <div class="card h-100 border-1">
+                        <img src="{{ asset( $article->articlePicture) }}" alt="{{ $article->articleTitle }}" class="card-img-top" style="height: 200px;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title ms-2">{{ $article->articleTitle }}</h5>
+                            <a href="{{ $article->articleUrl }}" class="d-flex justify-content-end mt-auto text-decoration-none fw-light" style="color: #183F23" target="_blank">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 </div>
 
 @endsection
