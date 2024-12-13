@@ -1,6 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+
+    .circle-left{
+        position: absolute; 
+        top: 50%; 
+        left: -10px; 
+        transform: translateY(-50%);
+        width: 30px; 
+        height: 30px; 
+        background-color: white; 
+        border-radius: 50%;
+    }
+
+    .circle-right{
+        position: absolute; 
+        top: 50%; 
+        right: -10px; 
+        transform: translateY(-50%);
+        width: 30px; 
+        height: 30px; 
+        background-color: white; 
+        border-radius: 50%;
+    }
+
+</style>
 <div>
     <!-- Banner Section -->
     <div style="position: relative;">
@@ -228,6 +254,72 @@
             style="color: #183F23;">Browse more</a>
         </div>
     </div>
+
+    <!-- Mission Section -->
+    <div class="container my-5  position-relative">
+    <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">Voucher</h2>
+    <hr style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
+       
+    
+        @if (session ('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+        </div>
+        @endif
+        <p class='text-center fs-1 pt-4 fw-bold'style='color:white; font-family:var(-primaryFont)'>Voucher</p>
+
+        <div class="container pt-3 pb-5" >
+            <div class="row g-5">
+                @foreach ($vouchers->chunk(2) as $voucherRow)
+                    <div class="row row-cols-md-2 row-cols-lg-2 g-4">
+                        @foreach ($voucherRow as $voucher)
+                            <div class="col">
+                                <div class="d-flex flex-row align-items-center justify-content-center px-4" style="background-color:rgb(160, 185, 72,0.8);min-height: 170px; font-family:var(--primaryFont);position: relative; overflow: hidden;">
+                                    <div class="circle-left"></div>
+                                    <img src="{{ asset($voucher->voucherPicture) }}" alt="" class="img-fluid" style="object-fit:cover; height: 90px; width:140px">
+                                    <div class="card-body d-flex flex-column justify-content-center">
+                                        <p class="card-title fs-5 fw-bold" style="color:black">{{ $voucher->name }}</p>
+                                        <div class="d-flex flex-row align-items-center gap-1 pt-2">
+                                            <img src="assets/points.png" alt="" style="object-fit:cover; height:20px;width:20px">
+                                            <p class="card-text" style="color:black">{{ $voucher->pointsNeeded }} points</p>
+                                        </div>
+                                        <p class="card-text" style="color:black">{{ $voucher->price }}</p>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-between align-items-end" style="gap:4.5rem">
+                                        <img src="assets/trash-can.png" alt="" style="height:20px; width:20px; cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalVoucher{{ $voucher->voucherId }}">
+                                        <button type="button" class="btn btn-warning">Redeem</button>
+                                    </div>
+                                    <div class="circle-right"></div>
+                                </div>
+                            </div>
+        
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalVoucher{{ $voucher->voucherId }}" tabindex="-1" aria-labelledby="modalVoucherLabel{{ $voucher->voucherId }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure want to delete this Voucher? This action cannot be undone</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <form action="{{ route('voucher.destroy', $voucher->voucherId) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    <</div>
 </div>
 
     
