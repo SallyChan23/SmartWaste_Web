@@ -10,6 +10,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/about-us', [AboutUsController::class, 'showAboutUs'])->name('aboutUs');
+Route::post('/about-us/send-message', [AboutUsController::class, 'sendMessage'])->name('about-us.sendMessage');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

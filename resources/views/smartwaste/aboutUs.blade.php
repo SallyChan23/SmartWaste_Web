@@ -178,16 +178,140 @@
                 </div>
             </div>
         </div>
-        <div class="box">
-            <div class="image">
-                    <img src="{{ asset('assets/warehouse1.png') }}" alt="">
+
+        <div class="container" style="padding: 70px;">
+            <h5 class="fs-1 fw-bold mt-5 mb-5 text-center" style="color: #183F23;">Our Locations</h5>
+            <div class="row">
+                @foreach($locations as $location)
+                    <div class="col-md-12 mb-5">
+                        <div class="card" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-md-4">
+                                    <img src="{{ asset( $location->locationPicture) }}" 
+                                        alt="{{ $location->locationName }}" 
+                                        class="img-fluid rounded-start" 
+                                        style="height: 100%; object-fit: cover; border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body ms-5">
+                                        <h5 class="card-title fs-3 mb-3" style="color: #183F23;">{{ $location->locationName }}</h5>
+                                        <p class="card-text">{{ $location->locationDescription }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="content">
-                <h2>Location 1</h2>
-                <p>Ki. Basket No. 380, Tidore Kepulauan 70758, Kaltara</p>
-                <a href="#" class="btn">Request Appointment</a>
+        </div>
+
+        <div class="container-fluid" style="padding: 20px 170px 50px 170px; background-color: #f3f5f0">
+            <h5 class="card-title fs-1 fw-bold mt-5 mb-5 text-center" style="color: #183F23;">Contact Us</h5>
+            <div class="row justify-content-center" style="padding: 0 180px 0 180px;">
+                <div class="col-md-4 mb-3"> 
+                    <div class="card" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 170px;">
+                        <div class="card-body align-items-center my-3">
+                            <div>
+                            <img src="{{ asset('assets/phone1.png') }}" alt="Phone" class="img-fluid mb-4" style="width: 22%; height: auto; margin-left: 90px;" />
+                                <h5 class="card-title mb-5 text-center" style="font-size: 20px; color: #183F23">+1234-567-8910</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 170px;">
+                        <div class="card-body align-items-center my-3">
+                            <div>
+                                <img src="{{ asset('assets/mail.png') }}" alt="Email" class="img-fluid mb-4" style="width: 22%; height: auto; margin-left: 90px;" />
+                                <h5 class="card-title mb-5 text-center" style="font-size: 20px; color: #183F23">smartwaste@gmail.com</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="padding: 20px 170px 50px 170px; background-color: #f3f5f0">
+        <div class="row justify-content-between">
+            <div class="col-md-6">
+                <div class="contactUs">
+                    <h2 class="mb-5 text-left" style="color: #183F23;">Get In Touch</h2>
+                    <img src="{{ asset('assets/Warehouse - 1.jpeg') }}" alt="Contact Us" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-5 px-0">
+                <div class="contactUs">
+                    <div class="box py-5" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        <div class="contactForm">
+                            <h2 class="mb-5 text-center" style="color: #183F23;">Fill Up the Form</h2>
+                            <form action="{{ route('about-us.sendMessage') }}" method="POST" id="formData">
+                                @csrf
+                                <div class="formBox">
+                                    <div class="row mb-3">
+                                        <div class="col-md-8 mx-auto">
+                                            <label for="fullName" class="form-label">Full Name</label>
+                                            <input type="text" name="fullName" id="inputFullName" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-8 mx-auto">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" name="email" id="email" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-8 mx-auto">
+                                            <label for="phone" class="form-label">Phone Number</label>
+                                            <input type="tel" name="phone" id="phone" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="row mb-5">
+                                        <div class="col-md-8 mx-auto">
+                                            <label for="message" class="form-label">Message</label>
+                                            <textarea name="message" id="msg" class="form-control" placeholder="Write your message here ..." ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 mx-auto d-flex justify-content-end">
+                                            <button type="submit" id="send-button" class="btn btn-lg border-5" style="background-color: #183F23; color: white; padding: 6px 10px; font-size: 16px;">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="formFeedback" class="mt-5 mx-auto d-flex justify-content-center" style="width: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('formData');
+            const feedbackElement = document.getElementById('formFeedback');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('inputFullName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('msg').value;
+                if (name && email && phone && message) {
+                    feedbackElement.innerHTML = '<div class="alert alert-success">Thank you for contacting us!</div>';
+                    setTimeout(() => {
+                        feedbackElement.innerHTML = ''; 
+                    }, 5000);
+                    form.reset();
+                } else {
+                    feedbackElement.innerHTML = '<div class="alert alert-danger">Please fill all the fields.</div>';
+                    setTimeout(() => {
+                        feedbackElement.innerHTML = ''; 
+                    }, 5000);
+                }
+            });
+        });
+    </script>
 
 @endsection
