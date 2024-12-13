@@ -42,3 +42,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/drop_in/{dropIn}/review', [AdminController::class, 'review'])->name('admin.drop_in.review');
     Route::post('/admin/drop_in/{dropIn}/update', [AdminController::class, 'update'])->name('admin.drop_in.update');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/set-locale/{locale}', function($locale) {
+        if(in_array($locale, ['en', 'id'])){
+            session(['locale' =>$locale]);
+        }
+        return redirect()->back();
+    })->name('set-locale');
+});
