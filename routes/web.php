@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\VoucherController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
