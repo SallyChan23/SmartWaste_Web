@@ -112,7 +112,7 @@ class AuthController extends Controller
 
         //dd('Session Data:', session()->all());
 
-        return redirect()->route('login')->with('success', 'Registration successful! Please login.');
+        return redirect()->route('login.post')->with('success', 'Registration successful! Please login.');
     }
 
     // Handle logout logic
