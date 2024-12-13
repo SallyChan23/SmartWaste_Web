@@ -8,12 +8,14 @@
         </div>
     @endif
     <p class='text-center fs-1 pt-4 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>Mission</p>
+    @if ($userRole ==='admin')
+        <div class="container d-flex justify-content-end">
+            <a href="{{route('mission.create')}}" class="btn " style="background-color:var(--darkgreen)">
+                <p style="color:white; margin:0">Add Mission</p>
+            </a>
+        </div>
+    @endif
 
-    <div class="container d-flex justify-content-end">
-        <a href="{{route('mission.create')}}" class="btn " style="background-color:var(--darkgreen)">
-            <p style="color:white; margin:0">Add Mission</p>
-        </a>
-    </div>
     <div class="container pt-3 pb-5" >
         <div class="row row-cols-md-2  row-cols-sm-1 g-5" >
             @foreach ($missions as $mission )
@@ -42,23 +44,28 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between gap-1" style="width:55%">
                                 <p class="text-center fw-normal fs-6"style="font-family:var(--secondaryFont)"><strong></strong> {{ $mission->description }}</p>
-
-                                <div class="d-flex justify-content-center " style="font-family:var(--primaryFont)">
-                                    <button type="button" style="background-color:var(--basic);color:var(--darkgreen)" class="btn col-6 fw-semibold">Start Mission</button>
-                                </div>
+                                @if ($userRole==='user')
+                                    <div class="d-flex justify-content-center " style="font-family:var(--primaryFont)">
+                                        <button type="button" style="background-color:var(--basic);color:var(--darkgreen)" class="btn col-6 fw-semibold">Start Mission</button>
+                                    </div>
+                                @endif
+                                
 
                             </div>
                         </div>
                     </div>
                     
-                    <div class="modal-footer">
-                        <a href="{{route('mission.edit',$mission->missionId) }}" class="btn btn-success">Edit</a>
-                        <form action="{{ route('mission.destroy', $mission->missionId) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this mission?')">Delete</button>
-                        </form>
-                    </div>
+                    @if ($userRole==='admin')
+                        <div class="modal-footer">
+                            <a href="{{route('mission.edit',$mission->missionId) }}" class="btn btn-success">Edit</a>
+                            <form action="{{ route('mission.destroy', $mission->missionId) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this mission?')">Delete</button>
+                            </form>
+                        </div>
+                    @endif
+                    
 
                 </div>
             </div>

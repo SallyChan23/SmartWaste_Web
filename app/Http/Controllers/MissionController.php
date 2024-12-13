@@ -13,7 +13,8 @@ class MissionController extends Controller
     public function index()
     {
         $missions = Mission::all();
-        return view('smartwaste.mission', compact('missions'));
+        $userRole = auth()->user()->role;
+        return view('smartwaste.mission', compact('missions','userRole'));
     }
 
     /**
