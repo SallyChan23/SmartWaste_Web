@@ -1,14 +1,13 @@
 <?php
 
 use App\Http\Controllers\MissionController;
-use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\VoucherController;
 
-Route::get('/', function () {
-    return view('smartwaste.home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about-us', [AboutUsController::class, 'showAboutUs'])->name('aboutUs');
 Route::post('/about-us/send-message', [AboutUsController::class, 'sendMessage'])->name('about-us.sendMessage');

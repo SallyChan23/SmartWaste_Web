@@ -18,11 +18,11 @@
         <div class="col d-flex flex-column gap-4 px-5 py-2 fs-6 fw-semibold ">
             <div class="row">
                 <label class="mb-2 "for="">Name</label>
-                <input class="form-control" type="text" name="name" id="name" placeholder="Input voucher title"required>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Input voucher name"required>
             </div>
             <div class="row">
                 <label class="mb-2" for="">Price</label>
-                <textarea class="form-control" rows="3"type="text" name="price" id="price" placeholder="Input mission price" required></textarea>
+                <textarea class="form-control" rows="3"type="text" name="price" id="price" placeholder="Input voucher price" required></textarea>
             </div>
             <div class="row">
                 <label class="mb-2 " for="">Points</label>
