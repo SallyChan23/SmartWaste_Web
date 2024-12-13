@@ -2,7 +2,7 @@
 
 @section('content')
 
-<p class='text-center fs-1 pt-2 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>Add New Mission</p>
+<p class='text-center fs-1 pt-4 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>Add New Mission</p>
     <div class="container rounded-2 shadow p-5 mb-5" style="background-color: var(--basic); ">
     <form action="{{route('mission.store')}}" method="post" enctype="multipart/form-data">
         @csrf

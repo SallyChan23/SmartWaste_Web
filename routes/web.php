@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MissionController;
+use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AboutUsController;
@@ -26,6 +27,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('mission', MissionController::class);
+Route::resource('voucher',VoucherController::class);
 
 // Routes for users
 Route::middleware(['auth', 'role:user'])->group(function () {
