@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-0">
-        <div class="container-fluid px-5 py-2" style="background-color: #F4F7F0;">
+        <div class="container-fluid px-5 py-2" style="background-color: #F4F7F0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)">
             <img src="{{asset('assets/logo.png')}}" alt="" width="150px" height="80px">
             
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">

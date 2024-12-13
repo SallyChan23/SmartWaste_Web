@@ -1,6 +1,6 @@
 <footer class="text-white text-left py-4" style="background-color: #183F23; bottom: 0; height: 320px;">
     <div class="container mt-5">
-        <div class="row">
+        <div class="row justify-content-between">
             <div class="col-md-4 mb-3">
                 <h5 class="mb-4" style="font-size: 30px">SmartWaste</h5>
                 <i class="fas fa-phone-alt"></i> +1234-567-8910
@@ -20,14 +20,6 @@
                     <li><a href="#" class="text-white">FAQ</a></li>
                     <li><a href="#" class="text-white">Shipping</a></li>
                     <li><a href="#" class="text-white">Drop In Status</a></li>
-                </ul>
-            </div>
-            <div class="col-md-2 mb-3">
-                <h5 class="mb-4">Locations</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white"><i class="fas fa-map-marker-alt"></i>                Location 1</a></li>
-                    <li><a href="#" class="text-white"><i class="fas fa-map-marker-alt"></i>                Location 2</a></li>
-                    <li><a href="#" class="text-white"><i class="fas fa-map-marker-alt"></i>                Location 3</a></li>
                 </ul>
             </div>
             <div class="col-md-2 mb-3">
