@@ -32,7 +32,7 @@
     <div style="position: relative;">
         <img src="{{asset('assets/banner.jpeg')}}" alt="" style="width: 100%; height: auto;">
         <div class="d-flex flex-column justify-content-center align-items-center" 
-             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
             <p class="fs-1 fw-bold" style="color: #183F23;">Dispose Waste, Earn Rewards!</p>
             <p class="text-center" style="width: 475px;">Turn your waste into rewards with SmartWaste. Dispose responsibly, complete missions, and redeem points for exclusive rewards!</p>
             <button class="px-5 py-2 rounded-3 border border-0" style="background-color: #183F23; color: white;">Join SmartWaste Today!</button>
@@ -46,7 +46,7 @@
             <p class="fs-5 fw-normal text-center">Your Smart Way to Dispose and Earn!</p>
             <p class="fs-6 fw-normal text-center ms-5 me-5">
                 At SmartWaste, we make it easy to dispose of your waste responsibly while earning rewards. 
-                Whether it’s organic or non-organic waste, you can drop it off at our warehouse, complete missions 
+                Whether it's organic or non-organic waste, you can drop it off at our warehouse, complete missions 
                 to earn extra points, and redeem those points for exclusive vouchers. 
                 Join us in creating a cleaner, greener future—one smart drop at a time!
             </p>
@@ -61,9 +61,9 @@
         <div class="col-4 d-flex justify-content-center mt-4 mb-5">
             <div class="card text-center p-4 position-relative" style="background-color: #F4F7F0; border-radius: 15px; overflow: visible;">
                 <div class="icon-wrapper position-absolute top-0 start-50 translate-middle" 
-                     style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
+                    style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
                     <img src="{{asset('assets/dropin.png')}}" alt="Drop In Icon" 
-                         style="width: 40px; height: 40px; position: relative; top: 20px;">
+                        style="width: 40px; height: 40px; position: relative; top: 20px;">
                 </div>
                 <h4 class="mt-5 pt-3">Drop In</h4>
                 <p>
@@ -76,9 +76,9 @@
         <div class="col-4 d-flex justify-content-center mt-4 mb-5">
             <div class="card text-center p-4 position-relative" style="background-color: #F4F7F0; border-radius: 15px; overflow: visible;">
                 <div class="icon-wrapper position-absolute top-0 start-50 translate-middle" 
-                     style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
+                    style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
                     <img src="{{asset('assets/earnings.png')}}" alt="Drop In Icon" 
-                         style="width: 40px; height: 40px; position: relative; top: 20px;">
+                        style="width: 40px; height: 40px; position: relative; top: 20px;">
                 </div>
                 <h4 class="mt-5 pt-3">Earn</h4>
                 <p>
@@ -91,9 +91,9 @@
         <div class="col-4 d-flex justify-content-center mt-4 mb-5">
             <div class="card text-center p-4 position-relative" style="background-color: #F4F7F0; border-radius: 15px; overflow: visible;">
                 <div class="icon-wrapper position-absolute top-0 start-50 translate-middle" 
-                     style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
+                    style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
                     <img src="{{asset('assets/promo-code.png')}}" alt="Drop In Icon" 
-                         style="width: 40px; height: 40px; position: relative; top: 20px; ">
+                        style="width: 40px; height: 40px; position: relative; top: 20px; ">
                 </div>
                 <h4 class="mt-5 pt-3">Redeem</h4>
                 <p>
@@ -180,7 +180,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
     </div>
@@ -259,8 +258,6 @@
     <div class="container my-5  position-relative">
     <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">Voucher</h2>
     <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
-       
-    
         @if (session ('success'))
         <div class="alert alert-success">
             {{session('success')}}
@@ -298,6 +295,4 @@
     <</div>
 </div>
 
-    
 @endsection
-
