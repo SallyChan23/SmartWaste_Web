@@ -10,6 +10,9 @@ class Voucher extends Model
     use HasFactory;
 
     protected $table ='voucher';
+    protected $primaryKey = 'voucherId'; 
+    public $incrementing = true; 
+    protected $keyType = 'int';
     protected $fillable =['name','pointsNeeded','price','voucherPicture'];
 
     public function voucherTransaction(){
