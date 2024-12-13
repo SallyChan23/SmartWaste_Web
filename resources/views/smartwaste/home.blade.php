@@ -1,6 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+
+    .circle-left{
+        position: absolute; 
+        top: 50%; 
+        left: -10px; 
+        transform: translateY(-50%);
+        width: 30px; 
+        height: 30px; 
+        background-color: white; 
+        border-radius: 50%;
+    }
+
+    .circle-right{
+        position: absolute; 
+        top: 50%; 
+        right: -10px; 
+        transform: translateY(-50%);
+        width: 30px; 
+        height: 30px; 
+        background-color: white; 
+        border-radius: 50%;
+    }
+
+</style>
 <div>
     <!-- Banner Section -->
     <div style="position: relative;">
@@ -228,6 +254,48 @@
             style="color: #183F23;">Browse more</a>
         </div>
     </div>
+
+    <!-- Voucher Section -->
+    <div class="container my-5  position-relative">
+    <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">Voucher</h2>
+    <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
+       
+    
+        @if (session ('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+        </div>
+        @endif
+
+        <div class="container pt-3 pb-5" >
+            <div class="row g-5">
+                @foreach ($vouchers->chunk(2) as $voucherRow)
+                    <div class="row row-cols-md-2 row-cols-lg-2 g-4">
+                        @foreach ($voucherRow as $voucher)
+                            <div class="col">
+                                <div class="d-flex flex-row align-items-center justify-content-center px-4" style="background-color:rgb(160, 185, 72,0.8);min-height: 170px; font-family:var(--primaryFont);position: relative; overflow: hidden;">
+                                    <div class="circle-left"></div>
+                                    <img src="{{ asset($voucher->voucherPicture) }}" alt="" class="img-fluid" style="object-fit:cover; height: 90px; width:140px">
+                                    <div class="card-body d-flex flex-column justify-content-center">
+                                        <p class="card-title fs-5 fw-bold" style="color:black">{{ $voucher->name }}</p>
+                                        <div class="d-flex flex-row align-items-center gap-1 pt-2">
+                                            <img src="assets/points.png" alt="" style="object-fit:cover; height:20px;width:20px">
+                                            <p class="card-text" style="color:black">{{ $voucher->pointsNeeded }} points</p>
+                                        </div>
+                                        <p class="card-text" style="color:black">{{ $voucher->price }}</p>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-between align-items-end" style="gap:4.5rem">
+                                        <button type="button" class="btn btn-warning">Redeem</button>
+                                    </div>
+                                    <div class="circle-right"></div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    <</div>
 </div>
 
     

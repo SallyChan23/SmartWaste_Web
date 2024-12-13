@@ -8,13 +8,13 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-0">
-        <div class="container-fluid px-5 py-2" style="background-color: #F4F7F0;">
+        <div class="container-fluid px-5 py-2" style="background-color: #F4F7F0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)">
             <img src="{{asset('assets/logo.png')}}" alt="" width="150px" height="80px">
             
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="{{route('home')}}">Home</a>
+                        <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="#">Drop In</a>

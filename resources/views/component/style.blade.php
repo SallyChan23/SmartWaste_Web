@@ -6,8 +6,8 @@
             --grey:#E7E7E7;
             --primaryFont: 'Poppins', serif;
             --secondaryFont: 'Lora', serif;
-        }
-        
+    }
+
     .list-unstyled {
         list-style: none;
         padding: 0;
