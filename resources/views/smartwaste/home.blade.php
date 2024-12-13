@@ -15,7 +15,7 @@
             <div>
                 <p>Welcome to SmartWaste!</p>
                 <p>Your Smart Way to Dispose and Earn!</p>
-                <p>At SmartWaste, we make it easy to dispose of your waste responsibly while earning rewards. Whether it’s organic or non-organic waste, you can drop it off at our warehouse, complete missions to earn extra points, and redeem those points for exclusive vouchers. Join us in creating a cleaner, greener future—one smart drop at a time!</p>
+                <p>At SmartWaste, we make it easy to dispose of your waste responsibly while earning rewards. Whether it's organic or non-organic waste, you can drop it off at our warehouse, complete missions to earn extra points, and redeem those points for exclusive vouchers. Join us in creating a cleaner, greener future—one smart drop at a time!</p>
             </div>
 
             <!-- <div>
