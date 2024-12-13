@@ -231,59 +231,61 @@
             </div>
         </div>
 
-        <div class="container-fluid" style="padding: 20px 170px 50px 170px; background-color: #f3f5f0">
-        <div class="row justify-content-between">
-            <div class="col-md-6">
-                <div class="contactUs">
-                    <h2 class="mb-5 text-left" style="color: #183F23;">Get In Touch</h2>
-                    <img src="{{ asset('assets/Warehouse - 1.jpeg') }}" alt="Contact Us" class="img-fluid">
+        <section id="getInTouch">
+            <div class="container-fluid" style="padding: 20px 170px 50px 170px; background-color: #f3f5f0">
+            <div class="row justify-content-between">
+                <div class="col-md-6">
+                    <div class="contactUs">
+                        <h2 class="mb-5 text-left" style="color: #183F23;">Get In Touch</h2>
+                        <img src="{{ asset('assets/Warehouse - 1.jpeg') }}" alt="Contact Us" class="img-fluid">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-5 px-0">
-                <div class="contactUs">
-                    <div class="box py-5" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                        <div class="contactForm">
-                            <h2 class="mb-5 text-center" style="color: #183F23;">Fill Up the Form</h2>
-                            <form action="{{ route('about-us.sendMessage') }}" method="POST" id="formData">
-                                @csrf
-                                <div class="formBox">
-                                    <div class="row mb-3">
-                                        <div class="col-md-8 mx-auto">
-                                            <label for="fullName" class="form-label">Full Name</label>
-                                            <input type="text" name="fullName" id="inputFullName" class="form-control" >
+                <div class="col-md-5 px-0">
+                    <div class="contactUs">
+                        <div class="box py-5" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            <div class="contactForm">
+                                <h2 class="mb-5 text-center" style="color: #183F23;">Fill Up the Form</h2>
+                                <form action="{{ route('about-us.sendMessage') }}" method="POST" id="formData">
+                                    @csrf
+                                    <div class="formBox">
+                                        <div class="row mb-3">
+                                            <div class="col-md-8 mx-auto">
+                                                <label for="fullName" class="form-label">Full Name</label>
+                                                <input type="text" name="fullName" id="inputFullName" class="form-control" >
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-8 mx-auto">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" name="email" id="email" class="form-control" >
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-8 mx-auto">
+                                                <label for="phone" class="form-label">Phone Number</label>
+                                                <input type="tel" name="phone" id="phone" class="form-control" >
+                                            </div>
+                                        </div>
+                                        <div class="row mb-5">
+                                            <div class="col-md-8 mx-auto">
+                                                <label for="message" class="form-label">Message</label>
+                                                <textarea name="message" id="msg" class="form-control" placeholder="Write your message here ..." ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8 mx-auto d-flex justify-content-end">
+                                                <button type="submit" id="send-button" class="btn btn-lg border-5" style="background-color: #183F23; color: white; padding: 6px 10px; font-size: 16px;">Submit</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-8 mx-auto">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="email" name="email" id="email" class="form-control" >
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-8 mx-auto">
-                                            <label for="phone" class="form-label">Phone Number</label>
-                                            <input type="tel" name="phone" id="phone" class="form-control" >
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5">
-                                        <div class="col-md-8 mx-auto">
-                                            <label for="message" class="form-label">Message</label>
-                                            <textarea name="message" id="msg" class="form-control" placeholder="Write your message here ..." ></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 mx-auto d-flex justify-content-end">
-                                            <button type="submit" id="send-button" class="btn btn-lg border-5" style="background-color: #183F23; color: white; padding: 6px 10px; font-size: 16px;">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div id="formFeedback" class="mt-5 mx-auto d-flex justify-content-center" style="width: 300px;"></div>
+                                </form>
+                                <div id="formFeedback" class="mt-5 mx-auto d-flex justify-content-center" style="width: 300px;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <script>

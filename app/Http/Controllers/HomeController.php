@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mission;
 use App\Models\Voucher;
+use App\Models\Article;
 
 class HomeController extends Controller
 {
@@ -19,7 +20,9 @@ class HomeController extends Controller
         // Ambil 4 voucher
         $vouchers = Voucher::take(4)->get();
 
+        $articles = Article::all();
+
         // Kirim data ke view
-        return view('smartwaste.home', compact('missions', 'vouchers'));
+        return view('smartwaste.home', compact('missions', 'vouchers', 'articles'));
     }
 }

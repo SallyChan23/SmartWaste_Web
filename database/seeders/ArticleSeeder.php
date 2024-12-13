@@ -48,5 +48,17 @@ class ArticleSeeder extends Seeder
             'articlePicture' => 'assets/article6.jpg',
             'articleUrl' => 'https://waste4change.com/blog/cara-jitu-mengelola-sampah-organik-anti-ribet-dan-kotor/'
         ]);
+
+        Article::create([
+            'articleTitle'=>'5 Bahaya Sampah Anorganik terhadap Lingkungan',
+            'articlePicture' => 'assets/article7.jpg',
+            'articleUrl' => 'https://kumparan.com/ragam-info/5-bahaya-sampah-anorganik-terhadap-lingkungan-23ID07g135B'
+        ]);
+
+        Article::create([
+            'articleTitle'=>'Daur Ulang Sampah: Pengertian, Manfaat, dan Cara',
+            'articlePicture' => 'assets/article8.jpg',
+            'articleUrl' => 'https://umsu.ac.id/berita/daur-ulang-sampah-pengertian-manfaat-dan-cara/'
+        ]);
     }
 }
