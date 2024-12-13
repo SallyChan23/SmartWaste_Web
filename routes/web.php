@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Controllers\MissionController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
-    return view('smartwaste.home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
