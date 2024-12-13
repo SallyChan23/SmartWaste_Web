@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\MissionController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\VoucherController;
 
-Route::get('/', function () {
-    return view('smartwaste.home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about-us', [AboutUsController::class, 'showAboutUs'])->name('aboutUs');
 Route::post('/about-us/send-message', [AboutUsController::class, 'sendMessage'])->name('about-us.sendMessage');
@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('mission', MissionController::class);
+Route::resource('voucher',VoucherController::class);
 
 // Routes for users
 Route::middleware(['auth', 'role:user'])->group(function () {
