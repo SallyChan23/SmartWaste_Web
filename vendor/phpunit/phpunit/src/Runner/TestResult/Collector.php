@@ -363,7 +363,6 @@ final class Collector
                 $event->line(),
                 $event->message(),
                 $event->test(),
-                $event->stackTrace(),
             );
 
             return;

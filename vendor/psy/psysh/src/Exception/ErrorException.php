@@ -16,7 +16,7 @@ namespace Psy\Exception;
  */
 class ErrorException extends \ErrorException implements Exception
 {
-    private string $rawMessage;
+    private $rawMessage;
 
     /**
      * Construct a Psy ErrorException.

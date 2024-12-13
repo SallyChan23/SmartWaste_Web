@@ -16,10 +16,10 @@ namespace Psy;
  */
 class ConfigPaths
 {
-    private ?string $configDir = null;
-    private ?string $dataDir = null;
-    private ?string $runtimeDir = null;
-    private EnvInterface $env;
+    private $configDir;
+    private $dataDir;
+    private $runtimeDir;
+    private $env;
 
     /**
      * ConfigPaths constructor.
@@ -235,10 +235,6 @@ class ConfigPaths
      */
     public function which($command): ?string
     {
-        if (!\is_string($command) || $command === '') {
-            return null;
-        }
-
         foreach ($this->pathDirs() as $path) {
             $fullpath = $path.\DIRECTORY_SEPARATOR.$command;
             if (@\is_file($fullpath) && @\is_executable($fullpath)) {
@@ -366,12 +362,12 @@ class ConfigPaths
         return $file;
     }
 
-    private function getEnv(string $key)
+    private function getEnv($key)
     {
         return $this->env->get($key);
     }
 
-    private function getEnvArray(string $key)
+    private function getEnvArray($key)
     {
         if ($value = $this->getEnv($key)) {
             return \explode(\PATH_SEPARATOR, $value);

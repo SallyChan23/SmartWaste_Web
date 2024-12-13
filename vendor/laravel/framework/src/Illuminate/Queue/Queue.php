@@ -11,7 +11,6 @@ use Illuminate\Contracts\Queue\ShouldQueueAfterCommit;
 use Illuminate\Queue\Events\JobQueued;
 use Illuminate\Queue\Events\JobQueueing;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Illuminate\Support\InteractsWithTime;
 use Illuminate\Support\Str;
 
@@ -215,9 +214,11 @@ abstract class Queue
             return;
         }
 
-        return (new Collection(Arr::wrap($backoff)))
-            ->map(fn ($backoff) => $backoff instanceof DateTimeInterface ? $this->secondsUntil($backoff) : $backoff)
-            ->implode(',');
+        return collect(Arr::wrap($backoff))
+            ->map(function ($backoff) {
+                return $backoff instanceof DateTimeInterface
+                                ? $this->secondsUntil($backoff) : $backoff;
+            })->implode(',');
     }
 
     /**

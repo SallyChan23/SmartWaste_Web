@@ -33,7 +33,7 @@ class StrictTypesPass extends CodeCleanerPass
 {
     const EXCEPTION_MESSAGE = 'strict_types declaration must have 0 or 1 as its value';
 
-    private bool $strictTypes;
+    private $strictTypes = false;
 
     /**
      * @param bool $strictTypes enforce strict types by default

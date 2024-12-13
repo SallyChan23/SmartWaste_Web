@@ -3,7 +3,6 @@
 namespace Illuminate\Events;
 
 use Closure;
-use Illuminate\Support\Collection;
 use Laravel\SerializableClosure\SerializableClosure;
 
 use function Illuminate\Support\enum_value;
@@ -119,9 +118,9 @@ class QueuedClosure
             dispatch(new CallQueuedListener(InvokeQueuedClosure::class, 'handle', [
                 'closure' => new SerializableClosure($this->closure),
                 'arguments' => $arguments,
-                'catch' => (new Collection($this->catchCallbacks))
-                    ->map(fn ($callback) => new SerializableClosure($callback))
-                    ->all(),
+                'catch' => collect($this->catchCallbacks)->map(function ($callback) {
+                    return new SerializableClosure($callback);
+                })->all(),
             ]))->onConnection($this->connection)->onQueue($this->queue)->delay($this->delay);
         };
     }

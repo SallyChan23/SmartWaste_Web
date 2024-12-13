@@ -26,7 +26,7 @@ use Psy\Exception\FatalErrorException;
  */
 class RequirePass extends CodeCleanerPass
 {
-    private const REQUIRE_TYPES = [Include_::TYPE_REQUIRE, Include_::TYPE_REQUIRE_ONCE];
+    private static $requireTypes = [Include_::TYPE_REQUIRE, Include_::TYPE_REQUIRE_ONCE];
 
     /**
      * {@inheritdoc}
@@ -125,7 +125,7 @@ class RequirePass extends CodeCleanerPass
 
     private function isRequireNode(Node $node): bool
     {
-        return $node instanceof Include_ && \in_array($node->type, self::REQUIRE_TYPES);
+        return $node instanceof Include_ && \in_array($node->type, self::$requireTypes);
     }
 
     private static function getIncludePath(): array

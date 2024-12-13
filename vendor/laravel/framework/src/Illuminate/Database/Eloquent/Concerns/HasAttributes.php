@@ -28,7 +28,6 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\LazyLoadingViolationException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Collection as BaseCollection;
 use Illuminate\Support\Exceptions\MathException;
 use Illuminate\Support\Facades\Crypt;
@@ -1942,9 +1941,9 @@ trait HasAttributes
             );
         }
 
-        return (new Collection($this->original))
-            ->mapWithKeys(fn ($value, $key) => [$key => $this->transformModelValue($key, $value)])
-            ->all();
+        return collect($this->original)->mapWithKeys(function ($value, $key) {
+            return [$key => $this->transformModelValue($key, $value)];
+        })->all();
     }
 
     /**
@@ -2315,14 +2314,17 @@ trait HasAttributes
 
         $class = $reflection->getName();
 
-        static::$getAttributeMutatorCache[$class] = (new Collection($attributeMutatorMethods = static::getAttributeMarkedMutatorMethods($classOrInstance)))
-            ->mapWithKeys(fn ($match) => [lcfirst(static::$snakeAttributes ? Str::snake($match) : $match) => true])
-            ->all();
+        static::$getAttributeMutatorCache[$class] =
+            collect($attributeMutatorMethods = static::getAttributeMarkedMutatorMethods($classOrInstance))
+                    ->mapWithKeys(function ($match) {
+                        return [lcfirst(static::$snakeAttributes ? Str::snake($match) : $match) => true];
+                    })->all();
 
-        static::$mutatorCache[$class] = (new Collection(static::getMutatorMethods($class)))
-            ->merge($attributeMutatorMethods)
-            ->map(fn ($match) => lcfirst(static::$snakeAttributes ? Str::snake($match) : $match))
-            ->all();
+        static::$mutatorCache[$class] = collect(static::getMutatorMethods($class))
+                ->merge($attributeMutatorMethods)
+                ->map(function ($match) {
+                    return lcfirst(static::$snakeAttributes ? Str::snake($match) : $match);
+                })->all();
     }
 
     /**
@@ -2348,7 +2350,7 @@ trait HasAttributes
     {
         $instance = is_object($class) ? $class : new $class;
 
-        return (new Collection((new ReflectionClass($instance))->getMethods()))->filter(function ($method) use ($instance) {
+        return collect((new ReflectionClass($instance))->getMethods())->filter(function ($method) use ($instance) {
             $returnType = $method->getReturnType();
 
             if ($returnType instanceof ReflectionNamedType &&

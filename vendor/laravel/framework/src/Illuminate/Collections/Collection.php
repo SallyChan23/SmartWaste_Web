@@ -995,7 +995,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
         $collectionCount = $this->count();
 
         foreach (range(1, min($count, $collectionCount)) as $item) {
-            $results[] = array_pop($this->items);
+            array_push($results, array_pop($this->items));
         }
 
         return new static($results);
@@ -1246,7 +1246,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
         $collectionCount = $this->count();
 
         foreach (range(1, min($count, $collectionCount)) as $item) {
-            $results[] = array_shift($this->items);
+            array_push($results, array_shift($this->items));
         }
 
         return new static($results);

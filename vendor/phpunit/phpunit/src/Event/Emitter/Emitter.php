@@ -190,9 +190,8 @@ interface Emitter
      * @param non-empty-string $message
      * @param non-empty-string $file
      * @param positive-int     $line
-     * @param non-empty-string $stackTrace
      */
-    public function testTriggeredDeprecation(Code\Test $test, string $message, string $file, int $line, bool $suppressed, bool $ignoredByBaseline, bool $ignoredByTest, IssueTrigger $trigger, string $stackTrace): void;
+    public function testTriggeredDeprecation(Code\Test $test, string $message, string $file, int $line, bool $suppressed, bool $ignoredByBaseline, bool $ignoredByTest, IssueTrigger $trigger): void;
 
     /**
      * @param non-empty-string $message
@@ -277,10 +276,6 @@ interface Emitter
     public function testAfterLastTestMethodFinished(string $testClassName, ClassMethod ...$calledMethods): void;
 
     public function testSuiteFinished(TestSuite $testSuite): void;
-
-    public function testRunnerStartedChildProcess(): void;
-
-    public function testRunnerFinishedChildProcess(string $stdout, string $stderr): void;
 
     public function testRunnerTriggeredDeprecation(string $message): void;
 
