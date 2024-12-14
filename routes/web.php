@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\DropInController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RedeemController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -28,6 +33,19 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::middleware(['web'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.updatePicture');
+    Route::get('/report', [ReportController::class, 'index'])->name('report');
+    Route::get('/redeem', [RedeemController::class, 'index'])->name('redeem');
+
+});
+
 
 
 Route::middleware(['auth', 'CheckRole:user,admin'])->group(function () {
