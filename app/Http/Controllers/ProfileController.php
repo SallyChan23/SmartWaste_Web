@@ -65,32 +65,31 @@ class ProfileController extends Controller
     // }
 
     public function update(Request $request)
-{
-    $user = Auth::user();
+    {
+        $user = Auth::user();
 
-    // Validate the request
-    $request->validate([
-        'username' => 'required|string|max:255',
-        'phoneNumber' => 'required|string|max:15',
-        'email' => 'required|email|max:255',
-        'password' => 'nullable|string|min:6|confirmed', // password is optional
-    ]);
+        // Validate the request
+        $request->validate([
+            'username' => 'required|string|max:255|unique:user,username,' . $user->userId . ',userId',
+            'phoneNumber' => 'required|string|max:15',
+            'email' => 'required|email|max:255',
+            'password' => 'nullable|string|min:6|confirmed', // password is optional
+        ]);
 
-    // Update user fields
-    $user->username = $request->username;
-    $user->phoneNumber = $request->phoneNumber;
-    $user->email = $request->email;
+        // Update user fields
+        $user->username = $request->username;
+        $user->phoneNumber = $request->phoneNumber;
+        $user->email = $request->email;
 
-    // Update password only if provided
-    if ($request->password) {
-        $user->password = Hash::make($request->password);
-    }
+        // Update password only if provided
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
 
-    // Save changes
-    $user->save();
+        // Save changes
+        $user->save();
 
-    
-    return redirect()->route('profile')->with('success', 'Profile updated successfully.');
+        return redirect()->route('profile')->with('success', 'Profile updated successfully.');
     }
 
     public function updatePicture(Request $request)
