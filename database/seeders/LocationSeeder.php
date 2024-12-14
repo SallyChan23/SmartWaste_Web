@@ -18,13 +18,13 @@ class LocationSeeder extends Seeder
 
         Location::create([
             'locationName'=>'Location 1',
-            'locationDescription'=>$faker->address(),
+            'locationDescription'=>'Jl. Raya Kb. Jeruk No.2, RT.4/RW.6, Sukabumi Utara, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11550',
             'locationPicture'=>'assets/Warehouse - 1.jpeg'
         ]);
 
         Location::create([
             'locationName'=>'Location 2',
-            'locationDescription'=>$faker->address(),
+            'locationDescription'=>'Jl. Rw. Belong No.68 9, RT.9/RW.15, Palmerah, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11480',
             'locationPicture'=>'assets/Warehouse - 2.jpeg'
         ]);
     }
