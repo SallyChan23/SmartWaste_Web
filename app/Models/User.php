@@ -33,10 +33,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $primaryKey = 'userId'; 
-    public $incrementing = true; 
-    protected $keyType = 'int';
-
     public function missionTransactions(){
         return $this->hasMany(MissionTransaction::class,'userId', 'userId');
     }

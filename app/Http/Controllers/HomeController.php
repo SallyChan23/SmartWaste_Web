@@ -13,6 +13,6 @@ class HomeController extends Controller
 
     {
         //dd('Authenticated User:', Auth::user());
-        return view('home');
+        return view('smartwaste.home');
     }
 }
