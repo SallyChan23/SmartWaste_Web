@@ -116,6 +116,6 @@ class VoucherController extends Controller
          
     ]);
 
-    return redirect()->route('voucher.index')->with('success', 'Mission started successfully!');
+    return redirect()->route('voucher.index')->with('success', 'Voucher redeemed successfully!');
     }
 }
