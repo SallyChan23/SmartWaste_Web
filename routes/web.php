@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -48,6 +49,19 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
     Route::post('/drop_in', [DropInController::class, 'store'])->name('drop_in.store');
     Route::get('/drop_in', [DropInController::class, 'index'])->name('drop_in.index');
 });
+
+Route::middleware(['web'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.updatePicture');
+    Route::get('/report', [ReportController::class, 'index'])->name('report');
+    Route::get('/redeem', [RedeemController::class, 'index'])->name('redeem');
+
+});
+
 
 // Routes for admins
 Route::middleware(['auth', 'CheckRole:admin'])->group(function () {
