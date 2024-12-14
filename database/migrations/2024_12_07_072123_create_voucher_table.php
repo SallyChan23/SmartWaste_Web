@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('pointsNeeded');
             $table->string('price');
-            $table->string('voucherPicture');
+            $table->string('voucherPicture')->nullable();
             $table->timestamps();
         });
     }

@@ -10,10 +10,14 @@ class Voucher extends Model
     use HasFactory;
 
     protected $table ='voucher';
+    protected $primaryKey = 'voucherId'; 
+    public $incrementing = true; 
+    protected $keyType = 'int';
     protected $fillable =['name','pointsNeeded','price','voucherPicture'];
 
     public function voucherTransaction(){
-        return $this->belongsTo(VoucherTransaction::class);
+        return $this->hasMany(VoucherTransaction::class,'voucherId','voucherId');
     }
 
+    
 }
