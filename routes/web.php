@@ -18,17 +18,16 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+<<<<<<< Updated upstream
 Route::resource('mission', MissionController::class);
 Route::resource('voucher',VoucherController::class);
 
+=======
+>>>>>>> Stashed changes
 // Routes for users
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/drop_in/create', [DropInController::class, 'create'])->name('create-drop-in');
@@ -37,17 +36,21 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 });
 
 // Routes for admins
+<<<<<<< Updated upstream
 Route::middleware(['auth', 'role:admin'])->group(function () {
+=======
+Route::middleware(['auth', 'CheckRole:admin'])->group(function () {
+    Route::resource('mission', MissionController::class);
+    Route::resource('voucher',VoucherController::class)->middleware(['auth','CheckRole:user,admin']);
+>>>>>>> Stashed changes
     Route::get('/admin/drop_in', [AdminController::class, 'index'])->name('admin.drop_in.index');
     Route::get('/admin/drop_in/{dropIn}/review', [AdminController::class, 'review'])->name('admin.drop_in.review');
     Route::post('/admin/drop_in/{dropIn}/update', [AdminController::class, 'update'])->name('admin.drop_in.update');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/set-locale/{locale}', function($locale) {
-        if(in_array($locale, ['en', 'id'])){
-            session(['locale' =>$locale]);
-        }
-        return redirect()->back();
-    })->name('set-locale');
-});
+Route::get('/set-locale/{locale}', function($locale) {
+    if(in_array($locale, ['en', 'id'])){
+        session(['locale' =>$locale]);
+    }
+    return redirect()->back();
+})->name('set-locale');
