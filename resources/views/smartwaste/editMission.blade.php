@@ -17,6 +17,10 @@
                 <textarea class="form-control" rows="3" name="desc" id="desc" required>{{ $mission->description }}</textarea>
             </div>
             <div class="row">
+                <label class="mb-2" for="">Target Mission</label>
+                <input class="form-control" type="text" name="target" id="target" value="{{ $mission->target }}" required>
+            </div>
+            <div class="row">
                 <label class="mb-2" for="">Points</label>
                 <input class="form-control" type="text" name="points" id="points" value="{{ $mission->totalPoints }}" required>
             </div>

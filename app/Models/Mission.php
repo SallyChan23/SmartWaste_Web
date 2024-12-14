@@ -14,9 +14,9 @@ class Mission extends Model
     public $incrementing = true; 
     protected $keyType = 'int';
 
-    protected $fillable =['title','totalPoints','description','missionPicture'];
+    protected $fillable =['title','totalPoints','description','target','missionPicture'];
 
     public function missionTransaction(){
-        return $this->belongsTo(MissionTransaction::class);
+        return $this->hasMany(MissionTransaction::class,'missionId', 'missionId');
     }
 }

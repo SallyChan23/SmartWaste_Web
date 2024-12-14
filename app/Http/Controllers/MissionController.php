@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mission;
+use Illuminate\Support\Facades\Auth;
+use App\Models\MissionTransaction;
 
 class MissionController extends Controller
 {
@@ -12,8 +14,10 @@ class MissionController extends Controller
      */
     public function index()
     {
-        $missions = Mission::all();
-        return view('smartwaste.mission', compact('missions'));
+        $missions = Mission::paginate(6);
+        $missionTransactions = MissionTransaction::with('mission')->where('status','ongoing')->get();
+        $completedTransaction = MissionTransaction::with('mission')->where('status','completed')->get();
+        return view('smartwaste.mission', compact('missions','missionTransactions','completedTransaction'));
     }
 
     /**
@@ -32,6 +36,7 @@ class MissionController extends Controller
         $request->validate([
             'title'=>'required|string|max:255',
             'desc'=>'required|string',
+            'target'=>'required|integer',
             'points'=>'required|integer',
             'missionPicture'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
@@ -50,7 +55,8 @@ class MissionController extends Controller
                 'title' => $request->title,
                 'totalPoints' => $request->points,
                 'description' => $request->desc,
-                'missionPicture' => 'assets/uploads/' . $fileName, // Simpan path relatif ke database
+                'target'=>$request->target,
+                'missionPicture' => 'assets/uploads/' . $fileName, 
             ]);
     
             
@@ -74,7 +80,6 @@ class MissionController extends Controller
 
     public function edit($id)
     {
-    // Mengambil data Mission berdasarkan missionId
         $mission = Mission::where('missionId', $id)->firstOrFail();
     
         return view('smartwaste.editMission', compact('mission'));
@@ -89,6 +94,7 @@ class MissionController extends Controller
         $request->validate([
             'title'=>'required|string|max:255',
             'desc'=>'required|string',
+            'target'=>'required|integer',
             'points'=>'required|integer',
             'missionPicture'=>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
@@ -108,11 +114,22 @@ class MissionController extends Controller
                 'title' => $request->title,
                 'totalPoints' => $request->points,
                 'description' => $request->desc,
+                'target'=>$request->target,
                 'missionPicture' => 'assets/uploads/' . $fileName, 
             ]);
 
-            return redirect()->route('mission.index')->with('success', 'Mission successfully updated!');
+            
+         }else {
+            
+            $mission->update([
+                'title' => $request->title,
+                'totalPoints' => $request->points,
+                'description' => $request->desc,
+                'target' => $request->target,
+            ]);
          }
+
+         return redirect()->route('mission.index')->with('success', 'Mission successfully updated!');
     }
 
     /**
@@ -124,4 +141,51 @@ class MissionController extends Controller
         $mission->delete();
         return redirect()->route('mission.index')->with('success', 'Mission successfully deleted!');
     }
+
+    public function startMission($missionId)
+    {
+    $mission = Mission::findOrFail($missionId);  
+    $user = Auth::user();  
+
+    MissionTransaction::create([
+        'userId' => $user->userId,
+        'missionId' => $mission->missionId,
+        'status' => 'ongoing',
+        'currentPoints'=>0,
+        'startDate' => now(),
+        'endDate' => now(),  
+    ]);
+
+    return redirect()->route('mission.index')->with('success', 'Mission started successfully!');
+    }
+
+    public function updateProgress(Request $request, $missionTransactionId)
+    {
+    
+    $request->validate([
+        'currentPoints' => 'required|integer|min:0',
+    ]);
+
+   
+    $transaction = MissionTransaction::findOrFail($missionTransactionId);
+    
+   
+    $transaction->currentPoints += $request->input('currentPoints');
+    
+    
+    $mission = $transaction->mission; 
+    if ($transaction->currentPoints >= $mission->target && $transaction->status !== 'completed') {
+        $transaction->status = 'completed';
+
+        $user = $transaction->user; 
+        $user->points += $mission->totalPoints; 
+        $user->save();
+    }
+    
+    $transaction->save();
+
+    return redirect()->route('mission.index')->with('success', 'Progress updated successfully!');
+    }
+
+
 }

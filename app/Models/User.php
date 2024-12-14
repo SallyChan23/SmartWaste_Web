@@ -24,12 +24,16 @@ class User extends Authenticatable
         'role',
     ];
 
+    protected $primaryKey = 'userId'; 
+    public $incrementing = true; 
+    protected $keyType = 'int';
+
     public function missionTransactions(){
-        return $this->hasMany(MissionTransaction::class);
+        return $this->hasMany(MissionTransaction::class,'userId', 'userId');
     }
 
     public function voucherTransactions(){
-        return $this->hasMany(VoucherTransaction::class);
+        return $this->hasMany(VoucherTransaction::class,'userId','userId');
     }
 
     public function dropIns(){

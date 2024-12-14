@@ -16,7 +16,8 @@ class Voucher extends Model
     protected $fillable =['name','pointsNeeded','price','voucherPicture'];
 
     public function voucherTransaction(){
-        return $this->belongsTo(VoucherTransaction::class);
+        return $this->hasMany(VoucherTransaction::class,'voucherId','voucherId');
     }
 
+    
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->integer('totalPoints');
             $table->text('description');
-            $table->string('missionPicture');
+            $table->string('missionPicture')->nullable();
             $table->timestamps();
         });
     }

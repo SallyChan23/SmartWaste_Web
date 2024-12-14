@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Voucher;
+use App\Models\VoucherTransaction;
+use Illuminate\Support\Facades\Auth;
 
 class VoucherController extends Controller
 {
@@ -92,5 +94,28 @@ class VoucherController extends Controller
         $voucher = Voucher::where('voucherId', $id)->firstOrFail();
         $voucher->delete();
         return redirect()->route('voucher.index')->with('success', 'Voucher successfully deleted!');
+    }
+
+    public function redeem($voucherId)
+    {
+    $voucher = Voucher::findOrFail($voucherId);  
+    $user = Auth::user();  
+
+    if ($user->points < $voucher->pointsNeeded) {
+        return redirect()->back()->with('error', 'Not enough points to redeem this voucher.');
+    }
+
+    $user->points -= $voucher->pointsNeeded;
+    $user->save();
+
+    VoucherTransaction::create([
+        'userId' => $user->userId,
+        'voucherId' => $voucher->voucherId,
+        'status' => 'ongoing',
+        'totalPoints'=>$voucher->pointsNeeded,
+         
+    ]);
+
+    return redirect()->route('voucher.index')->with('success', 'Voucher redeemed successfully!');
     }
 }

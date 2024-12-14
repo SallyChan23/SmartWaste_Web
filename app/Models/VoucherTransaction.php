@@ -10,9 +10,18 @@ class VoucherTransaction extends Model
     use HasFactory;
     protected $table ='voucher_transaction';
 
+    protected $primaryKey = 'voucherTransactionId'; 
+    public $incrementing = true; 
+    protected $keyType = 'int';
+
     protected $fillable =['voucherId','userId','totalPoints'];
 
     public function voucher(){
-        return $this->hasOne(Voucher::class);
+        return $this->belongsTo(Voucher::class,'voucherId','voucherId');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId', 'userId');
     }
 }

@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('voucher', function (Blueprint $table) {
-            $table->bigIncrements('voucherId');
-            $table->string('name');
-            $table->integer('pointsNeeded');
-            $table->string('price');
-            $table->string('voucherPicture')->nullable();
-            $table->timestamps();
+        Schema::table('mission', function (Blueprint $table) {
+            $table->integer('target')->default(0)->after('description');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('voucher');
+        Schema::table('mission', function (Blueprint $table) {
+            $table->dropColumn('target');
+        });
     }
 };
