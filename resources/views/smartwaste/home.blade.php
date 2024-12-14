@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    {{-- How SmartWaste Works --}}
+    <!-- How SmartWaste Works -->
 
     <div class="row justify-content-center" style="width: 70%; margin: 0 auto;">
         <p class="fs-2 fw-semibold text-center mt-5 mb-5" style="color: #183F23;">How SmartWaste Works</p>
@@ -119,7 +119,7 @@
                     Drop off your waste—both organic and non-organic—at our warehouse and earn points for every visit. 
                     Just sign up, fill out a form, and start making a difference.
                 </p>
-                <a href="{{ route('home') }}" 
+                <a href="{{ route('aboutUs') }}" 
                 class="text-decoration-underline" 
                 style="color: #183F23; position: absolute; bottom: 0; right: 0;">Learn about the waste we accept</a>
             </div>
@@ -249,7 +249,7 @@
         </div>
         <!-- Browse More Button -->
         <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); ">
-            <a href="{{ route('home') }}" class="text-decoration-underline fw-light text-center" 
+            <a href="{{ route('mission.index') }}" class="text-decoration-underline fw-light text-center" 
             style="color: #183F23;">Browse more</a>
         </div>
     </div>
@@ -291,6 +291,11 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+        <!-- Browse More Button -->
+        <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); ">
+            <a href="{{ route('voucher.index') }}" class="text-decoration-underline fw-light text-center" 
+            style="color: #183F23;">Browse more</a>
         </div>
     </div>
 
