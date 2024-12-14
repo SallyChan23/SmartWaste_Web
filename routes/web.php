@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MissionController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AboutUsController;
@@ -22,27 +23,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-<<<<<<< Updated upstream
-Route::resource('mission', MissionController::class);
-Route::resource('voucher',VoucherController::class);
-
-=======
->>>>>>> Stashed changes
 // Routes for users
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth', 'CheckRole:user'])->group(function () {
+    Route::post('/mission/start/{missionId}', [MissionController::class, 'startMission'])->name('mission.start');
+    Route::put('/mission/update-progress/{missionTransactionId}', [MissionController::class, 'updateProgress'])->name('mission.updateProgress');
+    Route::post('/voucher/redeem/{voucherId}', [VoucherController::class, 'redeem'])->name('voucher.redeem');
     Route::get('/drop_in/create', [DropInController::class, 'create'])->name('create-drop-in');
     Route::post('/drop_in', [DropInController::class, 'store'])->name('drop_in.store');
     Route::get('/drop_in', [DropInController::class, 'index'])->name('drop_in.index');
 });
 
 // Routes for admins
-<<<<<<< Updated upstream
-Route::middleware(['auth', 'role:admin'])->group(function () {
-=======
 Route::middleware(['auth', 'CheckRole:admin'])->group(function () {
     Route::resource('mission', MissionController::class);
     Route::resource('voucher',VoucherController::class)->middleware(['auth','CheckRole:user,admin']);
->>>>>>> Stashed changes
     Route::get('/admin/drop_in', [AdminController::class, 'index'])->name('admin.drop_in.index');
     Route::get('/admin/drop_in/{dropIn}/review', [AdminController::class, 'review'])->name('admin.drop_in.review');
     Route::post('/admin/drop_in/{dropIn}/update', [AdminController::class, 'update'])->name('admin.drop_in.update');
