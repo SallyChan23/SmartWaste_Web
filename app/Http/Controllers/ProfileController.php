@@ -24,7 +24,7 @@ class ProfileController extends Controller
             return view('profile.profile', compact('user'));
         }
         //dd('User is not authenticated:', session()->all());
-        return redirect()->route('auth.login')->withErrors('Please log in to view your profile.');
+        return redirect()->route('login')->withErrors('Please log in to view your profile.');
     }
 
     // public function uploadPicture(Request $request)
@@ -115,4 +115,3 @@ class ProfileController extends Controller
         return redirect()->route('profile')->with('success', 'Profile picture updated successfully.');
     }
 }
-

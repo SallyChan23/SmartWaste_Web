@@ -26,26 +26,16 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-});
-
-Route::middleware(['web'])->group(function () {
+// Routes for both
+Route::middleware(['auth', 'CheckRole:user,admin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.updatePicture');
     Route::get('/report', [ReportController::class, 'index'])->name('report');
     Route::get('/redeem', [RedeemController::class, 'index'])->name('redeem');
-
-});
-
-Route::middleware(['auth', 'CheckRole:user,admin'])->group(function () {
     Route::resource('mission', MissionController::class);
     Route::resource('voucher',VoucherController::class)->middleware(['auth','CheckRole:user,admin']);
-    
 });
 
 // Routes for users
