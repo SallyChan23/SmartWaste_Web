@@ -267,10 +267,14 @@
                style="color: #183F23;">See more</a>
         </div>
     
-        @if (session('success'))
+        @if (session ('success'))
         <div class="alert alert-success">
-            {{ session('success') }}
+            {{session('success')}}
         </div>
+        @elseif(session('error'))
+            <div class="alert alert-danger">
+            {{session('error')}}
+            </div>
         @endif
     
         <div class="container pt-3 pb-5">
