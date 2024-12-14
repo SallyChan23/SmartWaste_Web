@@ -332,7 +332,7 @@
                         <img src="{{ asset( $article->articlePicture) }}" alt="{{ $article->articleTitle }}" class="card-img-top" style="height: 200px;">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title ms-2">{{ $article->articleTitle }}</h5>
-                            <a href="{{ $article->articleUrl }}" class="d-flex justify-content-end mt-auto text-decoration-underline fw-light" style="color: #183F23" target="_blank">Read More</a>
+                            <a href="{{ $article->articleUrl }}" class="d-flex justify-content-end mt-auto text-decoration-none fw-light" style="color: #183F23" target="_blank">Read More</a>
                         </div>
                     </div>
                 </div>

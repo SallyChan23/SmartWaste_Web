@@ -5,7 +5,7 @@
 <style>  
     .page-link {
         background-color: white; 
-        color: var(--darkgreen); 
+        color: var(--darkgreen);
     }
 
     .page-link:hover {
@@ -16,9 +16,10 @@
     .page-item.active .page-link {
         background-color: var(--darkgreen); 
         color: white; 
+        border-color: var(--darkgreen);
     }
-
 </style>
+
     @if (session ('success'))
         <div class="alert alert-success">
             {{session('success')}}
@@ -164,7 +165,7 @@
         @endforeach
 
         </div>
-        <div class="d-flex justify-content-center align-items-center mt-5">
+        <div class="d-flex justify-content-center align-items-center mt-5 pt-5">
             {{ $missions->links() }}
         </div>
     </div>
