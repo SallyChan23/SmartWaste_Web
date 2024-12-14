@@ -258,24 +258,26 @@
 
     <!-- Voucher Section -->
     <div class="container my-5 position-relative">
+        
         <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">Voucher</h2>
         <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family: var(--primaryFont);">
-    
+            @if (session ('success'))
+            <div class="alert alert-success">
+                {{session('success')}}
+            </div>
+            @elseif(session('error'))
+                <div class="alert alert-danger">
+                {{session('error')}}
+                </div>
+            @endif
+            
         <!-- See More Button -->
         <div class="text-end mb-4">
             <a href="{{ route('voucher.index') }}" class="text-decoration-underline fw-light" 
                style="color: #183F23;">See more</a>
         </div>
     
-        @if (session ('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-        @elseif(session('error'))
-            <div class="alert alert-danger">
-            {{session('error')}}
-            </div>
-        @endif
+
     
         <div class="container pt-3 pb-5">
             <div class="row g-5">
