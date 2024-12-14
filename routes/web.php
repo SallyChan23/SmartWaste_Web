@@ -10,6 +10,7 @@ use App\Http\Controllers\VoucherController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+
 Route::get('/about-us', [AboutUsController::class, 'showAboutUs'])->name('aboutUs');
 Route::post('/about-us/send-message', [AboutUsController::class, 'sendMessage'])->name('about-us.sendMessage');
 
@@ -27,19 +28,24 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 });
 
+
+
 Route::resource('mission', MissionController::class);
+Route::post('/mission/start/{missionId}', [MissionController::class, 'startMission'])->name('mission.start');
+Route::put('/mission/update-progress/{missionTransactionId}', [MissionController::class, 'updateProgress'])->name('mission.updateProgress');
 
 Route::resource('voucher',VoucherController::class);
 
 // Routes for users
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth', 'CheckRole:user'])->group(function () {
     Route::get('/drop_in/create', [DropInController::class, 'create'])->name('create-drop-in');
     Route::post('/drop_in', [DropInController::class, 'store'])->name('drop_in.store');
     Route::get('/drop_in', [DropInController::class, 'index'])->name('drop_in.index');
 });
 
 // Routes for admins
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'CheckRole:admin'])->group(function () {
+
     Route::get('/admin/drop_in', [AdminController::class, 'index'])->name('admin.drop_in.index');
     Route::get('/admin/drop_in/{dropIn}/review', [AdminController::class, 'review'])->name('admin.drop_in.review');
     Route::post('/admin/drop_in/{dropIn}/update', [AdminController::class, 'update'])->name('admin.drop_in.update');

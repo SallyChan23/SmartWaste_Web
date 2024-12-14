@@ -16,6 +16,10 @@
                 <textarea class="form-control" rows="3"type="text" name="desc" id="desc" placeholder="Input mission description" required></textarea>
             </div>
             <div class="row">
+                <label class="mb-2" for="">Target Mission</label>
+                <input class="form-control" type="text" name="target" id="target" placeholder="Input target mission (ex: 100 bottles/15kg), just input the number" required>
+            </div>
+            <div class="row">
                 <label class="mb-2 " for="">Points</label>
                 <input class="form-control" type="text" name="points" id="points" placeholder="Input mission points (using number)" required>
             </div>

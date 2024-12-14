@@ -10,9 +10,16 @@ class MissionTransaction extends Model
     use HasFactory;
 
     protected $table = 'mission_transaction';
-    protected $fillable =['missionId','userId','status','startDate','endDate'];
+    protected $primaryKey = 'missionTransactionId'; 
+    public $incrementing = true; 
+    protected $keyType = 'int';
+    protected $fillable =['missionId','userId','status','currentPoints','startDate','endDate'];
 
     public function mission(){
-        return $this->hasOne(Mission::class);
+        return $this->belongsTo(Mission::class,'missionId', 'missionId');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId', 'userId');
     }
 }

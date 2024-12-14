@@ -20,14 +20,12 @@ class CheckRole
             return redirect('/login');
         }
     
+        // Periksa apakah role pengguna cocok dengan yang diizinkan
         $user = Auth::user();
-        
-        if (!in_array($user->role, $roles)) {
-            if ($user->role == 'admin') {
-                return redirect('home');
-            } else if ($user->role == 'user') {
-                return redirect('/');
-            }
+        $allowedRoles = explode(',', $roles);
+    
+        if (!in_array($user->role, $allowedRoles)) {
+            return redirect('/'); // Atau redirect sesuai kebutuhan
         }
     
         return $next($request);
