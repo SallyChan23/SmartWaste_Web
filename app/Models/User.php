@@ -33,7 +33,7 @@ class User extends Authenticatable
     }
 
     public function voucherTransactions(){
-        return $this->hasMany(VoucherTransaction::class);
+        return $this->hasMany(VoucherTransaction::class,'userId','userId');
     }
 
     public function dropIns(){

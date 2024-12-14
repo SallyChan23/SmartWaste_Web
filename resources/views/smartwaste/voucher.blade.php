@@ -35,17 +35,24 @@
         <div class="alert alert-success">
             {{session('success')}}
         </div>
+    @elseif(session('error'))
+         <div class="alert alert-danger">
+            {{session('error')}}
+        </div>
     @endif
+
     <p class='text-center fs-1 pt-4 fw-bold'style='color:white; font-family:var(-primaryFont)'>Voucher</p>
 
-    <div class="container d-flex justify-content-end">
-        <a href="{{route('voucher.create')}}" class="btn " style="background-color:white">
-            <p style="color:var(--darkgreen); margin:0">Add Voucher</p>
-        </a>
-    </div>
+    @if(Auth::user()->role === 'admin')
+        <div class="container d-flex justify-content-end">
+            <a href="{{route('voucher.create')}}" class="btn " style="background-color:white">
+                <p style="color:var(--darkgreen); margin:0">Add Voucher</p>
+            </a>
+        </div>
+    @endif
 
     <div class="container pt-3 pb-5">
-        <div class="row row-cols-lg-3  row-cols-md-2 g-5">
+        <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 g-5">
             @foreach ($vouchers as $voucher)
             <div class="col ">
                 <div class="d-flex flex-row align-items-center justify-content-center px-4  " style="background-color:white;min-height: 170px; font-family:var(-primaryFont);position: relative;
@@ -60,10 +67,25 @@
                         </div>
                         <p class="card-text"  style="color:black">{{$voucher->price}}</p>
                     </div>
-                    <div class="d-flex flex-column ustiy-content-between align-items-end" style="gap:4.5rem">
-                        <img src="assets/trash-can.png" alt="" style="height:20px; width:20px; cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalVoucher{{ $voucher->voucherId }}">
-                        <button type="button" class="btn btn-warning" >Redeem</button>
+                    @if(Auth::user()->role === 'admin')
+                    <div class="d-flex flex-column justiy-content-start align-items-start " style="height:120px">
+                        <img src="assets/trash-can.png" alt="" style="height:20px; width:20px; cursor:pointer; " data-bs-toggle="modal" data-bs-target="#modalVoucher{{ $voucher->voucherId }}">
                     </div>
+                    @endif
+
+                    @if(Auth::user()->role === 'user')
+                    <div class="d-flex flex-column justify-content-end align-items-end " style="height:120px">
+                    
+                        <form action="{{ route('voucher.redeem', $voucher->voucherId) }}" method="POST" >
+                            @csrf
+                            <button type="submit" class="btn btn-warning" >Redeem</button>
+                        </form>
+                        
+                    </div>
+                    @endif
+                        
+                        
+
                     <div class="circle-right"></div>
                 </div>
             </div>

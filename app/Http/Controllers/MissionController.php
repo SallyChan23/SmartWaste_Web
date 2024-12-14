@@ -14,7 +14,7 @@ class MissionController extends Controller
      */
     public function index()
     {
-        $missions = Mission::all();
+        $missions = Mission::paginate(6);
         $missionTransactions = MissionTransaction::with('mission')->where('status','ongoing')->get();
         $completedTransaction = MissionTransaction::with('mission')->where('status','completed')->get();
         return view('smartwaste.mission', compact('missions','missionTransactions','completedTransaction'));
@@ -118,8 +118,18 @@ class MissionController extends Controller
                 'missionPicture' => 'assets/uploads/' . $fileName, 
             ]);
 
-            return redirect()->route('mission.index')->with('success', 'Mission successfully updated!');
+            
+         }else {
+            
+            $mission->update([
+                'title' => $request->title,
+                'totalPoints' => $request->points,
+                'description' => $request->desc,
+                'target' => $request->target,
+            ]);
          }
+
+         return redirect()->route('mission.index')->with('success', 'Mission successfully updated!');
     }
 
     /**
@@ -150,7 +160,7 @@ class MissionController extends Controller
     }
 
     public function updateProgress(Request $request, $missionTransactionId)
-{
+    {
     
     $request->validate([
         'currentPoints' => 'required|integer|min:0',
@@ -175,7 +185,7 @@ class MissionController extends Controller
     $transaction->save();
 
     return redirect()->route('mission.index')->with('success', 'Progress updated successfully!');
-}
+    }
 
 
 }

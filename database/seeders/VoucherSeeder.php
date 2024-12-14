@@ -38,7 +38,7 @@ class VoucherSeeder extends Seeder
             'name'=>'Pepper Lunch',
             'pointsNeeded'=>400,
             'price'=>'Rp.50.000',
-            'voucherPicture'=>'assets/Voucher - PepperLunch.jpg'
+            'voucherPicture'=>'assets/Voucher - PepperLunch.png'
         ]);
     }
 }
