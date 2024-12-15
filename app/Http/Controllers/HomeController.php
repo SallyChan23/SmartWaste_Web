@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         // Ambil hanya 2 misi dari database
         $missions = Mission::take(2)->get();
-        $vouchers = Voucher::all();
+        $vouchers = Voucher::take(4)->get();
         $articles = Article::all();
 
         return view('smartwaste.home', compact('missions', 'vouchers', 'articles'));
