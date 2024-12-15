@@ -191,5 +191,10 @@ class MissionController extends Controller
     return redirect()->route('mission.index')->with('success', 'Progress updated successfully!');
     }
 
+    public function searchMission(Request $request){
+        $query = $request->input('query');
+        $missions = Mission::where('title', 'like', '%' . $query . '%')->orWhere('totalPoints', $query)->paginate(6);
+        return view('smartwaste.searchMission', compact('missions'))->with('query', $query);
+    }
 
 }

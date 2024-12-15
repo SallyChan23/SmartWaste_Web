@@ -40,6 +40,22 @@
     .card-text {
         font-size: 0.9rem;
     }
+
+    .page-link {
+        background-color: white; 
+        color: var(--darkgreen); 
+    }
+
+    .page-link:hover {
+        background-color: var(--darkgreen); 
+        color: white; 
+    }
+
+    .page-item.active .page-link {
+        background-color: var(--darkgreen); 
+        color: white; 
+        border-color: var(--darkgreen);
+    }
 </style>
 
 
@@ -104,7 +120,7 @@
 
 
         <!-- Vouchers Section -->
-        <div class="container pt-3 pb-5">
+        <div class="container pt-3">
             <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 g-4">
                 @forelse ($redeemedVouchers as $redeemedVoucher)
 
@@ -137,11 +153,14 @@
                             <div class="circle-right"></div>
                         </div>
                     </div>
-                @empty
+                    @empty
                     <!-- Empty State -->
                     <p class="text-center">No vouchers redeemed yet.</p>
-                @endforelse
-            </div>
+                    @endforelse
+                </div>
+                <div class="d-flex justify-content-center align-items-center mt-5">
+                    {{ $redeemedVouchers->links() }}
+                </div>
         </div>
     </div>
 </div>
