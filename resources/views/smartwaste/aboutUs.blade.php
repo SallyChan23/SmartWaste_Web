@@ -247,7 +247,7 @@
                                 <h2 class="mb-5 text-center" style="color: #183F23;">Fill Up the Form</h2>
                                 <form action="{{ route('about-us.sendMessage') }}" method="POST" id="formData">
                                     @csrf
-                                    <div class="formBox">
+                                    <div class="formBox" style="width: 110%">
                                         <div class="row mb-3">
                                             <div class="col-md-8 mx-auto">
                                                 <label for="fullName" class="form-label">Full Name</label>
