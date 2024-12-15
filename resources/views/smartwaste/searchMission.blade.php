@@ -103,7 +103,7 @@
     @endif
 
     <div class="mt-3 mb-5">
-        <a href="{{ route('mission.index') }}" class="btn btn-secondary" style="background-color: var(--darkgreen);">Back to All Missions</a>
+        <a href="{{ route('mission.index') }}" class="btn btn-secondary" style="background-color: var(--darkgreen);">@lang('mission.backButton')</a>
     </div>
 
 </div>

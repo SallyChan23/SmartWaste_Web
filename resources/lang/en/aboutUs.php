@@ -41,6 +41,12 @@ return [
         'full_name' => 'Full Name',
         'email' => 'Email',
         'phone' => 'Phone',
-        'message' => 'Message'
+        'message' => 'Message',
+        'placeholder' => 'Write your message here ...'
+    ],
+    'button'=> 'Submit',
+    'alert' => [
+        'success'=>'Thank you for contacting us!',
+        'fail'=>'Please fill all the fields.'
     ]
 ];

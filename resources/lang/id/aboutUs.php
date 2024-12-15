@@ -48,6 +48,12 @@ return [
         'full_name' => 'Nama Lengkap',
         'email' => 'Email',
         'phone' => 'Telepon',
-        'message' => 'Pesan'
+        'message' => 'Pesan',
+        'placeholder' => 'Tulis pesan Anda di sini ...'
+    ],
+    'button'=> 'Kirim',
+    'alert' => [
+        'success'=>'Terima kasih telah menghubungi kami!',
+        'fail'=>'Silakan isi semua kolom.'
     ]
 ];

@@ -272,12 +272,12 @@
                                         <div class="row mb-5">
                                             <div class="col-md-8 mx-auto">
                                                 <label for="message" class="form-label">@lang('aboutUs.form_labels.message')</label>
-                                                <textarea name="message" id="msg" class="form-control" placeholder="Write your message here ..." ></textarea>
+                                                <textarea name="message" id="msg" class="form-control" placeholder="@lang('aboutUs.form_labels.placeholder')" ></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-8 mx-auto d-flex justify-content-end">
-                                                <button type="submit" id="send-button" class="btn btn-lg border-5" style="background-color: #183F23; color: white; padding: 6px 10px; font-size: 16px;">Submit</button>
+                                                <button type="submit" id="send-button" class="btn btn-lg border-5" style="background-color: #183F23; color: white; padding: 6px 10px; font-size: 16px;">@lang('aboutUs.button')</button>
                                             </div>
                                         </div>
                                     </div>
@@ -304,13 +304,13 @@
                 const phone = document.getElementById('phone').value;
                 const message = document.getElementById('msg').value;
                 if (name && email && phone && message) {
-                    feedbackElement.innerHTML = '<div class="alert alert-success">Thank you for contacting us!</div>';
+                    feedbackElement.innerHTML = '<div class="alert alert-success">@lang('aboutUs.alert.success')</div>';
                     setTimeout(() => {
                         feedbackElement.innerHTML = ''; 
                     }, 5000);
                     form.reset();
                 } else {
-                    feedbackElement.innerHTML = '<div class="alert alert-danger">Please fill all the fields.</div>';
+                    feedbackElement.innerHTML = '<div class="alert alert-danger">@lang('aboutUs.alert.fail')</div>';
                     setTimeout(() => {
                         feedbackElement.innerHTML = ''; 
                     }, 5000);

@@ -175,7 +175,7 @@
                                 <form action="{{ route('mission.destroy', $mission->missionId) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this mission?')">@lang('mission.delete_mission')</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('@lang('mission.delete_confirmation')')">@lang('mission.delete_mission')</button>
                                 </form>
                             </div>
                         @endif

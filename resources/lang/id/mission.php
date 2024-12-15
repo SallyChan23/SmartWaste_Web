@@ -19,6 +19,7 @@ return[
     'form_target' => 'Masukkan target misi (contoh: 100 botol/15kg), cukup masukkan angkanya',
     'form_points' => 'Masukkan poin misi (menggunakan angka)',
     'delete_mission'=>'Hapus',
+    'delete_confirmation'=>'Apakah Anda yakin ingin menghapus misi ini?',
     'edit_mission'=>'Ubah',
     'start_mission'=>'Mulai misi',
     'start_on'=>'Mulai pada:',
@@ -33,5 +34,6 @@ return[
     'searchResult'=>'Menunjukkan hasil untuk: ',
     'noSearchResult'=>'Tidak ada misi yang ditemukan untuk pencarian Anda.',
     'searchButton'=>'Cari',
-    'searchBar'=>'Cari Misi...'
+    'searchBar'=>'Cari Misi...',
+    'backButton'=>'Kembali ke Semua Misi'
 ];

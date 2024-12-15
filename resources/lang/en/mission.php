@@ -19,6 +19,7 @@ return[
     'form_target'=>'Input target mission (ex: 100 bottles/15kg), just input the number',
     'form_points'=>'Input mission points (using number)',
     'delete_mission'=>'Delete',
+    'delete_confirmation'=>'Are you sure you want to delete this mission?',
     'edit_mission'=>'Edit',
     'start_mission'=>'Start mission',
     'start_on'=>'Started on:',
@@ -33,6 +34,7 @@ return[
     'searchResult'=>'Showing results for: ',
     'noSearchResult'=>'No missions found for your search.',
     'searchButton'=>'Search',
-    'searchBar'=>'Search Mission...'
+    'searchBar'=>'Search Mission...',
+    'backButton'=>'Back to All Missions'
 ];
 
