@@ -46,7 +46,7 @@
                 </li>
                 <li class="mb-4">
                     <img src="{{asset('assets/profile1.png')}}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">Redeem Voucher</a>
+                    <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">Redeemed Voucher</a>
                 </li>
                 @if (Auth::check())
                 <li class="nav-item">
