@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary  py-0">
         <div class="container-fluid px-5 py-2" style="background-color:rgb(244, 247, 240,0.7); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)">
-            <img src="{{asset('assets/logo.png')}}" alt="" width="150px" height="80px">
+            <img src="{{asset('assets/logo.png')}}" alt="" width="130px" height="60px">
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="font-family:var(--primaryFont);font-size:16px">
                 <ul class="navbar-nav d-flex gap-5">
                     <li class="nav-item">
