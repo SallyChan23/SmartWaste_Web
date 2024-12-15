@@ -14,7 +14,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        $vouchers = Voucher::all();
+        $vouchers = Voucher::paginate(9);
         return view('smartwaste.voucher', compact('vouchers'));
     }
 
@@ -56,9 +56,9 @@ class VoucherController extends Controller
     
             
             return redirect()->route('voucher.index')->with('success', 'Voucher successfully added!');
-         }else {
+        }else {
             return redirect()->back()->with('error', 'Failed to upload mission picture.');
-         }
+        }
     }
 
     /**
@@ -112,7 +112,6 @@ class VoucherController extends Controller
         'voucherId' => $voucher->voucherId,
         'status' => 'ongoing',
         'totalPoints'=>$voucher->pointsNeeded,
-         
     ]);
 
     return redirect()->route('voucher.index')->with('success', 'Voucher redeemed successfully!');
