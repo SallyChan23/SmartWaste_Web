@@ -3,10 +3,10 @@
 @section('content')
 
 <p class='text-center fs-1 pt-4 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>Add New Mission</p>
-    <div class="container rounded-2 shadow p-5 mb-5" style="background-color: var(--basic); ">
+    <div class="container rounded-2 shadow p-5 mb-5" style="background-color: var(--basic);">
     <form action="{{route('mission.store')}}" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="col d-flex flex-column gap-4 px-5 py-2 fs-6 fw-semibold ">
+        <div class="col d-flex flex-column gap-4 px-5 py-2 fs-6 fw-semibold "style="width:100%">
             <div class="row">
                 <label class="mb-2 "for="">Title</label>
                 <input class="form-control" type="text" name="title" id="title" placeholder="Input mission title"required>
@@ -28,8 +28,8 @@
                 <input class="form-control"type="file" name="missionPicture" id="picture" accept="image/*" required>
             </div>
         </div>
-        <div class="d-flex justify-content-center pt-5">
-            <button type="submit" style="background-color:var(--darkgreen);color:white" class="btn">Save</button>
+        <div class="d-flex justify-content-center pt-5 " style="width:100%">
+            <button type="submit" style="background-color:var(--darkgreen);color:white" class="btn col-6">Save</button>
         </div>
         
     </form>

@@ -15,7 +15,7 @@
     <div class="container rounded-2 shadow p-5 mb-5" style="background-color: white; ">
     <form action="{{route('voucher.store')}}" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="col d-flex flex-column gap-4 px-5 py-2 fs-6 fw-semibold ">
+        <div class="col d-flex flex-column gap-4 px-5 py-2 fs-6 fw-semibold " style="width:100%">
             <div class="row">
                 <label class="mb-2 "for="">Name</label>
                 <input class="form-control" type="text" name="name" id="name" placeholder="Input voucher name"required>
@@ -33,8 +33,8 @@
                 <input class="form-control"type="file" name="voucherPicture" id="picture" accept="image/*" required>
             </div>
         </div>
-        <div class="d-flex justify-content-center pt-5">
-            <button type="submit" style="background-color:var(--darkgreen);color:white" class="btn">Save</button>
+        <div class="d-flex justify-content-center pt-5" style="width:100%">
+            <button type="submit" style="background-color:var(--darkgreen);color:white" class="btn col-6">Save</button>
         </div>
         
     </form>

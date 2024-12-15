@@ -41,18 +41,17 @@ class VoucherController extends Controller
         
         if ($request->hasFile('voucherPicture')) {
             $file = $request->file('voucherPicture');
-            $fileName = time() . '-' . $file->getClientOriginalName();
-            $fileName = str_replace(' ', '-', $fileName); 
-    
             
-            $file->move(public_path('assets/uploads'), $fileName);
-    
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $fileName = str_replace(' ', '-', $fileName);
+            
+            $path = $file->storeAs('voucher-pictures', $fileName, 'public');
             
             Voucher::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'pointsNeeded' => $request->points,
-                'voucherPicture' => 'assets/uploads/' . $fileName, // Simpan path relatif ke database
+                'voucherPicture' => 'storage/voucher-pictures/' . $fileName,  
             ]);
     
             
