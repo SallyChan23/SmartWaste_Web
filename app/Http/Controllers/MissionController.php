@@ -34,36 +34,38 @@ class MissionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|string|max:255',
-            'desc'=>'required|string',
-            'target'=>'required|integer',
-            'points'=>'required|integer',
-            'missionPicture'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'title' => 'required|string|max:255',
+            'desc' => 'required|string',
+            'target' => 'required|integer',
+            'points' => 'required|integer',
+            'missionPicture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
-        
+    
         if ($request->hasFile('missionPicture')) {
+       
             $file = $request->file('missionPicture');
+            
+            
             $fileName = time() . '-' . $file->getClientOriginalName();
-            $fileName = str_replace(' ', '-', $fileName); 
+            $fileName = str_replace(' ', '-', $fileName);
     
             
-            $file->move(public_path('assets/uploads'), $fileName);
+            $path = $file->storeAs('mission-pictures', $fileName, 'public');
     
             
             Mission::create([
                 'title' => $request->title,
                 'totalPoints' => $request->points,
                 'description' => $request->desc,
-                'target'=>$request->target,
-                'missionPicture' => 'assets/uploads/' . $fileName, 
+                'target' => $request->target,
+                'missionPicture' => 'storage/mission-pictures/' . $fileName,  
             ]);
     
-            
+           
             return redirect()->route('mission.index')->with('success', 'Mission successfully added!');
-         }else {
+        } else {
             return redirect()->back()->with('error', 'Failed to upload mission picture.');
-         }
+        }
     }
 
     /**
@@ -104,18 +106,20 @@ class MissionController extends Controller
         
         if ($request->hasFile('missionPicture')) {
             $file = $request->file('missionPicture');
+            
+         
             $fileName = time() . '-' . $file->getClientOriginalName();
-            $fileName = str_replace(' ', '-', $fileName); 
+            $fileName = str_replace(' ', '-', $fileName);
     
             
-            $file->move(public_path('assets/uploads'), $fileName);
+            $path = $file->storeAs('mission-pictures', $fileName, 'public');
     
             $mission->update([
                 'title' => $request->title,
                 'totalPoints' => $request->points,
                 'description' => $request->desc,
                 'target'=>$request->target,
-                'missionPicture' => 'assets/uploads/' . $fileName, 
+                'missionPicture' => 'storage/mission-pictures/' . $fileName, 
             ]);
 
             

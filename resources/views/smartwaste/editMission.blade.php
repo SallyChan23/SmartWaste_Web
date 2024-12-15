@@ -7,7 +7,7 @@
     <form action="{{route('mission.update', $mission->missionId) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="col d-flex flex-column gap-4 px-5 py-2 fs-6 fw-semibold">
+        <div class="col d-flex flex-column gap-4 px-5 py-2 fs-6 fw-semibold" style="width:100%">
             <div class="row">
                 <label class="mb-2" for="">Title</label>
                 <input class="form-control" type="text" name="title" id="title" value="{{ $mission->title }}" required>
@@ -32,8 +32,8 @@
                 
             </div>
         </div>
-        <div class="d-flex justify-content-center pt-5">
-            <button type="submit" style="background-color:var(--darkgreen); color:white" class="btn ">Update</button>
+        <div class="d-flex justify-content-center pt-5" style="width:100%">
+            <button type="submit" style="background-color:var(--darkgreen); color:white" class="btn col-6">Update</button>
         </div>
     </form>
 </div>
