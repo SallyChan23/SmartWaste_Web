@@ -41,12 +41,12 @@
         </div>
     @endif
 
-    <p class='text-center fs-1 pt-4 fw-bold'style='color:white; font-family:var(-primaryFont)'>Voucher</p>
+    <p class='text-center fs-1 pt-4 fw-bold'style='color:white; font-family:var(-primaryFont)'>@lang('voucher.banner_title')</p>
 
     @if(Auth::user()->role === 'admin')
         <div class="container d-flex justify-content-end">
             <a href="{{route('voucher.create')}}" class="btn " style="background-color:white">
-                <p style="color:var(--darkgreen); margin:0">Add Voucher</p>
+                <p style="color:var(--darkgreen); margin:0">@lang('voucher.add_voucher')</p>
             </a>
         </div>
     @endif
@@ -63,7 +63,7 @@
                         <p class="card-title fs-5 fw-bold " style="color:black">{{$voucher->name}}</p>
                         <div class="d-flex flex-row align-items-center gap-1 pt-2">
                             <img src="assets/points.png" alt="" srcset="" style="object-fit:cover; height:20px;width:20px">
-                            <p class="card-text"  style="color:black">{{$voucher->pointsNeeded}} points</p>
+                            <p class="card-text"  style="color:black">{{$voucher->pointsNeeded}} @lang('voucher.points')</p>
                         </div>
                         <p class="card-text"  style="color:black">{{$voucher->price}}</p>
                     </div>
@@ -78,7 +78,7 @@
                     
                         <form action="{{ route('voucher.redeem', $voucher->voucherId) }}" method="POST" >
                             @csrf
-                            <button type="submit" class="btn btn-warning" >Redeem</button>
+                            <button type="submit" class="btn btn-warning" >@lang('voucher.redeem')</button>
                         </form>
                         
                     </div>
@@ -97,14 +97,14 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p>Are you sure want to delete this Voucher? This action cannot be undone</p>
+                            <p>@lang('voucher.delete_confirmation')</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('voucher.close')</button>
                             <form action="{{ route('voucher.destroy', $voucher->voucherId) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" >Delete</button>
+                            <button type="submit" class="btn btn-danger" >@lang('voucher.delete_voucher')</button>
                             </form>
                     </div>
                     </div>
