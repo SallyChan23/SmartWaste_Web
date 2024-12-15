@@ -25,7 +25,6 @@
         background-color: white; 
         border-radius: 50%;
     }
-
 </style>
 <div>
     <!-- Banner Section -->
@@ -235,10 +234,9 @@
                                             @if(Auth::check() && Auth::user()->role === 'user')
                                                 <form action="{{ route('mission.start', $mission->missionId) }}" method="POST">
                                                 @csrf
-                                                    <div class="d-flex justify-content-center " style="font-family:var(--primaryFont)">
-                                                        <button type="submit" style="background-color:var(--basic);color:var(--darkgreen)" class="btn col-6 fw-semibold">Start Mission</button>
-                                                    </div>
-                                                </form>
+                                                <div class="d-flex justify-content-center" style="font-family:var(--primaryFont)">
+                                                    <button type="submit" style="background-color:var(--basic);color:var(--darkgreen)" class="btn fw-semibold px-4 py-2">Start Mission</button>
+                                                </div>
                                             @else
                                                 <p class="text-center text-danger fw-bold">Please log in to start this mission.</p>
                                             @endif
@@ -332,7 +330,7 @@
                         <img src="{{ asset( $article->articlePicture) }}" alt="{{ $article->articleTitle }}" class="card-img-top" style="height: 200px;">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title ms-2">{{ $article->articleTitle }}</h5>
-                            <a href="{{ $article->articleUrl }}" class="d-flex justify-content-end mt-auto text-decoration-none fw-light" style="color: #183F23" target="_blank">Read More</a>
+                            <a href="{{ $article->articleUrl }}" class="d-flex justify-content-end mt-auto text-decoration-none fw-light" style="color: #183F23" target="_blank">Read More>></a>
                         </div>
                     </div>
                 </div>
