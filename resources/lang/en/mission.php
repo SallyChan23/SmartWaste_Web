@@ -29,7 +29,10 @@ return[
     'add_progress'=>'Add Progress',
     'total_points'=>'Total Points:',
     'current_picture'=>'Current Picture:',
-    'edit_title'=>'Edit Mission'
-
+    'edit_title'=>'Edit Mission',
+    'searchResult'=>'Showing results for: ',
+    'noSearchResult'=>'No missions found for your search.',
+    'searchButton'=>'Search',
+    'searchBar'=>'Search Mission...'
 ];
 

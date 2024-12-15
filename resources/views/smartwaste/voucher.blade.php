@@ -7,6 +7,7 @@
         background-color:rgb(160, 185, 72,0.8);
 
     }
+
     .circle-left{
         position: absolute; 
         top: 50%; 
@@ -29,6 +30,21 @@
         border-radius: 50%;
     }
 
+    .page-link {
+        background-color: white; 
+        color: var(--darkgreen); 
+    }
+
+    .page-link:hover {
+        background-color: var(--darkgreen); 
+        color: white; 
+    }
+
+    .page-item.active .page-link {
+        background-color: var(--darkgreen); 
+        color: white; 
+        border-color: var(--darkgreen);
+    }
 </style>
 
     @if (session ('success'))
@@ -36,7 +52,7 @@
             {{session('success')}}
         </div>
     @elseif(session('error'))
-         <div class="alert alert-danger">
+        <div class="alert alert-danger">
             {{session('error')}}
         </div>
     @endif
@@ -55,9 +71,8 @@
         <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 g-5">
             @foreach ($vouchers as $voucher)
             <div class="col ">
-                <div class="d-flex flex-row align-items-center justify-content-center px-4  " style="background-color:white;min-height: 170px; font-family:var(-primaryFont);position: relative;
-                             overflow: hidden;" >
-                     <div class="circle-left"></div>   
+                <div class="d-flex flex-row align-items-center justify-content-center px-4  " style="background-color:white;min-height: 170px; font-family:var(-primaryFont);position: relative;overflow: hidden;" >
+                    <div class="circle-left"></div>   
                     <img src="{{asset($voucher->voucherPicture)}}" alt="" class='img-fluid 'style="object-fit:cover; height: 90px; width:140px">
                     <div class="card-body d-flex flex-column justify-content-center ">
                         <p class="card-title fs-5 fw-bold " style="color:black">{{$voucher->name}}</p>
@@ -83,9 +98,6 @@
                         
                     </div>
                     @endif
-                        
-                        
-
                     <div class="circle-right"></div>
                 </div>
             </div>
@@ -109,9 +121,11 @@
                     </div>
                     </div>
                 </div>
-
             </div>
             @endforeach
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-5">
+            {{ $vouchers->links() }}
         </div>
     </div>
 @endsection

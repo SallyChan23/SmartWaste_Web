@@ -17,6 +17,4 @@ return[
     'delete_voucher'=>'Delete',
     'delete_confirmation'=>'Are you sure want to delete this Voucher? This action cannot be undone',
     'close'=>'Close'
-
-
 ];

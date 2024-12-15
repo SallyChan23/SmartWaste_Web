@@ -29,5 +29,9 @@ return[
     'add_progress'=>'Tambah progres',
     'total_points'=>'Total Poin:',
     'current_picture'=>'Gambar sekarang:',
-    'edit_title'=>'Ubah Misi'
+    'edit_title'=>'Ubah Misi',
+    'searchResult'=>'Menunjukkan hasil untuk: ',
+    'noSearchResult'=>'Tidak ada misi yang ditemukan untuk pencarian Anda.',
+    'searchButton'=>'Cari',
+    'searchBar'=>'Cari Misi...'
 ];

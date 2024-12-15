@@ -8,23 +8,23 @@
                 <i class="fas fa-envelope"></i> smartwaste@gmail.com
             </div>
             <div class="col-md-2 mb-3">
-                <h5 class="mb-4">Company</h5>
+                <h5 class="mb-4">@lang('footer.company')</h5>
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('aboutUs') }}" class="text-white">About Us</a></li>
-                    <li><a href="#" class="text-white">Our Service</a></li>
-                    <li><a href="{{ route('aboutUs') }}#getInTouch" class="text-white">Contact Us</a></li>
+                    <li><a href="{{ route('aboutUs') }}" class="text-white">@lang('footer.about-us')</a></li>
+                    <li><a href="#" class="text-white">@lang('footer.service')</a></li>
+                    <li><a href="{{ route('aboutUs') }}#getInTouch" class="text-white">@lang('footer.contact')</a></li>
                 </ul>
             </div>
             <div class="col-md-2 mb-3">
-                <h5 class="mb-4">Get Help</h5>
+                <h5 class="mb-4">@lang('footer.help')</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">FAQ</a></li>
-                    <li><a href="#" class="text-white">Shipping</a></li>
-                    <li><a href="#" class="text-white">Drop In Status</a></li>
+                    <li><a href="#" class="text-white">@lang('footer.faq')</a></li>
+                    <li><a href="#" class="text-white">@lang('footer.shipping')</a></li>
+                    <li><a href="#" class="text-white">@lang('footer.drop-in')</a></li>
                 </ul>
             </div>
             <div class="col-md-2 mb-3">
-                <h5 class="mb-4">Socials</h5>
+                <h5 class="mb-4">@lang('footer.socials')</h5>
                 <ul class="list-unstyled">
                     <li><a href="https://www.instagram.com/smartwaste2024?igsh=OTIycGM0dDRseTgw&utm_source=qr" class="text-white"><i class="fab fa-instagram"></i>                Instagram</a></li>
                     <li><a href="#" class="text-white"><i class="fab fa-tiktok"></i>                TikTok</a></li>
