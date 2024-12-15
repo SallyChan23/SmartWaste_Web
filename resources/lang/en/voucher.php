@@ -3,7 +3,7 @@
 return[
     'banner_title' => 'Voucher',
     'add_voucher'=>'Add Voucher',
-    'points'=>'poin',
+    'points'=>'points',
     'add_new'=>'Add New Voucher',
     'voucher_name'=>'Name',
     'voucher_price'=>'Price',
