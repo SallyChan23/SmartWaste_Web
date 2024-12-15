@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center pt-5">
-            <button type="submit" style="background-color:var(--darkgreen);color:white" class="btn col-6">Save</button>
+            <button type="submit" style="background-color:var(--darkgreen);color:white" class="btn">Save</button>
         </div>
         
     </form>

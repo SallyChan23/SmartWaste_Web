@@ -5,7 +5,7 @@
 <style>  
     .page-link {
         background-color: white; 
-        color: var(--darkgreen);
+        color: var(--darkgreen); 
     }
 
     .page-link:hover {
@@ -16,10 +16,9 @@
     .page-item.active .page-link {
         background-color: var(--darkgreen); 
         color: white; 
-        border-color: var(--darkgreen);
     }
-</style>
 
+</style>
     @if (session ('success'))
         <div class="alert alert-success">
             {{session('success')}}
@@ -130,7 +129,7 @@
                     <div class="modal-body" >
                         <h5 class="modal-title text-center fw-bold fs-2" style="color:white;" id="modalMissionLabel{{ $mission->missionId }}">{{ $mission->title }}</h5>
                         <div class="d-flex justify-content-between align-items-center py-3">
-                            <div class="d-flex flex-column jify-content-center align-items-center gap-4" style="width:40%">
+                            <div class="d-flex flex-column justify-content-center align-items-center gap-4" style="width:40%">
                                 <img src="{{ asset($mission->missionPicture) }}" alt="" class='img-fluid'style="object-fit:contain; height: 200px; width:auto">
                                 <p class="fw-bold fs-5"><strong>Total Points:</strong> {{ $mission->totalPoints }} points</p>
                             </div>
@@ -139,8 +138,8 @@
                                     @if(Auth::user()->role === 'user')
                                         <form action="{{ route('mission.start', $mission->missionId) }}" method="POST">
                                         @csrf
-                                            <div class="d-flex justify-content-center " style="font-family:var(--primaryFont)">
-                                                <button type="submit" style="background-color:var(--basic);color:var(--darkgreen)" class="btn col-6 fw-semibold">Start Mission</button>
+                                            <div class="d-flex justify-content-center" style="font-family:var(--primaryFont)">
+                                                <button type="submit" style="background-color:var(--basic);color:var(--darkgreen)" class="btn fw-semibold px-4 py-2">Start Mission</button>
                                             </div>
                                         </form>
                                     @endif
@@ -165,7 +164,7 @@
         @endforeach
 
         </div>
-        <div class="d-flex justify-content-center align-items-center mt-5 pt-5">
+        <div class="d-flex justify-content-center align-items-center mt-5">
             {{ $missions->links() }}
         </div>
     </div>
