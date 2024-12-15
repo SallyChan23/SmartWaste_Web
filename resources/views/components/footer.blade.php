@@ -11,7 +11,7 @@
                 <h5 class="mb-4">@lang('footer.company')</h5>
                 <ul class="list-unstyled">
                     <li><a href="{{ route('aboutUs') }}" class="text-white">@lang('footer.about-us')</a></li>
-                    <li><a href="#" class="text-white">@lang('footer.service')</a></li>
+                    <li><a href="{{ route('aboutUs') }}#service" class="text-white">@lang('footer.service')</a></li>
                     <li><a href="{{ route('aboutUs') }}#getInTouch" class="text-white">@lang('footer.contact')</a></li>
                 </ul>
             </div>
@@ -27,8 +27,8 @@
                 <h5 class="mb-4">@lang('footer.socials')</h5>
                 <ul class="list-unstyled">
                     <li><a href="https://www.instagram.com/smartwaste2024?igsh=OTIycGM0dDRseTgw&utm_source=qr" class="text-white"><i class="fab fa-instagram"></i>                Instagram</a></li>
-                    <li><a href="#" class="text-white"><i class="fab fa-tiktok"></i>                TikTok</a></li>
-                    <li><a href="#" class="text-white"><i class="fab fa-twitter"></i>                Twitter</a>
+                    <li><a href="https://www.tiktok.com/@smartwaste2024?_t=ZS-8sF7JqLGf7X&_r=1" class="text-white"><i class="fab fa-tiktok"></i>                TikTok</a></li>
+                    <li><a href="https://x.com/SmartWaste2024" class="text-white"><i class="fa-brands fa-x-twitter"></i>                X</a>
                 </ul>
             </div>
         </div>
