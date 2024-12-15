@@ -11,7 +11,7 @@ class Location extends Model
 
     protected $table ='location';
 
-    protected $fillable =['locationName','locationDescription','locationPicture'];
+    protected $fillable =['locationName','locationDescription','locationPicture', 'urllocation'];
 
     public function dropIn(){
         return $this->hasOne(DropIn::class);

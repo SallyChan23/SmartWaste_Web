@@ -8,8 +8,6 @@
 
         <!-- Sidebar -->
         <div class="col-md-3 text-center p-4 me-5">
-
-
             <div class="row align-items-center">
                 <div class="col-md-6 d-flex justify-content-center">
                     <img 
@@ -44,17 +42,17 @@
                     <img src="{{asset('assets/profile2.png')}}" alt="" class="me-2 ms-1" style="width: 25px">
                     <a href="{{ route('report') }}" class="text-decoration-none text-dark">Report</a>
                 </li>
-                <li class="mb-4">
+                <li class="mb-5">
                     <img src="{{asset('assets/profile1.png')}}" alt="" class="me-2 ms-1" style="width: 25px">
                     <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">Redeemed Voucher</a>
                 </li>
                 @if (Auth::check())
-                <li class="nav-item">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
-                        @csrf
-                        <button type="submit" class="nav-link active rounded-5 text-center me-4 text-white btn" style="background-color: #183F23; width: 100px; height: 50px">Logout</button>
-                    </form>
-                </li>
+                    <li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="rounded-5 text-center text-white btn" style="background-color: #183F23; width: 100px; height: 50px">Logout</button>
+                        </form>
+                    </li>
                 @endif
             </ul>
         </div>

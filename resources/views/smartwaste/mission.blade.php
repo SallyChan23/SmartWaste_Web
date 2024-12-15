@@ -16,9 +16,22 @@
     .page-item.active .page-link {
         background-color: var(--darkgreen); 
         color: white; 
+        border-color: var(--darkgreen);
     }
 
+    .mission-card {
+        background-color: var(--lightgreen);
+        transition: background-color 0.3s ease;
+        min-height: 210px; 
+        font-family:var(-primaryFont);
+    }
+
+    .mission-card:hover {
+        cursor: pointer;
+        background-color: rgb(108, 128, 39) !important;
+    }
 </style>
+
     @if (session ('success'))
         <div class="alert alert-success">
             {{session('success')}}
@@ -36,16 +49,24 @@
 
 
     @if(Auth::user()->role === 'user')
+        {{-- Search Form --}}
+        <div class="container d-flex justify-content-end mt-5">
+            <form class="d-flex flex-row align-items-center" method="GET" action="{{ route('searchMission') }}" style="width: 40%;">
+                <input class="form-control me-2" type="search" placeholder="Search mission..." aria-label="Search" name="query" style="flex: 1; border-color: var(--darkgreen);">
+                <button class="btn btn-outline-search" type="submit" style="color: var(--darkgreen); border-color: var(--darkgreen);">
+                    Search
+                </button>
+            </form>
+        </div>
+
         @if($missionTransactions->where('status', 'ongoing')->count() > 0)
         <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('mission.ongoing_title')</p>
         @endif
-        <div class="container pt-3 pb-5" >
+        <div class="container pb-5" >
         <div class="row row-cols-md-2  row-cols-sm-1 g-5" >
                 @foreach ($missionTransactions as $transaction )
                 <div class="col ">
-                    <div class="h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow " style="cursor:pointer;background-color:var(--lightgreen);min-height: 210px; font-family:var(-primaryFont)"
-                    data-bs-toggle="modal" 
-                    data-bs-target="#modalTransaction{{ $transaction->mission->missionId }}">
+                    <div class="mission-card h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow " data-bs-toggle="modal" data-bs-target="#modalTransaction{{ $transaction->mission->missionId }}">
                         <div class="card-body d-flex flex-column justiy-content-between gap-3 align-items-center">
                             <img src="{{asset($transaction->mission->missionPicture)}}" alt="" class='img-fluid'style="object-fit:contain; height: 150px; width:auto">
                             <p style="font-size:14px;margin-0"class="fw-semibold">@lang('mission.start_on') {{ \Carbon\Carbon::parse($transaction->startDate)->format('d F Y') }}</p>
@@ -111,7 +132,7 @@
         <div class="row row-cols-md-2  row-cols-sm-1 g-5 justify-content-center" >
             @foreach ($missions as $mission )
             <div class="col ">
-                <div class="h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow " style="cursor:pointer;background-color:var(--lightgreen);min-height: 210px; font-family:var(-primaryFont)" data-bs-toggle="modal" data-bs-target="#modalMission{{ $mission->missionId }}">
+                <div class="mission-card h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow " data-bs-toggle="modal" data-bs-target="#modalMission{{ $mission->missionId }}">
                     <img src="{{asset($mission->missionPicture)}}" alt="" class='img-fluid'style="object-fit:contain; height: 150px; width:auto">
                     <div class="card-body d-flex flex-column justiy-content-between gap-5 text-end">
                         <p class="fs-2 card-title fw-bold " style="color:white">{{$mission->title}}</p>

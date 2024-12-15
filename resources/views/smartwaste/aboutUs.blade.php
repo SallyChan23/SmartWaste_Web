@@ -196,6 +196,7 @@
                                     <div class="card-body ms-5">
                                         <h5 class="card-title fs-3 mb-3" style="color: #183F23;">{{ $location->locationName }}</h5>
                                         <p class="card-text">{{ $location->locationDescription }}</p>
+                                        <iframe src="{{ $location->urllocation }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                     </div>
                                 </div>
                             </div>

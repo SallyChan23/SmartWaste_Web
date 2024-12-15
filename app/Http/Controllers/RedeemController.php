@@ -17,11 +17,7 @@ class RedeemController extends Controller
         $user = Auth::user();
 
         // Logic for retrieving redeemed vouchers
-        $redeemedVouchers = VoucherTransaction::where('userId', Auth::id())
-            ->with('voucher') // Assuming the relationship is defined
-            ->get();
-
-        // Return the appropriate view
+        $redeemedVouchers = VoucherTransaction::where('userId', Auth::id())->with('voucher')->paginate(4);
         return view('profile.redeem', compact('redeemedVouchers', 'user'));
     }
 }
