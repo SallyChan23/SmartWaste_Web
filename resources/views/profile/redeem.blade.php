@@ -3,10 +3,6 @@
 @section('content')
 
 <style>
-    body {
-        background-color: rgb(160, 185, 72, 0.8);
-    }
-
     .circle-left {
         position: absolute; 
         top: 50%; 
@@ -14,7 +10,7 @@
         transform: translateY(-50%);
         width: 30px; 
         height: 30px; 
-        background-color: rgb(160, 185, 72, 0.8); 
+        background-color: #F4F7F0; 
         border-radius: 50%;
     }
 
@@ -25,99 +21,129 @@
         transform: translateY(-50%);
         width: 30px; 
         height: 30px; 
-        background-color: rgb(160, 185, 72, 0.8); 
+        background-color: #F4F7F0; 
         border-radius: 50%;
     }
 
     .voucher-img {
-        border-radius: 10px; /* Adds slight curve to the image */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
-        margin-right: 10px; /* Space between image and text */
-        height: 90px;
-        width: 140px;
-        object-fit: cover; /* Ensures the image fits perfectly */
+        object-fit: cover; 
+        height: 90px; 
+        width: 140px; 
+        border-radius: 10px;
     }
 
-    .voucher-card {
-        background-color: white; 
-        min-height: 170px; 
-        font-family: var(--primaryFont); 
-        position: relative; 
-        overflow: hidden; 
-        border-radius: 10px; /* Rounded corners for the entire card */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
-    }
-
-    .voucher-title {
-        font-size: 1.2rem;
+    .card-title {
+        font-size: 1.2rem; 
         font-weight: bold;
-        color: black;
     }
 
-    .voucher-points {
+    .card-text {
         font-size: 0.9rem;
-        color: black;
-        display: flex;
-        align-items: center;
-        gap: 5px; /* Space between points icon and text */
-    }
-
-    .redeemed-date {
-        font-size: 0.9rem;
-        color: black;
     }
 </style>
 
-<!-- Page Title -->
-<p class="text-center fs-1 pt-4 fw-bold" style="color:white; font-family:var(--primaryFont);">
-    Redeemed Vouchers
-</p>
 
-<!-- Vouchers Section -->
-<div class="container pt-3 pb-5">
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-5">
-        @forelse ($redeemedVouchers as $redeemedVoucher)
-            <!-- Each Voucher -->
-            <div class="col">
-                <div class="d-flex flex-row align-items-center justify-content-center px-4 voucher-card">
-                    <!-- Left Decorative Circle -->
-                    <div class="circle-left"></div>
-                    
-                    <!-- Voucher Image -->
-                    <img src="{{ asset($redeemedVoucher->voucher->voucherPicture) }}" 
-                         alt="{{ $redeemedVoucher->voucher->name }}" 
-                         class="voucher-img">
+<div class="container-fluid p-4 mt-4 mb-5" style="background-color: white;">
+<!-- Row gabungan -->
+<div class="row justify-content-center gap-4">
 
-                    <!-- Voucher Details -->
-                    <div class="card-body d-flex flex-column justify-content-center">
-                        <!-- Voucher Name -->
-                        <p class="voucher-title">
-                            {{ $redeemedVoucher->voucher->name }}
-                        </p>
-                        
-                        <!-- Points Needed -->
-                        <div class="voucher-points">
-                            <img src="{{ asset('assets/points.png') }}" 
-                                 alt="Points" 
-                                 style="height: 20px; width: 20px;">
-                            {{ $redeemedVoucher->voucher->pointsNeeded }} points
-                        </div>
-                        
-                        <!-- Redeemed Date -->
-                        <p class="redeemed-date">
-                            Date Redeemed: {{ $redeemedVoucher->created_at->format('d-m-Y') }}
-                        </p>
-                    </div>
-
-                    <!-- Right Decorative Circle -->
-                    <div class="circle-right"></div>
-                </div>
+    <!-- Sidebar -->
+    <div class="col-md-3 text-center p-4 me-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 d-flex justify-content-center">
+                <img 
+                    src="{{ $user->profilePicture ? asset('storage/' . $user->profilePicture) : asset('default-profile.png') }}" 
+                    alt="Profile Picture" 
+                    class="rounded-circle mb-3" 
+                    width="120" 
+                    height="120"
+                    style="border: 4px solid #5eaf60; box-shadow: 0 0 5px rgba(0,0,0,0.2);"
+                >
             </div>
-        @empty
-            <!-- Empty State -->
-            <p class="text-center">No vouchers redeemed yet.</p>
-        @endforelse
+
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+
+                <h5 class="fw-bold mb-1">{{ $user->username }}</h5>
+                <p class="text-muted mb-0">
+                    <i class="bi bi-coin text-warning" style="font-size: 1.2rem;"></i>
+                    <span class="fw-semibold">{{ $user->points ?? 0 }} points</span>
+                </p>
+            </div>
+        </div>
+        <hr class="mb-4" style="width: 100%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
+
+
+        <ul class="list-unstyled text-start">
+            <li class="mb-4">
+                <img src="{{asset('assets/profile3.png')}}" alt="" class="me-2" style="width: 30px">
+                <a href="{{ route('profile') }}" class="text-decoration-none text-dark">My Profile</a>                 
+            </li>
+            <li class="mb-4">
+                <img src="{{asset('assets/profile2.png')}}" alt="" class="me-2 ms-1" style="width: 25px">
+                <a href="{{ route('report') }}" class="text-decoration-none text-dark">Report</a>
+            </li>
+            <li class="mb-4">
+                <img src="{{asset('assets/profile1.png')}}" alt="" class="me-2 ms-1" style="width: 25px">
+                <a href="{{ route('redeem') }}" class="text-decoration-none fw-semibold text-success">Redeemed Voucher</a>
+                <hr style="width: 50%; margin-top: 0.3rem; margin-left: 40px; border-top: 2px solid #5eaf60; font-family: var(--primaryFont);">   
+            </li>
+            @if (Auth::check())
+            <li class="nav-item">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                    @csrf
+                    <button type="submit" class="nav-link active rounded-5 text-center me-4 text-white btn" style="background-color: #183F23; width: 100px; height: 50px">Logout</button>
+                </form>
+            </li>
+            @endif
+        </ul>
+    </div>
+
+    <div class="col-md-7 p-5 shadow-sm" style="border-radius: 15px; background-color:#F4F7F0">
+        <h4 class="fw-normal mb-2 text-start f2-1">Redeemed Vouchers</h4>
+        <hr class="mb-5" style="width: 100%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
+
+
+        <!-- Vouchers Section -->
+        <div class="container pt-3 pb-5">
+            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 g-4">
+                @forelse ($redeemedVouchers as $redeemedVoucher)
+
+                    <div class="col">
+                        <div class="d-flex flex-row align-items-center justify-content-center px-4" 
+                            style="background-color: rgb(160, 185, 72, 0.8); min-height: 170px; font-family: var(--primaryFont); position: relative; overflow: hidden; border-radius: 10px;">
+
+                            <div class="circle-left"></div>
+                            
+                            <img src="{{ asset($redeemedVoucher->voucher->voucherPicture) }}" 
+                                alt="{{ $redeemedVoucher->voucher->name }}" 
+                                style="object-fit: cover; height: 90px; width: 140px; border-radius: 10px; margin-right: 10px;">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <p class="card-title fs-5 fw-bold" style="color: black;">
+                                    {{ $redeemedVoucher->voucher->name }}
+                                </p>
+                                <div class="d-flex flex-row align-items-center gap-1 pt-2">
+                                    <img src="{{ asset('assets/points.png') }}" 
+                                        alt="Points" 
+                                        style="height: 20px; width: 20px;">
+                                    <p class="card-text" style="color: black;">
+                                        {{ $redeemedVoucher->voucher->pointsNeeded }} points
+                                    </p>
+                                </div>
+                                <p class="card-text" style="color: black;">
+                                    Date Redeemed: {{ $redeemedVoucher->created_at->format('d-m-Y') }}
+                                </p>
+                            </div>
+
+                            <div class="circle-right"></div>
+                        </div>
+                    </div>
+                @empty
+                    <!-- Empty State -->
+                    <p class="text-center">No vouchers redeemed yet.</p>
+                @endforelse
+            </div>
+        </div>
     </div>
 </div>
-
+</div>
 @endsection
