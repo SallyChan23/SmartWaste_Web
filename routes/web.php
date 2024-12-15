@@ -9,6 +9,9 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\DropInController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RedeemController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -23,24 +26,17 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
-
-
+// Routes for both
 Route::middleware(['auth', 'CheckRole:user,admin'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.updatePicture');
+    Route::get('/report', [ReportController::class, 'index'])->name('report');
+    Route::get('/redeem', [RedeemController::class, 'index'])->name('redeem');
     Route::resource('mission', MissionController::class);
     Route::resource('voucher',VoucherController::class)->middleware(['auth','CheckRole:user,admin']);
-    
 });
-
-Route::post('/mission/start/{missionId}', [MissionController::class, 'startMission'])->name('mission.start');
-Route::put('/mission/update-progress/{missionTransactionId}', [MissionController::class, 'updateProgress'])->name('mission.updateProgress');
-Route::post('/voucher/redeem/{voucherId}', [VoucherController::class, 'redeem'])->name('voucher.redeem');
 
 // Routes for users
 Route::middleware(['auth', 'CheckRole:user'])->group(function () {
@@ -54,17 +50,14 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
 
 // Routes for admins
 Route::middleware(['auth', 'CheckRole:admin'])->group(function () {
-   
     Route::get('/admin/drop_in', [AdminController::class, 'index'])->name('admin.drop_in.index');
     Route::get('/admin/drop_in/{dropIn}/review', [AdminController::class, 'review'])->name('admin.drop_in.review');
     Route::post('/admin/drop_in/{dropIn}/update', [AdminController::class, 'update'])->name('admin.drop_in.update');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/set-locale/{locale}', function($locale) {
-        if(in_array($locale, ['en', 'id'])){
-            session(['locale' =>$locale]);
-        }
-        return redirect()->back();
-    })->name('set-locale');
-});
+Route::get('/set-locale/{locale}', function($locale) {
+    if(in_array($locale, ['en', 'id'])){
+        session(['locale' =>$locale]);
+    }
+    return redirect()->back();
+})->name('set-locale');

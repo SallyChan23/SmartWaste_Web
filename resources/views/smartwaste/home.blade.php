@@ -230,14 +230,18 @@
                                             style="object-fit: contain; height: 200px; width: auto;">
                                         <p class="fw-bold fs-5"><strong>Total Points:</strong> {{ $mission->totalPoints }} points</p>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-between gap-1" style="width: 55%;">
-                                        <p class="text-center fw-normal fs-6" style="font-family: var(--secondaryFont);">
-                                            <strong></strong> {{ $mission->description }}
-                                        </p>
-                                        <div class="d-flex justify-content-center" style="font-family: var(--primaryFont);">
-                                            <button type="button" style="background-color: var(--basic); color: var(--darkgreen);" 
-                                                    class="btn col-6 fw-semibold">Start Mission</button>
-                                        </div>
+                                    <div class="d-flex flex-column justify-content-between gap-1" style="width:55%">
+                                        <p class="text-center fw-normal fs-6"style="font-family:var(--secondaryFont)"><strong></strong> {{ $mission->description }}</p>
+                                            @if(Auth::check() && Auth::user()->role === 'user')
+                                                <form action="{{ route('mission.start', $mission->missionId) }}" method="POST">
+                                                @csrf
+                                                    <div class="d-flex justify-content-center " style="font-family:var(--primaryFont)">
+                                                        <button type="submit" style="background-color:var(--basic);color:var(--darkgreen)" class="btn col-6 fw-semibold">Start Mission</button>
+                                                    </div>
+                                                </form>
+                                            @else
+                                                <p class="text-center text-danger fw-bold">Please log in to start this mission.</p>
+                                            @endif
                                     </div>
                                 </div>
                             </div>
@@ -254,36 +258,57 @@
         </div>
     </div>
 
-    <!-- Voucher Section -->
-    <div class="container my-5  position-relative">
-    <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">Voucher</h2>
-    <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
-        @if (session ('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-        @endif
 
-        <div class="container pt-3 pb-5" >
+    <!-- Voucher Section -->
+    <div class="container my-5 position-relative">
+        
+        <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">Voucher</h2>
+        <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family: var(--primaryFont);">
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @elseif(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+            @endif
+            
+        <!-- See More Button -->
+        <div class="text-end mb-4">
+            <a href="{{ route('voucher.index') }}" class="text-decoration-underline fw-light" 
+            style="color: #183F23;">See more</a>
+        </div>
+
+        <div class="container pt-3 pb-5">
             <div class="row g-5">
                 @foreach ($vouchers->chunk(2) as $voucherRow)
                     <div class="row row-cols-md-2 row-cols-lg-2 g-4">
                         @foreach ($voucherRow as $voucher)
                             <div class="col">
-                                <div class="d-flex flex-row align-items-center justify-content-center px-4" style="background-color:rgb(160, 185, 72,0.8);min-height: 170px; font-family:var(--primaryFont);position: relative; overflow: hidden;">
+                                <div class="d-flex flex-row align-items-center justify-content-center px-4" style="background-color: rgb(160, 185, 72, 0.8); min-height: 170px; font-family: var(--primaryFont); position: relative; overflow: hidden;">
                                     <div class="circle-left"></div>
-                                    <img src="{{ asset($voucher->voucherPicture) }}" alt="" class="img-fluid" style="object-fit:cover; height: 90px; width:140px">
+                                    <img src="{{ asset($voucher->voucherPicture) }}" alt="" class="img-fluid" style="object-fit: cover; height: 90px; width: 140px;">
                                     <div class="card-body d-flex flex-column justify-content-center">
-                                        <p class="card-title fs-5 fw-bold" style="color:black">{{ $voucher->name }}</p>
+                                        <p class="card-title fs-5 fw-bold" style="color: black;">{{ $voucher->name }}</p>
                                         <div class="d-flex flex-row align-items-center gap-1 pt-2">
-                                            <img src="assets/points.png" alt="" style="object-fit:cover; height:20px;width:20px">
-                                            <p class="card-text" style="color:black">{{ $voucher->pointsNeeded }} points</p>
+                                            <img src="assets/points.png" alt="" style="object-fit: cover; height: 20px; width: 20px;">
+                                            <p class="card-text" style="color: black;">{{ $voucher->pointsNeeded }} points</p>
                                         </div>
-                                        <p class="card-text" style="color:black">{{ $voucher->price }}</p>
+                                        <p class="card-text" style="color: black;">{{ $voucher->price }}</p>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-between align-items-end" style="gap:4.5rem">
-                                        <button type="button" class="btn btn-warning">Redeem</button>
+                                    @if(Auth::check() && Auth::user()->role === 'user')
+                                    <div class="d-flex flex-column justify-content-end align-items-end" style="height:120px">
+                                        <form action="{{ route('voucher.redeem', $voucher->voucherId) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-warning">Redeem</button>
+                                        </form>
                                     </div>
+                                    @else
+                                    <div class="d-flex flex-column justify-content-end align-items-end" style="height:120px">
+                                        <p class="text-danger fw-bold">Log in to redeem this voucher.</p>
+                                    </div>
+                                    @endif
                                     <div class="circle-right"></div>
                                 </div>
                             </div>
@@ -292,12 +317,9 @@
                 @endforeach
             </div>
         </div>
-        <!-- Browse More Button -->
-        <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); ">
-            <a href="{{ route('voucher.index') }}" class="text-decoration-underline fw-light text-center" 
-            style="color: #183F23;">Browse more</a>
-        </div>
     </div>
+
+    
 
     <!-- Article Section -->
     <div class="container my-5  position-relative">

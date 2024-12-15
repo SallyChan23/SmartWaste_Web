@@ -33,12 +33,20 @@
                     <li class="nav-item">
                         <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="{{ route('set-locale', 'id') }}">Indonesia</a>
                     </li>
+                    @if (Auth::check())
+                    <li class="nav-item">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                            @csrf
+                            <button type="submit" class="nav-link active rounded-5 text-center me-4 btn" style="background-color: #E7E7E7; width: 100px">Logout</button>
+                        </form>
+                    </li>
+                    @endif
                 </ul>
             </div>
 
             <div>
                 <a href="{{ route('profile') }}">
-                    <img src="{{ asset('icons/profileicon.svg') }}" alt="Profile" width="25" height="25">
+                    <img src="{{ asset('icons/profileicon.svg') }}" alt="Profile Icon" width="25" height="25">
                 </a>
             </div>
         </div>
