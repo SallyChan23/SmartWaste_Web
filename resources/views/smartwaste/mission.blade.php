@@ -37,12 +37,12 @@
             {{session('success')}}
         </div>
     @endif
-    <p class='text-center fs-1 pt-4 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>Mission</p>
+    <p class='text-center fs-1 pt-4 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>@lang('mission.banner_title')</p>
 
     @if(Auth::user()->role === 'admin')
         <div class="container d-flex justify-content-end">
             <a href="{{route('mission.create')}}" class="btn " style="background-color:var(--darkgreen)">
-                <p style="color:white; margin:0">Add Mission</p>
+                <p style="color:white; margin:0">@lang('mission.add_title')</p>
             </a>
         </div>
     @endif
@@ -60,7 +60,7 @@
         </div>
 
         @if($missionTransactions->where('status', 'ongoing')->count() > 0)
-        <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>On Going Mission</p>
+        <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('mission.ongoing_title')</p>
         @endif
         <div class="container pb-5" >
         <div class="row row-cols-md-2  row-cols-sm-1 g-5" >
@@ -69,13 +69,13 @@
                     <div class="mission-card h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow " data-bs-toggle="modal" data-bs-target="#modalTransaction{{ $transaction->mission->missionId }}">
                         <div class="card-body d-flex flex-column justiy-content-between gap-3 align-items-center">
                             <img src="{{asset($transaction->mission->missionPicture)}}" alt="" class='img-fluid'style="object-fit:contain; height: 150px; width:auto">
-                            <p style="font-size:14px;margin-0"class="fw-semibold">Started on: {{ \Carbon\Carbon::parse($transaction->startDate)->format('d F Y') }}</p>
+                            <p style="font-size:14px;margin-0"class="fw-semibold">@lang('mission.start_on') {{ \Carbon\Carbon::parse($transaction->startDate)->format('d F Y') }}</p>
                         </div>
                         
                         <div class="card-body d-flex flex-column justiy-content-between gap-5 text-end">
                             <div class="d-flex flex-column">
                                 <p class="fs-2 card-title fw-bold " style="color:white">{{$transaction->mission->title}}</p>
-                                <p class="fs-3 card-text fw-bold "  style="color:black">{{$transaction->mission->totalPoints}} points</p>
+                                <p class="fs-3 card-text fw-bold "  style="color:black">{{$transaction->mission->totalPoints}} @lang('mission.points')</p>
                             </div>
                             <div class="d-flex flex-column justify-content-end align-items-end">
                                 <div class="progress" style="height: 30px; width: 150px;background-color:var(--lightgreen); border-radius: 10px;border:1px solid var(--darkgreen)">
@@ -89,7 +89,7 @@
                                         {{ min(round(($transaction->currentPoints / $transaction->mission->target) * 100, 2), 100) }}%
                                     </div>
                                 </div>
-                                <p class="fs-6 fw-semibold" style="color:var(--darkgreen);margin:0">{{$transaction->currentPoints}} / {{$transaction->mission->target}} waste</p>
+                                <p class="fs-6 fw-semibold" style="color:var(--darkgreen);margin:0">{{$transaction->currentPoints}} / {{$transaction->mission->target}} @lang('mission.waste')</p>
                             </div>
                         </div>
                     </div>
@@ -111,10 +111,10 @@
                             @csrf
                             @method('PUT')
                                     <div class="form-group">
-                                        <label for="bottles" class="form-label">Enter Target Collected:</label>
+                                        <label for="bottles" class="form-label">@lang('mission.target_collected')</label>
                                         <input type="number" name="currentPoints" id="currentPoints" class="form-control" required>
                                     </div>
-                                    <button type="submit" class="btn btn-success mt-3">Add Progress</button>
+                                    <button type="submit" class="btn btn-success mt-3">@lang('mission.add_progress')</button>
                             </form>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
 
     @endif
 
-    <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>All Mission</p>
+    <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('mission.all_title')</p>
     <div class="container pt-3 pb-5"  >
         <div class="row row-cols-md-2  row-cols-sm-1 g-5 justify-content-center" >
             @foreach ($missions as $mission )
@@ -136,7 +136,7 @@
                     <img src="{{asset($mission->missionPicture)}}" alt="" class='img-fluid'style="object-fit:contain; height: 150px; width:auto">
                     <div class="card-body d-flex flex-column justiy-content-between gap-5 text-end">
                         <p class="fs-2 card-title fw-bold " style="color:white">{{$mission->title}}</p>
-                        <p class="fs-3 card-text fw-bold "  style="color:black">{{$mission->totalPoints}} points</p>
+                        <p class="fs-3 card-text fw-bold "  style="color:black">{{$mission->totalPoints}} @lang('mission.points')</p>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                         <div class="d-flex justify-content-between align-items-center py-3">
                             <div class="d-flex flex-column justify-content-center align-items-center gap-4" style="width:40%">
                                 <img src="{{ asset($mission->missionPicture) }}" alt="" class='img-fluid'style="object-fit:contain; height: 200px; width:auto">
-                                <p class="fw-bold fs-5"><strong>Total Points:</strong> {{ $mission->totalPoints }} points</p>
+                                <p class="fw-bold fs-5"><strong>@lang('mission.total_points')</strong> {{ $mission->totalPoints }} @lang('mission.points')</p>
                             </div>
                             <div class="d-flex flex-column justify-content-between gap-1" style="width:55%">
                                 <p class="text-center fw-normal fs-6"style="font-family:var(--secondaryFont)"><strong></strong> {{ $mission->description }}</p>
@@ -160,7 +160,7 @@
                                         <form action="{{ route('mission.start', $mission->missionId) }}" method="POST">
                                         @csrf
                                             <div class="d-flex justify-content-center" style="font-family:var(--primaryFont)">
-                                                <button type="submit" style="background-color:var(--basic);color:var(--darkgreen)" class="btn fw-semibold px-4 py-2">Start Mission</button>
+                                                <button type="submit" style="background-color:var(--basic);color:var(--darkgreen)" class="btn fw-semibold px-4 py-2">@lang('mission.start_mission')</button>
                                             </div>
                                         </form>
                                     @endif
@@ -171,11 +171,11 @@
                     </div>
                     @if(Auth::user()->role === 'admin')
                         <div class="modal-footer">
-                            <a href="{{route('mission.edit',$mission->missionId) }}" class="btn btn-success">Edit</a>
+                            <a href="{{route('mission.edit',$mission->missionId) }}" class="btn btn-success">@lang('mission.edit_mission')</a>
                             <form action="{{ route('mission.destroy', $mission->missionId) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this mission?')">Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this mission?')">@lang('mission.delete_mission')</button>
                             </form>
                         </div>
                     @endif
@@ -192,7 +192,7 @@
 
     @if(Auth::user()->role === 'user')
         @if($completedTransaction->count() > 0)
-            <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>Completed Mission</p>
+            <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('mission.completed_title')</p>
         @endif
         <div class="container pt-3 pb-5" >
             <div class="row row-cols-md-2  row-cols-sm-1 g-5" >
@@ -202,15 +202,15 @@
                         <div class="card-body d-flex flex-column justiy-content-between gap-3 align-items-center" style="z-index:1">
                                 <img src="{{asset($complete->mission->missionPicture)}}" alt="" class='img-fluid'style="object-fit:contain; height: 150px; width:auto">
                                 <div class="d-flex flex-column">
-                                    <p style="font-size:14px;margin-bottom:0; "class="fw-semibold">Started on: {{ \Carbon\Carbon::parse($complete->startDate)->format('d F Y') }}</p>
-                                    <p style="font-size:14px;margin-bottom:0;"class="fw-semibold">Ended on: {{ \Carbon\Carbon::parse($complete->startDate)->format('d F Y') }}</p>
+                                    <p style="font-size:14px;margin-bottom:0; "class="fw-semibold">@lang('mission.start_on') {{ \Carbon\Carbon::parse($complete->startDate)->format('d F Y') }}</p>
+                                    <p style="font-size:14px;margin-bottom:0;"class="fw-semibold">@lang('mission.end_on') {{ \Carbon\Carbon::parse($complete->startDate)->format('d F Y') }}</p>
                                 </div>
                             </div>
                             
                             <div class="card-body d-flex flex-column justiy-content-between gap-5 text-end">
                                 <div class="d-flex flex-column">
                                     <p class="fs-2 card-title fw-bold " style="color:white">{{$complete->mission->title}}</p>
-                                    <p class="fs-3 card-text fw-bold "  style="color:black">{{$complete->mission->totalPoints}} points</p>
+                                    <p class="fs-3 card-text fw-bold "  style="color:black">{{$complete->mission->totalPoints}} @lang('mission.points')</p>
                                 </div>
                                 <div class="d-flex flex-column justify-content-end align-items-end">
                                     <div class="progress" style="height: 30px; width: 150px;background-color:var(--lightgreen); border-radius: 10px;border:1px solid var(--darkgreen)">
@@ -224,7 +224,7 @@
                                             {{ min(round(($complete->currentPoints / $complete->mission->target) * 100, 2), 100) }}%
                                         </div>
                                     </div>
-                                    <p class="fs-6 fw-semibold" style="color:var(--darkgreen);margin:0;">{{$complete->currentPoints}} / {{$complete->mission->target}} waste</p>
+                                    <p class="fs-6 fw-semibold" style="color:var(--darkgreen);margin:0;">{{$complete->currentPoints}} / {{$complete->mission->target}} @lang('mission.waste')</p>
                                 </div>
                             </div>
                         </div>

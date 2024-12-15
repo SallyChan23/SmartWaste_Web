@@ -1,0 +1,33 @@
+<?php
+
+return[
+    'banner_title' => 'Misi',
+    'ongoing_title' => 'Misi Berlangsung',
+    'completed_title' => 'Misi Selesai',
+    'all_title' => 'Semua Misi',
+    'add_title' => 'Tambah Misi',
+    'add_new' => 'Tambah Misi Baru',
+    'mission_title' => 'Judul',
+    'mission_description' => 'Deskripsi',
+    'mission_target' => 'Target Misi',
+    'mission_points' => 'Poin',
+    'mission_picture' => 'Gambar Misi',
+    'save_mission' => 'Simpan',
+    'update_mission' => 'Perbarui',
+    'form_title' => 'Masukkan judul misi',
+    'form_description' => 'Masukkan deskripsi misi',
+    'form_target' => 'Masukkan target misi (contoh: 100 botol/15kg), cukup masukkan angkanya',
+    'form_points' => 'Masukkan poin misi (menggunakan angka)',
+    'delete_mission'=>'Hapus',
+    'edit_mission'=>'Ubah',
+    'start_mission'=>'Mulai misi',
+    'start_on'=>'Mulai pada:',
+    'end_on'=>'Selesai pada:',
+    'points'=>'poin',
+    'waste'=>'sampah',
+    'target_collected'=>'Masukan target yang telah dikumpulkan: ',
+    'add_progress'=>'Tambah progres',
+    'total_points'=>'Total Poin:',
+    'current_picture'=>'Gambar sekarang:',
+    'edit_title'=>'Ubah Misi'
+];
