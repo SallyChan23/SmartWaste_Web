@@ -3,115 +3,127 @@
 @section('content')
 
 <style>
-    body{
-        background-color:rgb(160, 185, 72,0.8);
-
+    body {
+        background-color: rgb(160, 185, 72, 0.8);
     }
-    .circle-left{
+
+    .circle-left {
         position: absolute; 
         top: 50%; 
         left: -10px; 
         transform: translateY(-50%);
         width: 30px; 
         height: 30px; 
-        background-color: rgb(160, 185, 72,0.8); 
+        background-color: rgb(160, 185, 72, 0.8); 
         border-radius: 50%;
     }
 
-    .circle-right{
+    .circle-right {
         position: absolute; 
         top: 50%; 
         right: -10px; 
         transform: translateY(-50%);
         width: 30px; 
         height: 30px; 
-        background-color: rgb(160, 185, 72,0.8); 
+        background-color: rgb(160, 185, 72, 0.8); 
         border-radius: 50%;
     }
 
+    .notification-bar {
+        margin-top: 10px;
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .notification-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .notification-error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
 </style>
 
-    @if (session ('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
+<!-- Title -->
+<p class="text-center fs-1 pt-4 fw-bold" style="color:white; font-family:var(--primaryFont);">
+    Voucher
+</p>
+
+<!-- Notification Bar -->
+@if (session('success'))
+    <div class="container">
+        <div class="notification-bar notification-success">
+            {{ session('success') }}
         </div>
-    @elseif(session('error'))
-         <div class="alert alert-danger">
-            {{session('error')}}
+    </div>
+@elseif (session('error'))
+    <div class="container">
+        <div class="notification-bar notification-error">
+            {{ session('error') }}
         </div>
-    @endif
+    </div>
+@endif
 
-    <p class='text-center fs-1 pt-4 fw-bold'style='color:white; font-family:var(-primaryFont)'>Voucher</p>
+<!-- Add Voucher Button for Admin -->
+@if(Auth::user()->role === 'admin')
+    <div class="container d-flex justify-content-end">
+        <a href="{{ route('voucher.create') }}" class="btn" style="background-color:white;">
+            <p style="color:var(--darkgreen); margin:0;">Add Voucher</p>
+        </a>
+    </div>
+@endif
 
-    @if(Auth::user()->role === 'admin')
-        <div class="container d-flex justify-content-end">
-            <a href="{{route('voucher.create')}}" class="btn " style="background-color:white">
-                <p style="color:var(--darkgreen); margin:0">Add Voucher</p>
-            </a>
-        </div>
-    @endif
-
-    <div class="container pt-3 pb-5">
-        <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 g-5">
-            @foreach ($vouchers as $voucher)
-            <div class="col ">
-                <div class="d-flex flex-row align-items-center justify-content-center px-4  " style="background-color:white;min-height: 170px; font-family:var(-primaryFont);position: relative;
-                             overflow: hidden;" >
-                     <div class="circle-left"></div>   
-                    <img src="{{asset($voucher->voucherPicture)}}" alt="" class='img-fluid 'style="object-fit:cover; height: 90px; width:140px">
-                    <div class="card-body d-flex flex-column justify-content-center ">
-                        <p class="card-title fs-5 fw-bold " style="color:black">{{$voucher->name}}</p>
-                        <div class="d-flex flex-row align-items-center gap-1 pt-2">
-                            <img src="assets/points.png" alt="" srcset="" style="object-fit:cover; height:20px;width:20px">
-                            <p class="card-text"  style="color:black">{{$voucher->pointsNeeded}} points</p>
-                        </div>
-                        <p class="card-text"  style="color:black">{{$voucher->price}}</p>
-                    </div>
-                    @if(Auth::user()->role === 'admin')
-                    <div class="d-flex flex-column justiy-content-start align-items-start " style="height:120px">
-                        <img src="assets/trash-can.png" alt="" style="height:20px; width:20px; cursor:pointer; " data-bs-toggle="modal" data-bs-target="#modalVoucher{{ $voucher->voucherId }}">
-                    </div>
-                    @endif
-
-                    @if(Auth::user()->role === 'user')
-                    <div class="d-flex flex-column justify-content-end align-items-end " style="height:120px">
+<!-- Voucher List -->
+<div class="container pt-3 pb-5">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-5">
+        @foreach ($vouchers as $voucher)
+            <div class="col">
+                <div class="voucher-card d-flex align-items-center justify-content-start p-3" style="background-color: white; border-radius: 10px; overflow: hidden; position: relative;">
                     
-                        <form action="{{ route('voucher.redeem', $voucher->voucherId) }}" method="POST" >
-                            @csrf
-                            <button type="submit" class="btn btn-warning" >Redeem</button>
-                        </form>
-                        
-                    </div>
-                    @endif
-                        
-                        
+                    <!-- Left Decorative Circle -->
+                    <div class="circle-left"></div>
 
+                    <!-- Voucher Image -->
+                    <div class="voucher-image" style="flex: 0 0 40%; max-width: 40%;">
+                        <img src="{{ asset($voucher->voucherPicture) }}" 
+                             alt="{{ $voucher->name }}" 
+                             class="img-fluid" 
+                             style="border-radius: 10px; object-fit: cover; height: 100%; width: 100%;">
+                    </div>
+
+                    <!-- Voucher Details -->
+                    <div class="voucher-details ms-3" style="flex: 1;">
+                        <p class="voucher-title fw-bold fs-5 mb-1" style="color: black;">{{ $voucher->name }}</p>
+                        <div class="voucher-points d-flex align-items-center gap-1 mb-2">
+                            <img src="{{ asset('assets/points.png') }}" 
+                                 alt="Points Icon" 
+                                 style="height: 20px; width: 20px;">
+                            <span style="color: black;">{{ $voucher->pointsNeeded }} points</span>
+                        </div>
+                        <p class="voucher-price mb-2" style="color: black;">Price: {{ $voucher->price }}</p>
+
+                        <!-- User Redeem Button -->
+                        @if (Auth::user()->role === 'user')
+                            <form action="{{ route('voucher.redeem', $voucher->voucherId) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-warning">Redeem</button>
+                            </form>
+                        @endif
+                    </div>
+
+                    <!-- Right Decorative Circle -->
                     <div class="circle-right"></div>
                 </div>
             </div>
-
-            <div class="modal fade" id="modalVoucher{{ $voucher->voucherId}}" tabindex="-1" aria-labelledby="modalVoucherLabel{{ $voucher->voucherId }}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Are you sure want to delete this Voucher? This action cannot be undone</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <form action="{{ route('voucher.destroy', $voucher->voucherId) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" >Delete</button>
-                            </form>
-                    </div>
-                    </div>
-                </div>
-
-            </div>
-            @endforeach
-        </div>
+        @endforeach
     </div>
+</div>
+
 @endsection

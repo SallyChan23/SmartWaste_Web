@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-5 p-4 mb-4 bg-white rounded-4 mx-auto">
                     <div class="d-flex mb-4 justify-content-center align-items-center fs-4">
-                        <a href="{{ route('login.post') }}" 
+                        <a href="{{ route('login') }}" 
                            class="text-decoration-none me-3" 
                            style="color: #A0B948;">Login</a>
                         <p class="text-decoration-underline mb-0" style="color: #183F23;">Register</p>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="text-center mt-3">
                             <p style="font-size: 12px;">Already have an account? 
-                                <a href="{{ route('login.post') }}" class="text-decoration-none" style="color: #183F23;">Login</a>
+                                <a href="{{ route('login') }}" class="text-decoration-none" style="color: #183F23;">Login</a>
                             </p>
                         </div>
                         <p class="text-center" style="font-size: 10px;">

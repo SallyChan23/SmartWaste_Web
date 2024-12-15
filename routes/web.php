@@ -46,6 +46,8 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
     Route::get('/drop_in/create', [DropInController::class, 'create'])->name('create-drop-in');
     Route::post('/drop_in', [DropInController::class, 'store'])->name('drop_in.store');
     Route::get('/drop_in', [DropInController::class, 'index'])->name('drop_in.index');
+    Route::get('/redeem', [RedeemController::class, 'index'])->name('redeem');
+    Route::post('/redeem/{voucherId}', [RedeemController::class, 'redeem'])->name('redeem.voucher');
 });
 
 // Routes for admins
