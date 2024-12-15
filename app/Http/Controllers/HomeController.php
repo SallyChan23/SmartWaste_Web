@@ -9,15 +9,13 @@ use App\Models\Article;
 
 class HomeController extends Controller
 {
-    //
-
     public function index()
-
     {
-        $missions = Mission::all();
+        // Ambil hanya 2 misi dari database
+        $missions = Mission::take(2)->get();
         $vouchers = Voucher::all();
         $articles = Article::all();
-        return view('smartwaste.home', compact('missions', 
-        'vouchers', 'articles'));
+
+        return view('smartwaste.home', compact('missions', 'vouchers', 'articles'));
     }
 }
