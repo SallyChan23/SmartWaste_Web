@@ -205,9 +205,19 @@
     }
 
     .form-label {
-    width: 40%;
-    max-width: 500px;
-    min-width: 200px; 
+    width: 200px; 
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .form-label {
+            width: 250px;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .form-label {
+            width: 300px;
+        }
     }
 
     .col-sm-6 {
