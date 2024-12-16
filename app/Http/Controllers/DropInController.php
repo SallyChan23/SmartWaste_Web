@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DropIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DropInController extends Controller
 {
@@ -18,8 +19,9 @@ class DropInController extends Controller
         return view('smartwaste.createdropin', ['id'=>$id]);
     }
 
-    public function dropinStatus() {
-        return view('smartwaste.statusDropIn');
+    public function dropinStatus(Request $request) {
+        $dropin = DB::table('drop_in')->where('dropInId', $request->query('id'))->get();
+        return view('smartwaste.statusDropIn', ['status' => $dropin[0]->status]);
     }
 
     public function store(Request $request) {
@@ -40,7 +42,7 @@ class DropInController extends Controller
             $fileName = str_replace(' ', '-', $fileName); 
             $file->move(public_path('assets/uploads'), $fileName);
             
-            DropIn::create([
+            $dropIn = DropIn::create([
                 'userId' => Auth::user()->userId,
                 'locationId' => $request->locationId,
                 'wastePicture' => 'assets/uploads/' . $fileName, 
@@ -50,7 +52,7 @@ class DropInController extends Controller
                 'status'=> 'Pending',
             ]);
             
-            return redirect()->route('drop_in.status')->with('success', 'Drop In successfully added!');
+            return redirect()->route('drop_in.status', ['id' => $dropIn->id]);
         } else {
             return redirect()->back()->with('error', 'Failed to upload mission picture.');
         }
