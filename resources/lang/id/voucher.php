@@ -17,5 +17,12 @@ return [
     'delete_voucher' => 'Hapus',
     'delete_confirmation' => 'Apakah Anda yakin ingin menghapus voucher ini? Tindakan ini tidak dapat dibatalkan.',
     'close' => 'Tutup',
-    'your_points'=>'Poin Kamu:'
+    'your_points'=>'Poin Kamu:',
+    'my_profile'=>'Akun Saya',
+    'profile_picture'=>'Foto Akun',
+    'history'=>'Riwayat',
+    'my_voucher'=>'Voucher Saya',
+    'no_voucher'=>'Belum ada voucher yang diklaim',
+    'date_redeemed'=>'Diklaim pada:',
+    'logout'=>'Keluar'
 ];

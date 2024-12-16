@@ -17,5 +17,12 @@ return[
     'delete_voucher'=>'Delete',
     'delete_confirmation'=>'Are you sure want to delete this Voucher? This action cannot be undone',
     'close'=>'Close',
-    'your_points'=>'Your Points:'
+    'your_points'=>'Your Points:',
+    'my_profile'=>'My Profile',
+    'profile_picture'=>'Profile Picture',
+    'history'=>'History',
+    'my_voucher'=>'My Vouchers',
+    'no_voucher'=>'No vouchers redeemed yet',
+    'date_redeemed'=>'Date Redeemed:',
+    'logout'=>'Logout'
 ];
