@@ -43,9 +43,7 @@
         <div class="text-center">
             <p class="fs-2 fw-semibold text-center">@lang('home.welcome_title')</p>
             <p class="fs-5 fw-normal text-center">@lang('home.welcome_header')</p>
-            <p class="fs-6 fw-normal text-center ms-5 me-5">
-            @lang('home.welcome_desc')
-            </p>
+            <p class="fs-6 fw-normal text-center ms-5 me-5">@lang('home.welcome_desc')</p>
         </div>
     </div>
 
@@ -57,13 +55,10 @@
             <div class="card text-center p-4 position-relative" style="background-color: #F4F7F0; border-radius: 15px; overflow: visible;">
                 <div class="icon-wrapper position-absolute top-0 start-50 translate-middle" 
                     style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
-                    <img src="{{asset('assets/dropin.png')}}" alt="Drop In Icon" 
-                        style="width: 40px; height: 40px; position: relative; top: 20px;">
+                    <img src="{{asset('assets/dropin.png')}}" alt="Drop In Icon" style="width: 40px; height: 40px; position: relative; top: 20px;">
                 </div>
                 <h4 class="mt-5 pt-3">@lang('home.drop_in_title')</h4>
-                <p>
-                @lang('home.drop_in_desc')
-                </p>
+                <p>@lang('home.drop_in_desc')</p>
             </div>
         </div>
 
@@ -71,13 +66,10 @@
             <div class="card text-center p-4 position-relative" style="background-color: #F4F7F0; border-radius: 15px; overflow: visible;">
                 <div class="icon-wrapper position-absolute top-0 start-50 translate-middle" 
                     style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
-                    <img src="{{asset('assets/earnings.png')}}" alt="Drop In Icon" 
-                        style="width: 40px; height: 40px; position: relative; top: 20px;">
+                    <img src="{{asset('assets/earnings.png')}}" alt="Drop In Icon" style="width: 40px; height: 40px; position: relative; top: 20px;">
                 </div>
                 <h4 class="mt-5 pt-3">@lang('home.earn_title')</h4>
-                <p>
-                @lang('home.earn_description')
-                </p>
+                <p>@lang('home.earn_description')</p>
             </div>
         </div>
 
@@ -85,13 +77,10 @@
             <div class="card text-center p-4 position-relative" style="background-color: #F4F7F0; border-radius: 15px; overflow: visible;">
                 <div class="icon-wrapper position-absolute top-0 start-50 translate-middle" 
                     style="background-color: #A0B948; width: 80px; height: 80px; border-radius: 50%;">
-                    <img src="{{asset('assets/promo-code.png')}}" alt="Drop In Icon" 
-                        style="width: 40px; height: 40px; position: relative; top: 20px; ">
+                    <img src="{{asset('assets/promo-code.png')}}" alt="Drop In Icon" style="width: 40px; height: 40px; position: relative; top: 20px; ">
                 </div>
                 <h4 class="mt-5 pt-3">@lang('home.redeem_title')</h4>
-                <p>
-                @lang('home.redeem_description')
-                </p>
+                <p>@lang('home.redeem_description')</p>
             </div>
         </div>
     </div>
@@ -99,19 +88,14 @@
     <div class="row mt-5 mb-5" style="width: 70%; margin: 0 auto;">
         <div class="col-5">
             <div>
-                <img src="{{asset('assets/Compostable.jpeg')}}" alt="Trash pict" 
-                class="img-fluid rounded-5" style="max-width: 80%; position: relative; top: 20px;">
+                <img src="{{asset('assets/Compostable.jpeg')}}" alt="Trash pict" class="img-fluid rounded-5" style="max-width: 80%; position: relative; top: 20px;">
             </div>
         </div>
         <div class="col-7 d-flex justify-content-center mt-4">
-            <div class="text-left p-4 position-relative" style="height: 100%;"> <!-- Add position-relative here -->
-                <h4 class="mt-5 pt-3 fw-bold fs-2" style="color:#183F23;">@lang('home.dispose_title')</h4>
-                <p class="fw-normal">
-                @lang('home.dispose_description')
-                </p>
-                <a href="{{ route('aboutUs') }}" 
-                class="text-decoration-underline" 
-                style="color: #183F23; position: absolute; bottom: 0; right: 0;">@lang('home.aboutus_links')</a>
+            <div class="text-left p-4 position-relative" style="height: 100%;">
+                <h4 class="fw-bold fs-2" style="color:#183F23;">@lang('home.dispose_title')</h4>
+                <p class="fw-normal"> @lang('home.dispose_description')</p>
+                <a href="{{ route('aboutUs') }}" class="text-decoration-underline" style="color: #183F23; position: absolute; bottom: 0; right: 0;">@lang('home.aboutus_links')</a>
             </div>
         </div>
     </div>
@@ -121,24 +105,18 @@
     <div class="container my-5">
         <h2 class="text-center mb-4" style="color: #183F23;">@lang('home.types_waste')</h2>
         <hr style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23;">
-
             <div class="container mt-5">
                 <div class="row justify-content-center g-4">
                     <div class="col-lg-5 col-md-6 me-5">
                         <div class="row align-items-center p-4 rounded-3" style="background-color: #E6F7D4; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                             <h3 class="fw-bold text-center" style="color: #183F23;">@lang('home.biodegradable_waste')</h3>
-                            <p class="text-center fw-6" style="color: #3E5732;">
-                            @lang('home.biodegradable_desc')
-                            </p>
+                            <p class="text-center fw-6" style="color: #3E5732;">@lang('home.biodegradable_desc')</p>
                             <div class="col-md-8">
                                 <h5 class="fw-bold mt-3 text-center" style="color: #183F23;">@lang('home.biodegradable_example_title')</h5>
-                                <p class="text-center fw-6" style="color: #3E5732;">
-                                @lang('home.biodegradable_example')
-                                </p>
+                                <p class="text-center fw-6" style="color: #3E5732;">@lang('home.biodegradable_example')</p>
                             </div>
                             <div class="col-md-4">
-                                <img src="{{asset('assets/organic.png')}}" alt="Biodegradable Bin" 
-                                    style="max-width: 120%; height: auto; object-fit: contain;">
+                                <img src="{{asset('assets/organic.png')}}" alt="Biodegradable Bin" style="max-width: 120%; height: auto; object-fit: contain;">
                             </div>
                         </div>
                     </div>
@@ -147,19 +125,13 @@
                     <div class="col-lg-5 col-md-6 ms-5">
                         <div class="row align-items-center p-4 rounded-3" style="background-color: #F2E3B9; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                             <h3 class=" text-center fw-bold" style="color: #183F23;">@lang('home.nonbio_waste')</h3>
-                            <p class="text-center fw-6" style="color: #3E5732;">
-                            @lang('home.nonbio_desc') <br>
-                            @lang('home.nonbio_desc2')
-                            </p>
+                            <p class="text-center fw-6" style="color: #3E5732;">@lang('home.nonbio_desc') <br> @lang('home.nonbio_desc2')</p>
                             <div class="col-md-8">
                                 <h5 class=" text-center fw-bold mt-3" style="color: #183F23;">@lang('home.nonbio_example_title')</h5>
-                                <p class="text-center fw-6" style="color: #3E5732;">
-                                @lang('home.nonbio_example')
-                                </p>
+                                <p class="text-center fw-6" style="color: #3E5732;">@lang('home.nonbio_example')</p>
                             </div>
                             <div class="col-md-4 text-center">
-                                <img src="{{asset('assets/anorganic.png')}}" alt="anorganic"
-                                    style="max-width: 120%; height: auto; object-fit: contain;">
+                                <img src="{{asset('assets/anorganic.png')}}" alt="anorganic" style="max-width: 120%; height: auto; object-fit: contain;">
                             </div>
                         </div>
                     </div>
@@ -171,32 +143,24 @@
     <div class="container my-5 mb-5 position-relative">
         <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">@lang('home.mission_title')</h2>
         <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
-
         @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
         @endif
-
         <div class="container pt-3 pb-5">
             <div class="row row-cols-2 g-5">
                 @foreach ($missions as $mission)
                 <div class="col">
-                    <div class="h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow" 
-                        style="background-color: var(--lightgreen); min-height: 210px; font-family: var(--primaryFont);" 
-                        data-bs-toggle="modal" 
-                        data-bs-target="#modalMission{{ $mission->missionId }}">
-                        <img src="{{ asset($mission->missionPicture) }}" alt="" class='img-fluid' 
-                            style="object-fit: contain; height: 150px; width: auto;">
+                    <div class="h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow" style="background-color: var(--lightgreen); min-height: 210px; font-family: var(--primaryFont);" data-bs-toggle="modal" data-bs-target="#modalMission{{ $mission->missionId }}">
+                        <img src="{{ asset($mission->missionPicture) }}" alt="" class='img-fluid' style="object-fit: contain; height: 150px; width: auto;">
                         <div class="card-body d-flex flex-column justify-content-between gap-5 text-end">
                             <p class="fs-2 card-title fw-bold" style="color: white;">{{ $mission->title }}</p>
                             <p class="fs-3 card-text fw-bold" style="color: black;">{{ $mission->totalPoints }} @lang('home.mission_points')</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="modal fade" id="modalMission{{ $mission->missionId }}" tabindex="-1" 
-                    aria-labelledby="modalMissionLabel{{ $mission->missionId }}" aria-hidden="true">
+                <div class="modal fade" id="modalMission{{ $mission->missionId }}" tabindex="-1" aria-labelledby="modalMissionLabel{{ $mission->missionId }}" aria-hidden="true">
                     <div class="modal-dialog modal-lg rounded-5" style="background-color: var(--lightgreen);">
                         <div class="modal-content p-5" style="background-color: var(--lightgreen);">
                             <div class="modal-header">
@@ -207,8 +171,7 @@
                                     id="modalMissionLabel{{ $mission->missionId }}">{{ $mission->title }}</h5>
                                 <div class="d-flex justify-content-between align-items-center py-3">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-4" style="width: 40%;">
-                                        <img src="{{ asset($mission->missionPicture) }}" alt="" class='img-fluid' 
-                                            style="object-fit: contain; height: 200px; width: auto;">
+                                        <img src="{{ asset($mission->missionPicture) }}" alt="" class='img-fluid' style="object-fit: contain; height: 200px; width: auto;">
                                         <p class="fw-bold fs-5"><strong>@lang('home.mission_totalpoints')</strong> {{ $mission->totalPoints }} @lang('home.mission_points')</p>
                                     </div>
                                     <div class="d-flex flex-column justify-content-between gap-1" style="width:55%">
@@ -244,20 +207,18 @@
         <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">Voucher</h2>
         <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family: var(--primaryFont);">
             @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
             @elseif(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
             @endif
             
         <div class="text-end mb-4">
-            <a href="{{ route('voucher.index') }}" class="text-decoration-underline fw-light" 
-            style="color: #183F23;">@lang('home.see_more')</a>
+            <a href="{{ route('voucher.index') }}" class="text-decoration-underline fw-light" style="color: #183F23;">@lang('home.see_more')</a>
         </div>
-
         <div class="container pt-3 pb-5">
             <div class="row g-5">
                 @foreach ($vouchers->chunk(2) as $voucherRow)
@@ -276,16 +237,16 @@
                                         <p class="card-text" style="color: black;">{{ $voucher->price }}</p>
                                     </div>
                                     @if(Auth::check() && Auth::user()->role === 'user')
-                                    <div class="d-flex flex-column justify-content-end align-items-end" style="height:120px">
-                                        <form action="{{ route('voucher.redeem', $voucher->voucherId) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-warning">@lang('home.redeem')</button>
-                                        </form>
-                                    </div>
+                                        <div class="d-flex flex-column justify-content-end align-items-end" style="height:120px">
+                                            <form action="{{ route('voucher.redeem', $voucher->voucherId) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-warning">@lang('home.redeem')</button>
+                                            </form>
+                                        </div>
                                     @else
-                                    <div class="d-flex flex-column justify-content-end align-items-end" style="height:120px">
-                                        <p class="text-danger fw-bold">@lang('home.login_redeem')</p>
-                                    </div>
+                                        <div class="d-flex flex-column justify-content-end align-items-end" style="height:120px">
+                                            <p class="text-danger fw-bold">@lang('home.login_redeem')</p>
+                                        </div>
                                     @endif
                                     <div class="circle-right"></div>
                                 </div>
@@ -296,8 +257,6 @@
             </div>
         </div>
     </div>
-
-    
 
     <!-- Article Section -->
     <div class="container my-5  position-relative">
