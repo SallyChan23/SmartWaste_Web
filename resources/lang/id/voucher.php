@@ -3,7 +3,7 @@
 return [
     'banner_title' => 'Voucher',
     'add_voucher' => 'Tambah Voucher',
-    'points' => 'poin',
+    'points' => 'Poin',
     'add_new' => 'Tambah Voucher Baru',
     'voucher_name' => 'Nama',
     'voucher_price' => 'Harga',
