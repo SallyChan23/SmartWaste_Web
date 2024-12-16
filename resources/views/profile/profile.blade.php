@@ -71,7 +71,7 @@
                     <form method="POST" action="{{ route('profile.update') }}">
                         @csrf
                         <div class="mb-3 row">
-                            <label class="col-sm-6 form-label fw-Medium text-start">@lang('profile.username')</label>
+                            <label class="col-sm-6 form-label fw-Medium text-start">@lang('profile.usernames')</label>
                             <div class="col-sm-6 d-flex">
                                 <input 
                                     type="text" 
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-sm-6 form-label fw-Medium text-start">@lang('profile.email')</label>
+                            <label class="col-sm-6 form-label fw-Medium text-start">@lang('profile.emails')</label>
                             <div class="col-sm-6 d-flex">
                                 <input 
                                     type="email" 
