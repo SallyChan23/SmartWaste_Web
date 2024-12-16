@@ -59,6 +59,14 @@
 
     <p class='text-center fs-1 pt-4 fw-bold'style='color:white; font-family:var(-primaryFont)'>@lang('voucher.banner_title')</p>
 
+    @if(Auth::user()->role==='user')
+        <div class="container d-flex flex-row align-items-center gap-2 mb-2">
+            <img src="assets/points.png" alt="" srcset="" style="object-fit:cover; height:25px;width:25px">
+            <p class="fs-5 fw-semibold" style="margin:0;color:white; font-family:var(--primaryFont)">
+            @lang('voucher.your_points') {{ Auth::user()->points }} @lang('voucher.points')
+            </p>
+        </div>
+    @endif
     @if(Auth::user()->role === 'admin')
         <div class="container d-flex justify-content-end">
             <a href="{{route('voucher.create')}}" class="btn " style="background-color:white">
