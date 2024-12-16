@@ -81,6 +81,7 @@
 
                 <h5 class="fw-bold mb-1">{{ $user->username }}</h5>
                 <p class="text-muted mb-0">
+                    <img src="assets/points.png" alt="" srcset="" style="object-fit:cover; height:20px;width:20px">
                     <i class="bi bi-coin text-warning" style="font-size: 1.2rem;"></i>
                     <span class="fw-semibold">{{ $user->points ?? 0 }} @lang('voucher.points')</span>
                 </p>
