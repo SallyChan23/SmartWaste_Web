@@ -24,5 +24,9 @@ return[
     'my_voucher'=>'My Vouchers',
     'no_voucher'=>'No vouchers redeemed yet',
     'date_redeemed'=>'Date Redeemed:',
-    'logout'=>'Logout'
+    'logout'=>'Logout',
+    'sort_name' => 'Name',
+    'sort_points' => 'Points',
+    'asc' => 'Ascending',
+    'desc' => 'Descending'
 ];

@@ -202,7 +202,7 @@
         </div>
 
         <div class="d-flex justify-content-center align-items-center mt-5">
-            {{ $missions->links() }}
+            {{ $missions->appends(['sort' => request('sort'), 'order' => request('order')])->links() }}
         </div>
     </div>
 

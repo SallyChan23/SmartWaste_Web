@@ -12,10 +12,14 @@ class VoucherController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $vouchers = Voucher::paginate(9);
-        return view('smartwaste.voucher', compact('vouchers'));
+        $sortField = $request->get('sort', 'name'); 
+        $sortOrder = $request->get('order', 'asc'); 
+
+        $vouchers = Voucher::orderBy($sortField, $sortOrder)->paginate(9);
+
+        return view('smartwaste.voucher', compact('vouchers', 'sortField', 'sortOrder'));
     }
 
     /**

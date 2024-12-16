@@ -66,7 +66,26 @@
             @lang('voucher.your_points') {{ Auth::user()->points }} @lang('voucher.points')
             </p>
         </div>
+
+        <div class="container d-flex justify-content-end mb-4">
+            <form method="GET" action="{{ route('voucher.index') }}" class="d-inline-block d-flex align-items-center flex-row">
+                <div class="me-2">
+                    <select name="sort" id="sort" class="form-select" style="width: 150px; color: var(--darkgreen); border-color: var(--darkgreen);" onchange="this.form.submit()">
+                        <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>@lang('voucher.sort_name')</option>
+                        <option value="pointsNeeded" {{ request('sort') == 'pointsNeeded' ? 'selected' : '' }}>@lang('voucher.sort_points')</option>
+                    </select>
+                </div>
+
+                <div class="me-2">
+                    <select name="order" id="order" class="form-select" style="width: 150px; color: var(--darkgreen); border-color: var(--darkgreen);" onchange="this.form.submit()">
+                        <option value="asc" {{ request('order') == 'asc' ? 'selected' : '' }}>@lang('voucher.asc')</option>
+                        <option value="desc" {{ request('order') == 'desc' ? 'selected' : '' }}>@lang('voucher.desc')</option>
+                    </select>
+                </div>
+            </form>
+        </div>
     @endif
+
     @if(Auth::user()->role === 'admin')
         <div class="container d-flex justify-content-end">
             <a href="{{route('voucher.create')}}" class="btn " style="background-color:white">
@@ -133,7 +152,7 @@
             @endforeach
         </div>
         <div class="d-flex justify-content-center align-items-center mt-5">
-            {{ $vouchers->links() }}
+            {{ $vouchers->appends(['sort' => request('sort'), 'order' => request('order')])->links() }}
         </div>
     </div>
 @endsection

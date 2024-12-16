@@ -15,15 +15,15 @@ class MissionController extends Controller
     public function index(Request $request)
     {
         $sortField = $request->get('sort', 'title');
-        $sortOrder = $request->get('order', 'asc'); 
+        $sortOrder = $request->get('order', 'asc');
 
         $missions = Mission::orderBy($sortField, $sortOrder)->paginate(6);
+
         $missionTransactions = MissionTransaction::with('mission')->where('status', 'ongoing')->get();
         $completedTransaction = MissionTransaction::with('mission')->where('status', 'completed')->get();
 
         return view('smartwaste.mission', compact('missions', 'missionTransactions', 'completedTransaction', 'sortField', 'sortOrder'));
     }
-
 
     /**
      * Show the form for creating a new resource.

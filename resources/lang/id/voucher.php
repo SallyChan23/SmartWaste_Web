@@ -24,5 +24,9 @@ return [
     'my_voucher'=>'Voucher Saya',
     'no_voucher'=>'Belum ada voucher yang diklaim',
     'date_redeemed'=>'Diklaim pada:',
-    'logout'=>'Keluar'
+    'logout'=>'Keluar',
+    'sort_name' => 'Nama',
+    'sort_points' => 'Poin',
+    'asc' => 'Naik',
+    'desc' => 'Turun'
 ];
