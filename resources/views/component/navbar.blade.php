@@ -16,7 +16,7 @@
                         <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="#">Drop In</a>
+                        <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="{{ route('drop_in.index') }}">Drop In</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active rounded-5 text-center me-4" style="background-color: #E7E7E7; width: 100px" aria-current="page" href="{{route('mission.index')}}">Mission</a>
