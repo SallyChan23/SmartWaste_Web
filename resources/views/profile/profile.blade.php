@@ -205,7 +205,9 @@
     }
 
     .form-label {
-        width: 200px; 
+    width: 200px;
+    max-width: 500px;
+    min-width: 150px; 
     }
 
     .col-sm-6 {
