@@ -45,8 +45,9 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
     Route::put('/mission/update-progress/{missionTransactionId}', [MissionController::class, 'updateProgress'])->name('mission.updateProgress');
     Route::post('/voucher/redeem/{voucherId}', [VoucherController::class, 'redeem'])->name('voucher.redeem');
     Route::get('/drop_in/create', [DropInController::class, 'create'])->name('create-drop-in');
-    // Route::post('/drop_in', [DropInController::class, 'store'])->name('drop_in.store');
+    Route::post('/drop_in/create', [DropInController::class, 'store'])->name('drop_in.store');
     Route::get('/drop_in', [DropInController::class, 'index'])->name('drop_in.index');
+    Route::get('/drop_in/status', [DropInController::class, 'dropinStatus'])->name('drop_in.status');
 });
 
 // Routes for admins

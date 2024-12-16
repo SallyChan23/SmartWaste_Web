@@ -19,9 +19,6 @@
                         'openHours' => '09:00 - 10:00'
                     ])
                 </div>
-                <div style="width: 100%" class="d-flex justify-content-end">
-                    <button style="background-color: #183F23; color: white; border:none" class="py-2 px-5 rounded-3">Next</button>
-                </div>
             </div>
         </div>
 
