@@ -35,6 +35,10 @@ return[
     'noSearchResult'=>'No missions found for your search.',
     'searchButton'=>'Search',
     'searchBar'=>'Search Mission...',
-    'backButton'=>'Back to All Missions'
+    'backButton'=>'Back to All Missions',
+    'sort_name' => 'Name',
+    'sort_points' => 'Points',
+    'asc' => 'Ascending',
+    'desc' => 'Descending'
 ];
 

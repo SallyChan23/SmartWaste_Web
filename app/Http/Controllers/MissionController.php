@@ -12,13 +12,18 @@ class MissionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $missions = Mission::paginate(6);
-        $missionTransactions = MissionTransaction::with('mission')->where('status','ongoing')->get();
-        $completedTransaction = MissionTransaction::with('mission')->where('status','completed')->get();
-        return view('smartwaste.mission', compact('missions','missionTransactions','completedTransaction'));
+        $sortField = $request->get('sort', 'title');
+        $sortOrder = $request->get('order', 'asc'); 
+
+        $missions = Mission::orderBy($sortField, $sortOrder)->paginate(6);
+        $missionTransactions = MissionTransaction::with('mission')->where('status', 'ongoing')->get();
+        $completedTransaction = MissionTransaction::with('mission')->where('status', 'completed')->get();
+
+        return view('smartwaste.mission', compact('missions', 'missionTransactions', 'completedTransaction', 'sortField', 'sortOrder'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -180,7 +185,7 @@ class MissionController extends Controller
 
     public function searchMission(Request $request){
         $query = $request->input('query');
-        $missions = Mission::where('title', 'like', '%' . $query . '%')->orWhere('totalPoints', $query)->paginate(6);
+        $missions = Mission::where('title', 'like', "%{$query}%")->orWhere('totalPoints', $query)->paginate(6);
         return view('smartwaste.searchMission', compact('missions'))->with('query', $query);
     }
 

@@ -35,5 +35,9 @@ return[
     'noSearchResult'=>'Tidak ada misi yang ditemukan untuk pencarian Anda.',
     'searchButton'=>'Cari',
     'searchBar'=>'Cari Misi...',
-    'backButton'=>'Kembali ke Semua Misi'
+    'backButton'=>'Kembali ke Semua Misi',
+    'sort_name' => 'Nama',
+    'sort_points' => 'Poin',
+    'asc' => 'Naik',
+    'desc' => 'Turun'
 ];
