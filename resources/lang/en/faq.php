@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'header'=>'Frequently Asked Questions',
+    'q1'=>'How does SmartWaste work?',
+    'q2'=>'What types of waste can I dispose of?',
+    'q3'=>'Where can I drop off my waste?',
+    'q4'=>'What are missions, and how do they work?',
+    'q5'=>'What can I redeem my points for?',
+    'a1.1'=>'Collect your waste: Separate your waste into organic and non-organic categories.',
+    'a1.2'=>'Drop it off: Bring your waste to our warehouse locations.',
+    'a1.3'=>'Earn points: Get rewarded with points based on the type and weight of the waste you drop off.',
+    'a1.4'=>'Complete missions: Participate in eco-friendly activities and challenges to earn extra points.',
+    'a1.5'=>'Redeem rewards: Use your points to claim vouchers and exclusive rewards through the app.',
+    'a2.1'=>'SmartWaste accepts:',
+    'a2.2'=>'Organic waste: Food scraps, yard waste, etc.',
+    'a2.3'=>'Non-organic waste: Plastics, paper, metals, glass, electronic aste and more.',
+    'a2.4'=>'Note: Hazardous waste like batteries and chemicals may require special disposal. Check the app for guidelines.',
+    'a3'=>'You can drop off waste at any of our designated warehouse locations. Find the nearest location through the SmartWaste website.',
+    'a4.1'=>'Missions are eco-friendly activities and challenges you can complete to earn additional points. Examples include:',
+    'a4.2'=>'Collect Styrofoam Waste',
+    'a4.3'=>'Food Waste Composting Mission',
+    'a4.4'=>'Collect Hazardous Household Waste',
+    'a4.5'=>'Paper Recycling Mission',
+    'a5.1'=>'Points can be redeemed for a variety of rewards, including:',
+    'a5.2'=>'Exclusive shopping vouchers.',
+    'a5.3'=>'Exclusive food and beverage vouchers.',
+    'a5.4'=>'Exclusive cinema voucher.',
+    'a5.5'=>'Check the app for the latest rewards catalog.'
+];

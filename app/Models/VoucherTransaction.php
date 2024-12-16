@@ -8,20 +8,41 @@ use Illuminate\Database\Eloquent\Model;
 class VoucherTransaction extends Model
 {
     use HasFactory;
-    protected $table ='voucher_transaction';
+    // protected $table ='voucher_transaction';
 
-    protected $primaryKey = 'voucherTransactionId'; 
-    public $incrementing = true; 
-    protected $keyType = 'int';
+    // protected $primaryKey = 'voucherTransactionId'; 
+    // public $incrementing = true; 
+    // protected $keyType = 'int';
 
-    protected $fillable =['voucherId','userId','totalPoints'];
+    // protected $fillable =['voucherId','userId','totalPoints'];
 
-    public function voucher(){
-        return $this->belongsTo(Voucher::class,'voucherId','voucherId');
-    }
+    // public function voucher(){
+    //     return $this->belongsTo(Voucher::class,'voucherId','voucherId');
+    // }
 
-    public function user()
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'userId', 'userId');
+    // }
+
+    protected $table = 'voucher_transaction';
+    protected $primaryKey = 'voucherTransactionId';
+
+    protected $fillable = [
+        'voucherTransactionId',
+        'voucherId',
+        'userId',
+        'totalPoints',
+    ];
+
+    // Define the relationship to Voucher
+    // public function voucher()
+    // {
+    //     return $this->belongsTo(Voucher::class, 'voucherId');
+    // }
+
+    public function voucher()
     {
-        return $this->belongsTo(User::class, 'userId', 'userId');
+        return $this->belongsTo(Voucher::class, 'voucherId');
     }
 }

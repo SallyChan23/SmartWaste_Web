@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('locationName');
             $table->text('locationDescription');
             $table->string('locationPicture');
+            $table->text('urllocation');
             $table->timestamps();
         });
     }

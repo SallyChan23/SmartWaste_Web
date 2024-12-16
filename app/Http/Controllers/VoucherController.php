@@ -14,7 +14,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        $vouchers = Voucher::all();
+        $vouchers = Voucher::paginate(9);
         return view('smartwaste.voucher', compact('vouchers'));
     }
 
@@ -41,25 +41,24 @@ class VoucherController extends Controller
         
         if ($request->hasFile('voucherPicture')) {
             $file = $request->file('voucherPicture');
-            $fileName = time() . '-' . $file->getClientOriginalName();
-            $fileName = str_replace(' ', '-', $fileName); 
-    
             
-            $file->move(public_path('assets/uploads'), $fileName);
-    
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $fileName = str_replace(' ', '-', $fileName);
+            
+            $path = $file->storeAs('voucher-pictures', $fileName, 'public');
             
             Voucher::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'pointsNeeded' => $request->points,
-                'voucherPicture' => 'assets/uploads/' . $fileName, // Simpan path relatif ke database
+                'voucherPicture' => 'storage/voucher-pictures/' . $fileName,  
             ]);
     
             
             return redirect()->route('voucher.index')->with('success', 'Voucher successfully added!');
-         }else {
+        }else {
             return redirect()->back()->with('error', 'Failed to upload mission picture.');
-         }
+        }
     }
 
     /**
@@ -113,7 +112,6 @@ class VoucherController extends Controller
         'voucherId' => $voucher->voucherId,
         'status' => 'ongoing',
         'totalPoints'=>$voucher->pointsNeeded,
-         
     ]);
 
     return redirect()->route('voucher.index')->with('success', 'Voucher redeemed successfully!');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -18,17 +19,19 @@ class AuthController extends Controller
     
     public function login(Request $request)
     {
+
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
-
+    
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            $request->session()->put('login', true);
-            return redirect()->route('home'); 
+    
+            // Redirect to the home page
+            return redirect()->route('home');
         }
-
+    
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
@@ -49,27 +52,25 @@ class AuthController extends Controller
             'phoneNumber' => 'required|string|max:255',
         ]);
 
-        // Create a new user with default values for role and points
+
         User::create([
             'username' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($request->password), 
+            'password' => Hash::make($request->password), // Always hash passwords
             'phoneNumber' => $request->phoneNumber,
-            'profilePicture' => null,
-            'points' => 0,
             'role' => 'user',
         ]);
+
 
         return redirect()->route('login')->with('success', 'Registration successful! Please login.');
     }
 
-    // Handle logout logic
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/');
     }
 }

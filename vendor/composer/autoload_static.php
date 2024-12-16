@@ -509,12 +509,11 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
     );
 
     public static $classMap = array (
-        'App\\Http\\Controllers\\AboutUsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AboutUsController.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
-        'App\\Http\\Controllers\\MissionController' => __DIR__ . '/../..' . '/app/Http/Controllers/MissionController.php',
-        'App\\Http\\Controllers\\VoucherController' => __DIR__ . '/../..' . '/app/Http/Controllers/VoucherController.php',
+        'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
+        'App\\Http\\Controllers\\RedeemController' => __DIR__ . '/../..' . '/app/Http/Controllers/RedeemController.php',
+        'App\\Http\\Controllers\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReportController.php',
         'App\\Models\\Article' => __DIR__ . '/../..' . '/app/Models/Article.php',
         'App\\Models\\DropIn' => __DIR__ . '/../..' . '/app/Models/DropIn.php',
         'App\\Models\\DropInValidation' => __DIR__ . '/../..' . '/app/Models/DropInValidation.php',

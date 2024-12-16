@@ -34,36 +34,31 @@ class MissionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|string|max:255',
-            'desc'=>'required|string',
-            'target'=>'required|integer',
-            'points'=>'required|integer',
-            'missionPicture'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'title' => 'required|string|max:255',
+            'desc' => 'required|string',
+            'target' => 'required|integer',
+            'points' => 'required|integer',
+            'missionPicture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
-        
+    
         if ($request->hasFile('missionPicture')) {
             $file = $request->file('missionPicture');
             $fileName = time() . '-' . $file->getClientOriginalName();
-            $fileName = str_replace(' ', '-', $fileName); 
-    
-            
-            $file->move(public_path('assets/uploads'), $fileName);
-    
-            
+            $fileName = str_replace(' ', '-', $fileName);
+            $path = $file->storeAs('mission-pictures', $fileName, 'public');
+
             Mission::create([
                 'title' => $request->title,
                 'totalPoints' => $request->points,
                 'description' => $request->desc,
-                'target'=>$request->target,
-                'missionPicture' => 'assets/uploads/' . $fileName, 
+                'target' => $request->target,
+                'missionPicture' => 'storage/mission-pictures/' . $fileName,  
             ]);
     
-            
             return redirect()->route('mission.index')->with('success', 'Mission successfully added!');
-         }else {
+        } else {
             return redirect()->back()->with('error', 'Failed to upload mission picture.');
-         }
+        }
     }
 
     /**
@@ -71,7 +66,7 @@ class MissionController extends Controller
      */
     public function show(string $id)
     {
-       
+
     }
 
     /**
@@ -105,21 +100,21 @@ class MissionController extends Controller
         if ($request->hasFile('missionPicture')) {
             $file = $request->file('missionPicture');
             $fileName = time() . '-' . $file->getClientOriginalName();
-            $fileName = str_replace(' ', '-', $fileName); 
+            $fileName = str_replace(' ', '-', $fileName);
     
             
-            $file->move(public_path('assets/uploads'), $fileName);
+            $path = $file->storeAs('mission-pictures', $fileName, 'public');
     
             $mission->update([
                 'title' => $request->title,
                 'totalPoints' => $request->points,
                 'description' => $request->desc,
                 'target'=>$request->target,
-                'missionPicture' => 'assets/uploads/' . $fileName, 
+                'missionPicture' => 'storage/mission-pictures/' . $fileName, 
             ]);
 
             
-         }else {
+        }else {
             
             $mission->update([
                 'title' => $request->title,
@@ -127,9 +122,9 @@ class MissionController extends Controller
                 'description' => $request->desc,
                 'target' => $request->target,
             ]);
-         }
+        }
 
-         return redirect()->route('mission.index')->with('success', 'Mission successfully updated!');
+        return redirect()->route('mission.index')->with('success', 'Mission successfully updated!');
     }
 
     /**
@@ -144,48 +139,49 @@ class MissionController extends Controller
 
     public function startMission($missionId)
     {
-    $mission = Mission::findOrFail($missionId);  
-    $user = Auth::user();  
+        $mission = Mission::findOrFail($missionId);  
+        $user = Auth::user();  
 
-    MissionTransaction::create([
-        'userId' => $user->userId,
-        'missionId' => $mission->missionId,
-        'status' => 'ongoing',
-        'currentPoints'=>0,
-        'startDate' => now(),
-        'endDate' => now(),  
-    ]);
+        MissionTransaction::create([
+            'userId' => $user->userId,
+            'missionId' => $mission->missionId,
+            'status' => 'ongoing',
+            'currentPoints'=>0,
+            'startDate' => now(),
+            'endDate' => now(),  
+        ]);
 
-    return redirect()->route('mission.index')->with('success', 'Mission started successfully!');
+        return redirect()->route('mission.index')->with('success', 'Mission started successfully!');
     }
 
     public function updateProgress(Request $request, $missionTransactionId)
     {
-    
-    $request->validate([
-        'currentPoints' => 'required|integer|min:0',
-    ]);
+        $request->validate([
+            'currentPoints' => 'required|integer|min:0',
+        ]);
 
-   
-    $transaction = MissionTransaction::findOrFail($missionTransactionId);
-    
-   
-    $transaction->currentPoints += $request->input('currentPoints');
-    
-    
-    $mission = $transaction->mission; 
-    if ($transaction->currentPoints >= $mission->target && $transaction->status !== 'completed') {
-        $transaction->status = 'completed';
+        $transaction = MissionTransaction::findOrFail($missionTransactionId);
+        
+        $transaction->currentPoints += $request->input('currentPoints');
+        
+        $mission = $transaction->mission; 
+        if ($transaction->currentPoints >= $mission->target && $transaction->status !== 'completed') {
+            $transaction->status = 'completed';
 
-        $user = $transaction->user; 
-        $user->points += $mission->totalPoints; 
-        $user->save();
-    }
-    
-    $transaction->save();
+            $user = $transaction->user; 
+            $user->points += $mission->totalPoints; 
+            $user->save();
+        }
+        
+        $transaction->save();
 
-    return redirect()->route('mission.index')->with('success', 'Progress updated successfully!');
+        return redirect()->route('mission.index')->with('success', 'Progress updated successfully!');
     }
 
+    public function searchMission(Request $request){
+        $query = $request->input('query');
+        $missions = Mission::where('title', 'like', '%' . $query . '%')->orWhere('totalPoints', $query)->paginate(6);
+        return view('smartwaste.searchMission', compact('missions'))->with('query', $query);
+    }
 
 }

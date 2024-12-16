@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'header'=>'Pertanyaan Yang Sering Ditanyakan',
+    'q1'=>'Bagaimana cara kerja SmartWaste?',
+    'q2'=>'Jenis sampah apa yang dapat saya buang?',
+    'q3'=>'Di mana saya dapat membuang sampah saya?',
+    'q4'=>'Apa itu misi, dan bagaimana cara kerjanya?',
+    'q5'=>'Apa saja yang bisa saya tukarkan dengan poin saya?',
+    'a1.1'=>'Kumpulkan sampah Anda: Pisahkan sampah Anda ke dalam kategori organik dan non-organik.',
+    'a1.2'=>'Serahkan: Bawa sampah Anda ke lokasi gudang kami.',
+    'a1.3'=>'Dapatkan poin: Dapatkan hadiah berupa poin berdasarkan jenis dan berat sampah yang Anda buang.',
+    'a1.4'=>'Selesaikan misi: Berpartisipasilah dalam aktivitas dan tantangan ramah lingkungan untuk mendapatkan poin tambahan.',
+    'a1.5'=>'Tukarkan hadiah: Gunakan poin Anda untuk mengklaim voucher dan hadiah eksklusif melalui aplikasi.',
+    'a2.1'=>'SmartWaste menerima:',
+    'a2.2'=>'Sampah organik: Sisa makanan, sampah halaman, dll.',
+    'a2.3'=>'Sampah non-organik: Plastik, kertas, logam, kaca, sampah elektronik, dan banyak lagi.',
+    'a2.4'=>'Catatan: Limbah berbahaya seperti baterai dan bahan kimia mungkin memerlukan pembuangan khusus. Periksa aplikasi untuk panduan.',
+    'a3'=>'Anda dapat membuang sampah di salah satu lokasi gudang yang telah kami tentukan. Temukan lokasi terdekat melalui situs web SmartWaste.',
+    'a4.1'=>'Misi adalah aktivitas dan tantangan ramah lingkungan yang dapat Anda selesaikan untuk mendapatkan poin tambahan. Contohnya meliputi:',
+    'a4.2'=>'Kumpulkan Sampah Styrofoam',
+    'a4.3'=>'Misi Pengomposan Sampah Makanan',
+    'a4.4'=>'Kumpulkan Limbah Rumah Tangga Berbahaya',
+    'a4.5'=>'Misi Daur Ulang Kertas',
+    'a5.1'=>'Poin dapat ditukarkan untuk berbagai hadiah, termasuk:',
+    'a5.2'=>'Voucher belanja eksklusif.',
+    'a5.3'=>'Voucher makanan dan minuman eksklusif.',
+    'a5.4'=>'Voucher bioskop eksklusif.',
+    'a5.5'=>'Periksa website untuk katalog voucher terbaru.'
+];
