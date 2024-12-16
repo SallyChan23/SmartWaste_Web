@@ -9,14 +9,14 @@ class RedeemController extends Controller
 {
     public function index()
     {
-        // Check if the user is authenticated
+ 
         if (!Auth::check()) {
             return redirect()->route('auth.login')->withErrors('Please log in to view your profile.');
         }
 
         $user = Auth::user();
 
-        // Logic for retrieving redeemed vouchers
+       
         $redeemedVouchers = VoucherTransaction::where('userId', Auth::id())->with('voucher')->paginate(4);
         return view('profile.redeem', compact('redeemedVouchers', 'user'));
     }
