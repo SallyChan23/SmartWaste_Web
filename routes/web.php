@@ -6,6 +6,7 @@ use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\DropInController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\DropInController;
 use App\Http\Controllers\AdminController;
@@ -15,7 +16,6 @@ use App\Http\Controllers\RedeemController;
 use App\Http\Controllers\FaqController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 
 Route::get('/about-us', [AboutUsController::class, 'showAboutUs'])->name('aboutUs');
 Route::post('/about-us/send-message', [AboutUsController::class, 'sendMessage'])->name('about-us.sendMessage');
@@ -45,8 +45,9 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
     Route::put('/mission/update-progress/{missionTransactionId}', [MissionController::class, 'updateProgress'])->name('mission.updateProgress');
     Route::post('/voucher/redeem/{voucherId}', [VoucherController::class, 'redeem'])->name('voucher.redeem');
     Route::get('/drop_in/create', [DropInController::class, 'create'])->name('create-drop-in');
-    Route::post('/drop_in', [DropInController::class, 'store'])->name('drop_in.store');
+    Route::post('/drop_in/create', [DropInController::class, 'store'])->name('drop_in.store');
     Route::get('/drop_in', [DropInController::class, 'index'])->name('drop_in.index');
+    Route::get('/drop_in/status', [DropInController::class, 'dropinStatus'])->name('drop_in.status');
     Route::get('/redeem', [RedeemController::class, 'index'])->name('redeem');
     Route::post('/redeem/{voucherId}', [RedeemController::class, 'redeem'])->name('redeem.voucher');
     Route::get('/missions/search', [MissionController::class, 'searchMission'])->name('searchMission');
@@ -54,9 +55,10 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
 
 // Routes for admins
 Route::middleware(['auth', 'CheckRole:admin'])->group(function () {
-    Route::get('/admin/drop_in', [AdminController::class, 'index'])->name('admin.drop_in.index');
-    Route::get('/admin/drop_in/{dropIn}/review', [AdminController::class, 'review'])->name('admin.drop_in.review');
-    Route::post('/admin/drop_in/{dropIn}/update', [AdminController::class, 'update'])->name('admin.drop_in.update');
+   
+    // Route::get('/admin/drop_in', [AdminController::class, 'index'])->name('admin.drop_in.index');
+    // Route::get('/admin/drop_in/{dropIn}/review', [AdminController::class, 'review'])->name('admin.drop_in.review');
+    // Route::post('/admin/drop_in/{dropIn}/update', [AdminController::class, 'update'])->name('admin.drop_in.update');
 });
 
 Route::get('/set-locale/{locale}', function($locale) {
