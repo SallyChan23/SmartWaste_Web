@@ -94,5 +94,10 @@
     }
 
 
+    @media(max-width:768px){
+        *{
+            font-size: 98% !important;
+        }
+    }
     
 </style>

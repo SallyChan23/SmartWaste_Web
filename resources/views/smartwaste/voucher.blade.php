@@ -94,10 +94,10 @@
         </div>
     @endif
 
-    <div class="container pt-3 pb-5">
-        <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 g-5">
+    <div class="container pt-3 pb-5 ">
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1 g-5 ">
             @foreach ($vouchers as $voucher)
-            <div class="col ">
+            <div class="col col-12">
                 <div class="d-flex flex-row align-items-center justify-content-center px-4  " style="background-color:white;min-height: 170px; font-family:var(-primaryFont);position: relative;overflow: hidden;" >
                     <div class="circle-left"></div>   
                     <img src="{{asset($voucher->voucherPicture)}}" alt="" class='img-fluid 'style="object-fit:cover; height: 90px; width:140px">

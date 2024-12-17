@@ -30,6 +30,19 @@
         cursor: pointer;
         background-color: rgb(108, 128, 39) !important;
     }
+
+    
+    .mission-modal{
+        display: flex;
+        flex-direction: row;
+    }
+
+    @media(max-width:768px){
+        .mission-modal{
+            display: flex;
+            flex-direction: column;
+        }
+    }
 </style>
 
     @if (session ('success'))
@@ -63,9 +76,9 @@
         <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('mission.ongoing_title')</p>
         @endif
         <div class="container pb-5" >
-        <div class="row row-cols-md-2  row-cols-sm-1 g-5" >
+        <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-1 g-5" >
                 @foreach ($missionTransactions as $transaction )
-                <div class="col ">
+                <div class="col col-sm-11 col-12">
                     <div class="mission-card h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow " data-bs-toggle="modal" data-bs-target="#modalTransaction{{ $transaction->mission->missionId }}">
                         <div class="card-body d-flex flex-column justiy-content-between gap-3 align-items-center">
                             <img src="{{asset($transaction->mission->missionPicture)}}" alt="" class='img-fluid'style="object-fit:contain; height: 150px; width:auto">
@@ -146,10 +159,10 @@
         </form>
     </div>
 
-    <div class="container pt-3 pb-5">
-        <div class="row row-cols-md-2 row-cols-sm-1 g-5 justify-content-center">
+    <div class="container d-flex justify-content-center align-items-center flex-column pt-3 pb-5  ">
+        <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-1 g-5">
             @foreach ($missions as $mission)
-                <div class="col">
+                <div class="col col-sm-11 col-12">
                     <div class="mission-card h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow" data-bs-toggle="modal" data-bs-target="#modalMission{{ $mission->missionId }}">
                         <img src="{{ asset($mission->missionPicture) }}" alt="" class='img-fluid' style="object-fit:contain; height: 150px; width:auto">
                         <div class="card-body d-flex flex-column justify-content-between gap-5 text-end">
@@ -167,7 +180,7 @@
                             </div>
                             <div class="modal-body">
                                 <h5 class="modal-title text-center fw-bold fs-2" style="color:white;" id="modalMissionLabel{{ $mission->missionId }}">{{ $mission->title }}</h5>
-                                <div class="d-flex justify-content-between align-items-center py-3">
+                                <div class="mission-modal justify-content-between align-items-center py-3">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-4" style="width:40%">
                                         <img src="{{ asset($mission->missionPicture) }}" alt="" class='img-fluid' style="object-fit:contain; height: 200px; width:auto">
                                         <p class="fw-bold fs-5"><strong>@lang('mission.total_points')</strong> {{ $mission->totalPoints }} @lang('mission.points')</p>
@@ -211,9 +224,9 @@
             <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('mission.completed_title')</p>
         @endif
         <div class="container pt-3 pb-5" >
-            <div class="row row-cols-md-2  row-cols-sm-1 g-5" >
+            <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-1 g-5" >
                     @foreach ($completedTransaction as $complete )
-                    <div class="col">
+                    <div class="col col-sm-11 col-12">
                         <div class="h-100 card article-card flex-row rounded-4 align-items-center p-3 shadow" style="background-color:rgb(108, 128, 39);min-height: 210px; font-family:var(-primaryFont)">
                         <div class="card-body d-flex flex-column justiy-content-between gap-3 align-items-center" style="z-index:1">
                                 <img src="{{asset($complete->mission->missionPicture)}}" alt="" class='img-fluid'style="object-fit:contain; height: 150px; width:auto">
