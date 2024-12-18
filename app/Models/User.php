@@ -42,6 +42,6 @@ class User extends Authenticatable
     }
 
     public function dropIns(){
-        return $this->hasMany(DropIn::class);
+        return $this->hasMany(DropIn::class. 'userId', 'userId');
     }
 }

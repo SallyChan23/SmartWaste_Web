@@ -1,79 +1,123 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="mb-5">
+        <h1 style="color: #183F23" class="d-flex justify-content-center my-5 fw-bold">Drop In</h1>
 
-    <div>
-        <h1 style="color: #183F23;" class="d-flex justify-content-center my-5 fw-bold">Drop In</h1>
+        <!-- Display Success or Error Notifications -->
+        @if (session('success'))
+            <div class="alert alert-success text-center">{{ session('success') }}</div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="d-flex flex-column justify-content-center align-items-center my-2">
-            <form action="{{route('drop_in.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('drop_in.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="locationId" value={{$id}}>
-                <h4 class="fw-bold mb-3" style="color: #183F23;">Step 1: Choose Location</h4>
+                <!-- Use dynamic location ID -->
+                <input type="hidden" name="locationId" value="{{ $location->locationId }}">
+
+
+                <h4 class="fw-bold mb-3" style="color: #183F23;">Step 2: Fill Out The Details</h4>
                 <div class="mb-3 p-5 rounded-3" style="background-color: #F4F7F0; width: 75rem">
+                    
+                    <!-- Waste Type -->
                     <div class="mb-3">
                         <label class="fs-5 fw-medium mb-1" style="color: #183F23">Waste Type</label>
-                        <div>
-                            <input type="radio" value="Organic Waste" name="wasteType"/>
-                            <label>Organic Waste</label>
-                        </div>
-                        <div>
-                            <input type="radio" value="Non-Organic Waste" name="wasteType"/>
-                            <label>Non-Organic Waste</label>
-                        </div>
+                        @foreach($wasteTypes as $wasteType)
+                            <div>
+                                <input type="radio" name="wasteType" value="{{ $wasteType->wasteTypeId }}" onchange="toggleFields(this.value)">
+                                <label>{{ $wasteType->wasteTypeName }}</label>
+                            </div>
+                        @endforeach
                     </div>
 
+                    <!-- Waste Details -->
                     <div class="mb-3">
                         <label class="fs-5 fw-medium mb-1" style="color: #183F23">Waste Details</label>
-                        <div>
-                            <input type="checkbox" value="Plastic" name="wasteDetail"/>
-                            <label>Plastic</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" value="Cans" name="wasteDetail"/>
-                            <label>Cans</label>
-                        </div>
+                        <div id="wasteDetailsContainer"></div>
                     </div>
 
+                    <!-- Quantity & Weight -->
                     <div class="d-flex mb-3">
-                        <div class="me-5">
+                        <div id="quantityField" class="me-5" style="display: none;">
                             <label class="fs-5 fw-medium mb-1" style="color: #183F23">Quantity</label>
-                            <div>
-                                <input type="radio" value="2" name="quantity"/>
-                                <label>2 bottles</label>
-                            </div>
-                            <div>
-                                <input type="radio" value="10" name="quantity"/>
-                                <label>10 bottles</label>
-                            </div>
+                            <input type="number" name="quantity" placeholder="Enter quantity" class="form-control">
                         </div>
 
-                        <div class="d-flex flex-column">
+                        <div id="weightField" class="d-flex flex-column">
                             <label class="fs-5 fw-medium mb-1" style="color: #183F23">Weight</label>
-                            <input type="number" name="weight"/>
+                            <input type="number" name="weight" class="form-control" placeholder="Enter weight in kg" />
                         </div>
                     </div>
 
+                    <script>
+                        // Waste details JSON fetched from backend
+                        const wasteDetails = @json($wasteDetails);
+
+                        function toggleFields(wasteTypeId) {
+                            const quantityField = document.getElementById('quantityField');
+                            const weightField = document.getElementById('weightField');
+                            const wasteDetailsContainer = document.getElementById('wasteDetailsContainer');
+
+                            // Clear previous waste details
+                            wasteDetailsContainer.innerHTML = '';
+
+                            // Filter and display relevant waste details
+                            const filteredDetails = wasteDetails.filter(detail => detail.wasteTypeId == wasteTypeId);
+                            filteredDetails.forEach(detail => {
+                                const div = document.createElement('div');
+                                div.innerHTML = `
+                                    <input type="checkbox" name="wasteDetail[]" value="${detail.wasteDetailId}">
+                                    <label>${detail.wasteDetailName}</label>
+                                `;
+                                wasteDetailsContainer.appendChild(div);
+                            });
+
+                            // Toggle visibility of fields based on waste type
+                            if (wasteTypeId == 1) { // Organic Waste: Show only Weight
+                                quantityField.style.display = 'none';
+                                weightField.style.display = 'block';
+                            } else if (wasteTypeId == 2) { // Non-Organic Waste: Show Quantity and Weight
+                                quantityField.style.display = 'block';
+                                weightField.style.display = 'block';
+                            }
+                        }
+                    </script>
+
+
+                    <!-- Picture Upload -->
                     <div class="mb-3">
-                        <div>
-                            <label class="fs-5 fw-medium mb-1" style="color: #183F23">Pictures</label>
-            
-                            <div class="d-flex flex-column align-items-center p-5 bg-white" style="border: #183F23"> 
-                                <img src="{{ asset('assets/image.png') }}" style="width: 10rem"/>
-                                <p>Drag & Drop Image Here</p>
-                                <p>or</p>
-                                <input type="file" accept="image/*" name="picture"/>
-                            </div>
+                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">Pictures</label>
+                        <div class="d-flex flex-column align-items-center p-5 bg-white border rounded-3"> 
+                            <img src="{{ asset('assets/image.png') }}" style="width: 10rem" alt="Upload Image"/>
+                            <p>Drag & Drop Image Here</p>
+                            <p>or</p>
+                            <input type="file" accept="image/*" name="picture" required/>
                         </div>
                     </div>
 
-                    <div class="d-flex flex-column">
-                        <label>Date of Drop In</label>
-                        <input type="date" name="date"/>
+                    <!-- Date of Drop In -->
+                    <div class="d-flex flex-column mb-3">
+                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">Date of Drop In</label>
+                        <input type="date" name="date" class="form-control" required/>
                     </div>
                 </div>
+
+                <!-- Submit Button -->
                 <div style="width: 100%" class="d-flex justify-content-center">
-                    <button type="submit" style="background-color: #183F23; color: white; border:none" class="py-2 px-5 rounded-3">Submit</button>
+                    <button type="submit" style="background-color: #183F23; color: white; border: none" 
+                            class="py-2 px-5 rounded-3">
+                        Submit
+                    </button>
                 </div>
             </form>
         </div>

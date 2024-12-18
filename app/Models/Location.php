@@ -10,6 +10,7 @@ class Location extends Model
     use HasFactory;
 
     protected $table ='location';
+    protected $primaryKey = 'locationId';
 
     protected $fillable =['locationName','locationDescription','locationPicture', 'urllocation'];
 

@@ -14,10 +14,10 @@ class DropInWasteType extends Model
     protected $fillable=['wasteTypeId','dropInId'];
 
     public function wasteType(){
-        return $this->hasOne(WasteType::class);
+        return $this->hasOne(WasteType::class, 'wasteTypeId', 'wasteTypeId');
     }
 
-    public function dropIn(){
-        return $this->belongsTo(DropIn::class);
+    public function dropIns(){
+        return $this->belongsTo(DropIn::class, 'dropInId', 'dropInId');
     }
 }

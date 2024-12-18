@@ -9,12 +9,22 @@ class DropInValidation extends Model
 {
     use HasFactory;
 
-    protected $table ='drop_in_validation';
+    protected $table = 'drop_in_validation';
+    protected $primaryKey = 'validationId';
+    public $timestamps = true;
 
-    protected $fillable =['dropInId','quantity','weight','pointsGenerated','status','validationDate'];
+    protected $fillable = [
+        'dropInId',
+        'quantity',
+        'weight',
+        'pointsGenerated',
+        'status',
+        'validationDate',
+    ];
 
-    public function dropIn(){
-        return $this->belongsTo(DropIn::class);
+    // Relationship to DropIn model
+    public function dropIn()
+    {
+        return $this->belongsTo(DropIn::class, 'dropInId');
     }
-
 }

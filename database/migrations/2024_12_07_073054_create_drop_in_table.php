@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('locationId')->references('locationId')->on('location')->onUpdate('cascade')->onDelete('cascade');
             $table->string('wastePicture');
             $table->date('date');
-            $table->integer('quantity');
+            $table->integer('quantity')->nullable()->change();
             $table->integer('weight');
             $table->string('status');
             
@@ -31,6 +31,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
+
     {
         Schema::dropIfExists('drop_in');
     }

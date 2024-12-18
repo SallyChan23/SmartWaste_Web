@@ -11,26 +11,42 @@ class DropIn extends Model
 
     protected $table ='drop_in';
 
-    protected $fillable =['userId','locationId','wastePicture','date','quantity','weight','status'];
+    protected $primaryKey = 'dropInId';
+    protected $fillable =['userId','locationId',
+                            'wastePicture','date','quantity',
+                            'weight','status'];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'userId', 'userId');
 
     }
+
+    public function dropIns()
+    {
+        return $this->hasMany(DropIn::class, 'userId', 'userId');
+    }
+
 
     public function location(){
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(Location::class, 'locationId', 'locationId');
+    }
+    public function validations()
+    {
+        return $this->hasOne(DropInValidation::class, 'dropInId');
     }
 
-    public function dropInValidation(){
-        return $this->hasOne(DropInValidation::class);
+
+    public function wasteType(){
+        //return $this->hasMany(DropInWasteType::class, 'dropInId', 'dropInId');
+        return $this->belongsTo(WasteType::class, 'wasteTypeId', 'wasteTypeId');
     }
 
-    public function dropInWasteTypes(){
-        return $this->hasMany(DropInWasteType::class);
+    public function getWasteTypeAttribute()
+    {
+        return is_null($this->quantity) ? 'Organic Waste' : 'Non-Organic Waste';
     }
 
-    public function dropInWasteDetails(){
-        return $this->hasMany(DropInWasteDetail::class);
+    public function wasteDetails(){
+        return $this->hasMany(DropInWasteDetail::class, 'dropInId', 'dropInId');
     }
 }
