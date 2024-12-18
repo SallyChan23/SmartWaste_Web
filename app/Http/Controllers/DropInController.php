@@ -115,7 +115,7 @@ class DropInController extends Controller
         // Fetch the drop-in requests for the logged-in user
         $dropIns = DropIn::with(['location'])
         ->where('userId', auth()->id()) // Ensure this fetches requests for the logged-in user
-        ->whereIn('status', ['Waiting for Dropped In', 'Declined'])
+        ->whereIn('status', ['Waiting for Dropped In', 'Declined', 'Pending'])
         ->get();
 
         return view('profile.process', compact('dropIns'));
