@@ -36,9 +36,16 @@ class DropIn extends Model
     }
 
 
-    public function wasteType(){
-        //return $this->hasMany(DropInWasteType::class, 'dropInId', 'dropInId');
-        return $this->belongsTo(WasteType::class, 'wasteTypeId', 'wasteTypeId');
+    public function wasteTypes()
+    {
+        return $this->hasManyThrough(
+            WasteType::class,        // Model tujuan
+            DropInWasteType::class,  // Model pivot
+            'dropInId',              // FK di dropInWasteType yang mengarah ke dropIn
+            'wasteTypeId',           // FK di WasteType yang mengarah ke dropInWasteType
+            'dropInId',              // PK di DropIn
+            'wasteTypeId'            // PK di DropInWasteType
+        );
     }
 
     public function getWasteTypeAttribute()

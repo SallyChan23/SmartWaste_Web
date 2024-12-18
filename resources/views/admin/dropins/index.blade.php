@@ -14,11 +14,9 @@
         <p>Status: <strong>{{ $dropIn->status }}</strong></p>
 
         <h5>Waste Types:</h5>
-        <ul>
-            @foreach ($dropIn->wasteTypes as $type)
-                <li>{{ $type->wasteType->wasteTypeName ?? 'Unknown Type' }}</li>
-            @endforeach
-        </ul>
+        @foreach ($dropIn->wasteTypes as $wasteType)
+        <li>{{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</li>
+    @endforeach
 
         <form action="{{ route('admin.dropin.accept', $dropIn->dropInId) }}" method="POST" style="display: inline;">
             @csrf
