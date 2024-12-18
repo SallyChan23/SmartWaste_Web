@@ -26,6 +26,7 @@ class AdminDropInController extends Controller
             ->where('status', 'Already Dropped In')
             ->get();
 
+
         return view('admin.dropins.index', compact('pendingDropIns', 'droppedInRequests'));
     }
 

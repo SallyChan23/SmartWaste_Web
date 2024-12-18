@@ -91,16 +91,20 @@
             <ul class="list-unstyled text-start">
                 <li class="mb-4">
                     <img src="{{ asset('assets/profile3.png') }}" alt="" class="me-2" style="width: 30px">
-                    <a href="{{ route('profile') }}" class="text-decoration-none fw-semibold text-success">@lang('profile.profile_title')</a>
-                    <hr style="width: 50%; margin-top: 0.3rem; margin-left: 40px; border-top: 2px solid #5eaf60; font-family: var(--primaryFont);">
+                    <a href="{{ route('profile.show') }}" class="text-decoration-none text-dark" >@lang('profile.profile_title')</a>
                 </li>
                 <li class="mb-4">
                     <img src="{{ asset('assets/profile2.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('report') }}" class="text-decoration-none text-dark">@lang('profile.report')</a>
+                    <a href="{{ route('profile.report') }}" class="text-decoration-none text-dark">@lang('profile.report')</a>
                 </li>
-                <li class="mb-5">
+                <li class="mb-4">
                     <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">@lang('profile.redeemed_vouchers')</a>
+                    <a href="{{ route('redeem') }}" class="text-decoration-none fw-semibold text-success">@lang('profile.redeemed_vouchers')</a>
+                    <hr style="width: 50%; margin-top: 0.3rem; margin-left: 40px; border-top: 2px solid #5eaf60; font-family: var(--primaryFont);">
+                </li>
+                <li class="mb-4">
+                    <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
+                    <a href="{{ route('drop_in.process') }}" class="text-decoration-none text-dark">@lang('profile.Process')</a>
                 </li>
                 @if (Auth::check())
                     <li>
@@ -118,42 +122,10 @@
             <hr class="mb-5" style="width: 100%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
 
 
-<<<<<<< Updated upstream
             <!-- Vouchers Section -->
             <div class="container pt-3">
                 <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 g-4">
                     @forelse ($redeemedVouchers as $redeemedVoucher)
-=======
-        <ul class="list-unstyled text-start">
-                <li class="mb-4">
-                    <img src="{{ asset('assets/profile3.png') }}" alt="" class="me-2" style="width: 30px">
-                    <a href="{{ route('profile.show') }}" class="text-decoration-none fw-semibold text-success">@lang('profile.profile_title')</a>
-                    <hr style="width: 50%; margin-top: 0.3rem; margin-left: 40px; border-top: 2px solid #5eaf60; font-family: var(--primaryFont);">
-                </li>
-                <li class="mb-4">
-                    <img src="{{ asset('assets/profile2.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('profile.report') }}" class="text-decoration-none text-dark">@lang('profile.report')</a>
-                </li>
-                <li class="mb-5">
-                    <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">@lang('profile.redeemed_vouchers')</a>
-                </li>
-
-                <li class="mb-4">
-                    <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('drop_in.process') }}" class="text-decoration-none text-dark">@lang('profile.Process')</a>
-                </li>
-            @if (Auth::check())
-            <li class="nav-item">
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
-                    @csrf
-                    <button type="submit" class="nav-link active rounded-5 text-center me-4 text-white btn" style="background-color: #183F23; width: 100px; height: 50px">@lang('voucher.logout')</button>
-                </form>
-            </li>
-            @endif
-        </ul>
-    </div>
->>>>>>> Stashed changes
 
                         <div class="col">
                             <div class="d-flex flex-row align-items-center justify-content-center px-4" 
