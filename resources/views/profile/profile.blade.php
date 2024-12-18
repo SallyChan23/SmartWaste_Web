@@ -31,16 +31,8 @@
                 </div>
                 <hr class="mb-4 mt-4" style="width: 100%; margin: 0 auto; border-top: 2px solid #183F23; font-family: var(--primaryFont);">
 
-    <div class="col-md-6 d-flex flex-column justify-content-center">
-                    <h5 class="fw-bold mb-1">{{ $user->username }}</h5>
-                    <p class="text-muted mb-0">
-                        <img src="assets/points.png" alt="" srcset="" style="object-fit:cover; height:20px;width:20px">
-                        <i class="bi bi-coin text-warning" style="font-size: 1.2rem;"></i>
-                        <span class="fw-semibold">{{ $user->points ?? 0 }} @lang('profile.points')</span>
-                    </p>
-                </div>
-            </div>
-            <hr class="mb-4" style="width: 100%; margin: 0 auto; border-top: 2px solid #183F23; font-family: var(--primaryFont);">
+    
+            
 
             <ul class="list-unstyled text-start">
                 <li class="mb-4">
@@ -52,7 +44,7 @@
                     <img src="{{ asset('assets/profile2.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
                     <a href="{{ route('profile.report') }}" class="text-decoration-none text-dark">@lang('profile.report')</a>
                 </li>
-                <li class="mb-5">
+                <li class="mb-4">
                     <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
                     <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">@lang('profile.redeemed_vouchers')</a>
                 </li>
@@ -183,6 +175,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
                             
                             <div class="justify-content-start" style="">
                                 <button type="submit" class="btn text-white px-4 text-start" style="background-color: #8DA653; border-radius: 15px;">
