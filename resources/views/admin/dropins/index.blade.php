@@ -34,6 +34,7 @@
 
 <!-- Dropped In Requests -->
 <h3>Dropped In Requests</h3>
+
 @foreach($droppedInRequests as $dropIn)
     <div>
         <p>User: {{ $dropIn->user->username ?? 'N/A' }}</p>

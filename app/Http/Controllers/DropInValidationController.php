@@ -19,17 +19,17 @@ class DropInValidationController extends Controller
                 'status' => 'Pending',
                 'weight' => 0,
                 'pointsGenerated' => 0,
-                'validationDate' => now(), // Ensure this is populated
-                'created_at' => now(),     // Optional: to match timestamp columns
-                'updated_at' => now()      // Optional: to match timestamp columns
+                'validationDate' => now(), 
+                'created_at' => now(),     
+                'updated_at' => now()      
             ]
         );
 
-        // Return the validation view
+
         return view('admin.dropins.validate', compact('validation', 'id'));
     }
 
-    // Process and verify drop-in data
+    
     public function verifyDropIn(Request $request, $id)
     
     {
@@ -45,11 +45,11 @@ class DropInValidationController extends Controller
             return redirect()->back()->with('error', 'Validation record not found.');
         }
     
-        // Calculate points
-        $points = ($request->weight > 0 ? $request->weight * 2 : 0) + 
-                  ($request->quantity > 0 ? $request->quantity : 0);
+       
+        $points = ($request->weight > 0 ? $request->weight * 10 : 0) + 
+                  ($request->quantity > 0 ? $request->quantity* 2: 0);
     
-        // Update drop_in_validation table
+        
         $validation->update([
             'quantity' => $request->quantity ?? null,
             'weight' => $request->weight,
@@ -67,27 +67,30 @@ class DropInValidationController extends Controller
             }
         }
     
-        // Update drop_in table
         
-        $dropIn = DropIn::find($id);
-        $user = User::find($dropIn->userId);
-        if ($user) {
-            // Log the calculated points
-            $newTotalPoints = DropIn::where('userId', $user->id)->sum('points');
-            \Log::info("User Points Update", ['userId' => $user->id, 'newPoints' => $newTotalPoints]);
-        
-            // Update points
-            $user->points = $newTotalPoints;
-            $user->save();
-        
-            // Confirm save
-            if ($user->wasChanged('points')) {
-                \Log::info("User points updated successfully", ['points' => $user->points]);
-            } else {
-                \Log::error("User points not updated", ['userId' => $user->id]);
+        if ($request->status === 'Verified') {
+            $dropIn = DropIn::find($id);
+            if ($dropIn) {
+                $dropIn->points += $points;
+                $dropIn->status = 'Verified'; // Update DropIn status as well
+                $dropIn->save();
             }
+        }
+        $dropIn = DropIn::where('dropInId', $id)->first();
+        if ($dropIn) {
+            
+            $user = User::find($dropIn->userId);
     
-        return redirect()->route('admin.dropin.index')->with('success', 'Drop-In Verified Successfully!');
-    }
+            if ($user) {
+                
+                $user->points += $validation->pointsGenerated;
+    
+                
+                $user->save();
+    
+                return redirect()->route('admin.dropin.index')->with('success', 'Drop-In Verified Successfully!');
+            }
+        }
+        return redirect()->back()->with('error', 'User or DropIn not found.');
     }
 }

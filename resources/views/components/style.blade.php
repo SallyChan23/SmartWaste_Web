@@ -94,7 +94,7 @@
 
     @media(max-width:768px){
         *{
-            font-size: 98% !important;
+            font-size: 100% !important;
         }
     }
 </style>
