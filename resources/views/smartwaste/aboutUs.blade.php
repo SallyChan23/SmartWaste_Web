@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
- 
-<style>
 
-    @media(max-width:768px){
-        .contactUsimg{
-            width:60%;
-            height: auto;
-            display: flex;
-            justify-content: center;
+    <style>
+        @media(max-width:768px){
+            .contactUsimg{
+                width:60%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+            }
         }
-    }
-</style>
+    </style>
+
     <div class="banner" style="position: relative;">
         <img src="{{ asset('assets/aboutUsBanner.png') }}" alt="" style="width: 100%; height: auto;">
         <div class="d-flex flex-column justify-content-center align-items-center text-center"
@@ -205,11 +205,11 @@
                             <div class="col-md-4">
                                 <img src="{{ asset( $location->locationPicture) }}" 
                                     alt="{{ $location->locationName }}" 
-                                    class="img-fluid rounded-start" 
-                                    style="height: 100%; object-fit: cover; border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                                    class="img-fluid px-4 py-4" 
+                                    style="height: 100%; width: 100%; object-fit: cover; border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
                             </div>
                             <div class="col-md-8">
-                                <div class="card-body ms-5">
+                                <div class="card-body ">
                                     <h5 class="card-title fs-3 mb-3" style="color: #183F23;">{{ $location->locationName }}</h5>
                                     <p class="card-text">{{ $location->locationDescription }}</p>
                                     <iframe class="col-9"src="{{ $location->urllocation }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -224,9 +224,9 @@
 
     <div class="container-fluid pt-3 pb-3" style="background-color: #f3f5f0">
         <h5 class="card-title fs-1 fw-bold mt-5 mb-5 text-center" style="color: #183F23;">@lang('aboutUs.contact_us_title')</h5>
-        <div class="row row-cols-lg-2 row-cols-md-1 row-cols-1 justify-content-center" style="padding: 0 180px 0 180px;">
+        <div class="row row-cols-md-2 row-cols-md-1 row-cols-1 d-flex justify-content-center ps-5 ms-5">
             <div class="col-md-4  mb-3"> 
-                <div class="card " style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 170px;">
+                <div class="card " style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 150px; width: 250px;">
                     <div class="card-body align-items-center my-3 p-2">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                         <img src="{{ asset('assets/phone1.png') }}" alt="Phone" class="img-fluid mb-4" style="width: 20%; height: auto; " />
@@ -236,7 +236,7 @@
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <div class="card" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 170px;">
+                <div class="card" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 150px; width: 250px;">
                     <div class="card-body align-items-center my-3 p-2">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             <img src="{{ asset('assets/mail.png') }}" alt="Email" class="img-fluid mb-4" style="width: 20%; height: auto;" />
@@ -303,7 +303,6 @@
             </div>
         </div>
     </section>
- 
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
