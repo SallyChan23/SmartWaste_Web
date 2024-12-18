@@ -39,12 +39,12 @@ class DropIn extends Model
     public function wasteTypes()
     {
         return $this->hasManyThrough(
-            WasteType::class,        // Model tujuan
-            DropInWasteType::class,  // Model pivot
-            'dropInId',              // FK di dropInWasteType yang mengarah ke dropIn
-            'wasteTypeId',           // FK di WasteType yang mengarah ke dropInWasteType
-            'dropInId',              // PK di DropIn
-            'wasteTypeId'            // PK di DropInWasteType
+            WasteType::class,        
+            DropInWasteType::class,  
+            'dropInId',              
+            'wasteTypeId',           
+            'dropInId',              
+            'wasteTypeId'            
         );
     }
 
@@ -54,6 +54,13 @@ class DropIn extends Model
     }
 
     public function wasteDetails(){
-        return $this->hasMany(DropInWasteDetail::class, 'dropInId', 'dropInId');
+        return $this->hasManyThrough(
+            WasteDetails::class,        
+            DropInWasteDetail::class,  
+            'dropInId',              
+            'wasteDetailId',           
+            'dropInId',              
+            'wasteDetailId'            
+        );
     }
 }
