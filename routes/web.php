@@ -57,6 +57,8 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
     Route::post('/redeem/{voucherId}', [RedeemController::class, 'redeem'])->name('redeem.voucher');
     Route::get('/missions/search', [MissionController::class, 'searchMission'])->name('searchMission');
     Route::get('/profile/process', [DropInController::class, 'processPage'])->name('drop_in.process');
+    Route::delete('/drop-in/{id}/delete', [DropInController::class, 'destroy'])->name('drop_in.delete');
+
     Route::get('/report', [DropInController::class, 'report'])->name('profile.report');
 });
 
