@@ -66,7 +66,11 @@
             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
             <p class="fs-1 fw-bold" style="color: #183F23;">@lang('home.banner_title')</p>
             <p class="text-center" style="width: 475px;">@lang('home.banner_desc')</p>
-            <button class="px-5 py-2 rounded-3 border border-0" style="background-color: #183F23; color: white;">@lang('home.join_button')</button>
+            @guest
+                <a href="{{ route('login') }}">
+                    <button class="px-5 py-2 rounded-3 border border-0" style="background-color: #183F23; color: white;">@lang('home.join_button')</button>
+                </a>
+            @endguest
         </div>
     </div>
 

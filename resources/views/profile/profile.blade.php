@@ -75,7 +75,7 @@
             
             <div class="row">
                     <!-- Profile Picture Update -->
-                        <div class="col-md-5 text-center position-relative" style="min-height: 200px;">
+                        <div class="col-md-4 text-center position-relative" style="min-height: 200px;">
                             <form method="POST" action="{{ route('profile.updatePicture') }}" enctype="multipart/form-data">
                                 @csrf
                                 <label for="profilePicture" class="d-block " style="cursor: pointer;">
@@ -93,7 +93,7 @@
                             </form>
                         </div>          
 
-                    <div class="col-md-7 text-start fs-6">
+                    <div class="col-md-8 text-start fs-6">
                         <form method="POST" action="{{ route('profile.update') }}">
                             @csrf
                             <div class="mb-3 row">
