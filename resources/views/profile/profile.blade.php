@@ -31,11 +31,50 @@
                 </div>
                 <hr class="mb-4 mt-4" style="width: 100%; margin: 0 auto; border-top: 2px solid #183F23; font-family: var(--primaryFont);">
 
+<<<<<<< Updated upstream
                 <ul class="list-unstyled text-start">
                     <li class="mb-4">
                         <img src="{{ asset('assets/profile3.png') }}" alt="" class="me-2" style="width: 30px">
                         <a href="{{ route('profile') }}" class="text-decoration-none fw-semibold text-success">@lang('profile.profile_title')</a>
                         <hr style="width: 50%; margin-top: 0.3rem; margin-left: 40px; border-top: 2px solid #5eaf60; font-family: var(--primaryFont);">
+=======
+                <div class="col-md-6 d-flex flex-column justify-content-center">
+                    <h5 class="fw-bold mb-1">{{ $user->username }}</h5>
+                    <p class="text-muted mb-0">
+                        <img src="assets/points.png" alt="" srcset="" style="object-fit:cover; height:20px;width:20px">
+                        <i class="bi bi-coin text-warning" style="font-size: 1.2rem;"></i>
+                        <span class="fw-semibold">{{ $user->points ?? 0 }} @lang('profile.points')</span>
+                    </p>
+                </div>
+            </div>
+            <hr class="mb-4" style="width: 100%; margin: 0 auto; border-top: 2px solid #183F23; font-family: var(--primaryFont);">
+
+            <ul class="list-unstyled text-start">
+                <li class="mb-4">
+                    <img src="{{ asset('assets/profile3.png') }}" alt="" class="me-2" style="width: 30px">
+                    <a href="{{ route('profile.show') }}" class="text-decoration-none fw-semibold text-success">@lang('profile.profile_title')</a>
+                    <hr style="width: 50%; margin-top: 0.3rem; margin-left: 40px; border-top: 2px solid #5eaf60; font-family: var(--primaryFont);">
+                </li>
+                <li class="mb-4">
+                    <img src="{{ asset('assets/profile2.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
+                    <a href="{{ route('profile.report') }}" class="text-decoration-none text-dark">@lang('profile.report')</a>
+                </li>
+                <li class="mb-5">
+                    <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
+                    <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">@lang('profile.redeemed_vouchers')</a>
+                </li>
+
+                <li class="mb-4">
+                    <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
+                    <a href="{{ route('drop_in.process') }}" class="text-decoration-none text-dark">@lang('profile.Process')</a>
+                </li>
+                @if (Auth::check())
+                    <li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="rounded-5 text-center text-white btn" style="background-color: #183F23; width: 100px; height: 50px">@lang('profile.logout')</button>
+                        </form>
+>>>>>>> Stashed changes
                     </li>
                     <li class="mb-4">
                         <img src="{{ asset('assets/profile2.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
