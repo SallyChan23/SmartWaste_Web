@@ -8,13 +8,13 @@
         </button>
         <div class="offcanvas offcanvas-end ps-3" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
             <div class="offcanvas-header pt-5 ">
-                <h5 class="offcanvas-title fw-bold fs-2" style="color: #183F23;" id="offcanvasMenuLabel">Menu</h5>
+                <h5 class="offcanvas-title fw-bold fs-2" style="color: #183F23;" id="offcanvasMenuLabel">@lang('navbar.menu')</h5>
                 <button type="button" class="btn-close text-reset pe-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav flex-column flex-lg-row align-items-lg-center justify-content-lg-center w-100 wide-gap fw-medium fs-6">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">@lang('navbar.home')</a>
                     </li>
                     @if (Auth::check())
                     @if (Auth::user()->role === 'user')
@@ -22,7 +22,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('drop_in.index') ? 'active' : '' }}"
                             href="{{ route('drop_in.index') }}">
-                            Drop In
+                            @lang('navbar.dropin')
                             </a>
                         </li>
                     @elseif (Auth::user()->role === 'admin')
@@ -30,20 +30,20 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.dropin.index') ? 'active' : '' }}"
                             href="{{ route('admin.dropin.index') }}">
-                            Admin Drop In
+                            @lang('navbar.admindi')
                             </a>
                         </li>
                     @endif
                 @endif
 
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('mission.index') ? 'active' : '' }}" href="{{route('mission.index')}}">Mission</a>
+                        <a class="nav-link {{ request()->routeIs('mission.index') ? 'active' : '' }}" href="{{route('mission.index')}}">@lang('navbar.mission')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('voucher.index') ? 'active' : '' }}" href="{{route('voucher.index')}}">Voucher</a>
+                        <a class="nav-link {{ request()->routeIs('voucher.index') ? 'active' : '' }}" href="{{route('voucher.index')}}">@lang('navbar.voucher')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('aboutUs') ? 'active' : '' }}" href="{{route('aboutUs')}}">About Us</a>
+                        <a class="nav-link {{ request()->routeIs('aboutUs') ? 'active' : '' }}" href="{{route('aboutUs')}}">@lang('navbar.about')</a>
                     </li>
                 </ul>
 

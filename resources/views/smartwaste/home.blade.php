@@ -66,7 +66,11 @@
             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
             <p class="fs-1 fw-bold" style="color: #183F23;">@lang('home.banner_title')</p>
             <p class="text-center" style="width: 475px;">@lang('home.banner_desc')</p>
-            <button class="px-5 py-2 rounded-3 border border-0" style="background-color: #183F23; color: white;">@lang('home.join_button')</button>
+            @guest
+                <a href="{{ route('login') }}">
+                    <button class="px-5 py-2 rounded-3 border border-0" style="background-color: #183F23; color: white;">@lang('home.join_button')</button>
+                </a>
+            @endguest
         </div>
     </div>
 
@@ -136,7 +140,7 @@
     
     <!-- Types of Waste Section -->
     <div class="container my-5">
-        <h2 class="text-center mb-lg-4 mb-md-2 mb-sm-1 mb-1" style="color: #183F23;">@lang('home.types_waste')</h2>
+        <h2 class="text-center mb-lg-4 mb-md-2 mb-sm-1 mb-1 fs-1 pt-2 fw-bold" style="color: #183F23;">@lang('home.types_waste')</h2>
         <hr style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23;">
             <div class="container mt-5">
                 <div class="row row-cols-lg-2 row-cols-md-1 justify-content-center d-flex gap-5">
