@@ -140,7 +140,7 @@
     
     <!-- Types of Waste Section -->
     <div class="container my-5">
-        <h2 class="text-center mb-lg-4 mb-md-2 mb-sm-1 mb-1" style="color: #183F23;">@lang('home.types_waste')</h2>
+        <h2 class="text-center mb-lg-4 mb-md-2 mb-sm-1 mb-1 fs-1 pt-2 fw-bold" style="color: #183F23;">@lang('home.types_waste')</h2>
         <hr style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23;">
             <div class="container mt-5">
                 <div class="row row-cols-lg-2 row-cols-md-1 justify-content-center d-flex gap-5">

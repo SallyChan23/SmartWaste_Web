@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mb-5">
-        <h1 style="color: #183F23" class="d-flex justify-content-center my-5 fw-bold">Drop In</h1>
+        <h1 style="color: #183F23" class="d-flex justify-content-center my-5 fw-bold">@lang('createDropIn.title')</h1>
 
         <!-- Display Success or Error Notifications -->
         @if (session('success'))
@@ -26,12 +26,12 @@
                 <input type="hidden" name="locationId" value="{{ $location->locationId }}">
 
 
-                <h4 class="fw-bold mb-3" style="color: #183F23;">Step 2: Fill Out The Details</h4>
+                <h4 class="fw-bold mb-3" style="color: #183F23;">@lang('createDropIn.step2')</h4>
                 <div class="mb-3 p-5 rounded-3" style="background-color: #F4F7F0; width: 75rem">
                     
                     <!-- Waste Type -->
                     <div class="mb-3">
-                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">Waste Type</label>
+                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">@lang('createDropIn.wasteType')</label>
                         @foreach($wasteTypes as $wasteType)
                             <div>
                                 <input type="radio" name="wasteType" value="{{ $wasteType->wasteTypeId }}" onchange="toggleFields(this.value)">
@@ -42,20 +42,20 @@
 
                     <!-- Waste Details -->
                     <div class="mb-3">
-                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">Waste Details</label>
+                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">@lang('createDropIn.wasteDetails')</label>
                         <div id="wasteDetailsContainer"></div>
                     </div>
 
                     <!-- Quantity & Weight -->
                     <div class="d-flex mb-3">
                         <div id="quantityField" class="me-5" style="display: none;">
-                            <label class="fs-5 fw-medium mb-1" style="color: #183F23">Quantity</label>
-                            <input type="number" name="quantity" placeholder="Enter quantity" class="form-control">
+                            <label class="fs-5 fw-medium mb-1" style="color: #183F23">@lang('createDropIn.quantity')</label>
+                            <input type="number" name="quantity" placeholder="@lang('createDropIn.quantityDetail')" class="form-control">
                         </div>
 
                         <div id="weightField" class="d-flex flex-column">
-                            <label class="fs-5 fw-medium mb-1" style="color: #183F23">Weight</label>
-                            <input type="number" name="weight" class="form-control" placeholder="Enter weight in kg" />
+                            <label class="fs-5 fw-medium mb-1" style="color: #183F23">@lang('createDropIn.weight')</label>
+                            <input type="number" name="weight" class="form-control" placeholder="Enter weight in kg" required/>
                         </div>
                     </div>
 
@@ -93,30 +93,28 @@
                         }
                     </script>
 
-
                     <!-- Picture Upload -->
                     <div class="mb-3">
-                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">Pictures</label>
+                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">@lang('createDropIn.pictures')</label>
                         <div class="d-flex flex-column align-items-center p-5 bg-white border rounded-3"> 
                             <img src="{{ asset('assets/image.png') }}" style="width: 10rem" alt="Upload Image"/>
-                            <p>Drag & Drop Image Here</p>
-                            <p>or</p>
+                            <p>@lang('createDropIn.picDetail')</p>
+                            <p>@lang('createDropIn.or')</p>
                             <input type="file" accept="image/*" name="picture" required/>
                         </div>
                     </div>
 
                     <!-- Date of Drop In -->
                     <div class="d-flex flex-column mb-3">
-                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">Date of Drop In</label>
+                        <label class="fs-5 fw-medium mb-1" style="color: #183F23">@lang('createDropIn.date')</label>
                         <input type="date" name="date" class="form-control" required/>
                     </div>
                 </div>
 
                 <!-- Submit Button -->
                 <div style="width: 100%" class="d-flex justify-content-center">
-                    <button type="submit" style="background-color: #183F23; color: white; border: none" 
-                            class="py-2 px-5 rounded-3">
-                        Submit
+                    <button type="submit" style="background-color: #183F23; color: white; border: none" class="py-2 px-5 rounded-3">
+                        @lang('createDropIn.submit')
                     </button>
                 </div>
             </form>
