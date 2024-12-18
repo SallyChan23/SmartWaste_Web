@@ -67,7 +67,7 @@ class ProfileController extends Controller
   
     $user->save();
 
-    return redirect()->route('profile')->with('success', 'Profile updated successfully.');
+    return redirect()->route('profile.show')->with('success', 'Profile updated successfully.');
     }
 
     public function updatePicture(Request $request)
@@ -88,7 +88,7 @@ class ProfileController extends Controller
     
         Log::info('Profile picture updated: ', ['path' => $path]);
     
-        return redirect()->route('profile')->with('success', 'Profile picture updated successfully.');
+        return redirect()->route('profile.show')->with('success', 'Profile picture updated successfully.');
     }
 }
 

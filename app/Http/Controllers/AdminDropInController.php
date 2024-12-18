@@ -91,7 +91,7 @@ class AdminDropInController extends Controller
         ]);
 
         // Update drop_in table status
-        $dropIn = DropIn::findOrFail($id);
+        $dropIn = DropIn::with('wasteTypes')->findOrFail($id);
         $dropIn->status = $request->status;
         $dropIn->save();
 
