@@ -21,6 +21,8 @@ class DropInController extends Controller
         return view('smartwaste.dropin', compact('locations'));
     }
 
+
+
     public function create(Request $request) {
 
 
@@ -113,13 +115,29 @@ class DropInController extends Controller
     public function processPage()
     {
         // Fetch the drop-in requests for the logged-in user
+        $user = Auth::user(); 
         $dropIns = DropIn::with(['location'])
         ->where('userId', auth()->id()) // Ensure this fetches requests for the logged-in user
         ->whereIn('status', ['Waiting for Dropped In', 'Declined', 'Pending'])
-        ->get();
+        ->paginate(2);
 
-        return view('profile.process', compact('dropIns'));
+        return view('profile.process', compact('dropIns', 'user'));
     }
+
+    public function destroy($id)
+{
+    $dropIn = DropIn::find($id);
+
+    // Untuk check statusnya declined or engga
+    if ($dropIn && $dropIn->status === 'Declined') {
+        $dropIn->delete();
+        return back()->with('success', 'Drop-in request deleted successfully.');
+    }
+
+    return back()->with('error', 'Unable to delete this drop-in request.');
+}
+
+
 
     public function confirmDropIn($id)
     {
