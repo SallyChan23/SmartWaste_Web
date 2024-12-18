@@ -31,27 +31,22 @@
     }
 
     @media(max-width:768px){
-
         .waste-type{
             width:50%;
             height: auto;
         }
-           
+
         .mission-modal{
             display: flex;
             flex-direction: column;
         }
-
     }
 
     @media(max-width:576px){
-
         .waste-type{
             width:40%;
             height: auto;
         }
- 
-
     }
 
 </style>

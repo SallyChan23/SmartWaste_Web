@@ -5,7 +5,6 @@
 <style>
     body{
         background-color:rgb(160, 185, 72,0.8);
-
     }
 
     .circle-left{

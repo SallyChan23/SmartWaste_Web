@@ -222,7 +222,6 @@
         </div>
     </div>
 
- 
     <div class="container-fluid pt-3 pb-3" style="background-color: #f3f5f0">
         <h5 class="card-title fs-1 fw-bold mt-5 mb-5 text-center" style="color: #183F23;">@lang('aboutUs.contact_us_title')</h5>
         <div class="row row-cols-lg-2 row-cols-md-1 row-cols-1 justify-content-center" style="padding: 0 180px 0 180px;">

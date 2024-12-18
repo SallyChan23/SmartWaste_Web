@@ -42,7 +42,6 @@
         color: var(--lightgreen)!important;
         text-decoration: underline; 
         text-underline-offset: 2px;
-       
     }
     .nav-link.active{
         color:var(--lightgreen) !important;
@@ -93,11 +92,9 @@
         transform: translateX(36px);
     }
 
-
     @media(max-width:768px){
         *{
             font-size: 98% !important;
         }
     }
-    
 </style>
