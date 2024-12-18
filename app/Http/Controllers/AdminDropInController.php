@@ -10,24 +10,30 @@ use App\Models\DropInWasteType;
 
 class AdminDropInController extends Controller
 {
-    // View Drop-In Requests
+
     public function index()
     {
-        // $pendingDropIns = DropIn::where('status', 'Pending')->with('user')->get();
-        // $droppedInRequests = DropIn::where('status', 'Dropped In')->with('user')->get();
-
-        // // Pass both variables to the view
         $pendingDropIns = DropIn::with(['user', 'location'])
         ->where('status', 'Pending')
         ->get();
 
-        // Fetch Dropped In Requests with status 'Already Dropped In'
+        
         $droppedInRequests = DropIn::with(['user', 'location'])
-            ->where('status', 'Already Dropped In')
-            ->get();
+        ->where('status', 'Already Dropped In')
+        ->orWhere('status', 'Waiting for Dropped In')
+        ->get();
+    
+        $pending =DropIn::with(['user', 'location'])
+        ->where('status', 'Pending')
+        ->get();
+
+        $waiting = DropIn::with(['user', 'location'])
+        ->where('status', 'Already Dropped In')
+        ->orWhere('status', 'Waiting for Dropped In')
+        ->get();
 
 
-        return view('admin.dropins.index', compact('pendingDropIns', 'droppedInRequests'));
+        return view('admin.dropins.index', compact('pendingDropIns', 'droppedInRequests','pending','waiting'));
     }
 
     // Accept Drop-In Request
@@ -92,7 +98,7 @@ class AdminDropInController extends Controller
         ]);
 
         // Update drop_in table status
-        $dropIn = DropIn::with('wasteTypes')->findOrFail($id);
+        $dropIn = DropIn::with(['wasteTypes','wasteDetails'])->findOrFail($id);
         $dropIn->status = $request->status;
         $dropIn->save();
 

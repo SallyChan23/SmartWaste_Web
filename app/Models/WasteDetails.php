@@ -14,7 +14,7 @@ class WasteDetails extends Model
     protected $fillable=['wasteTypeId','wasteDetailName'];
 
     public function dropInWasteDetail(){
-        return $this->belongsTo(DropInWasteDetail::class);
+        return $this->belongsTo(DropInWasteDetail::class,'wasteDetailId','wasteDetailId');
     }
 
     public function wasteType(){

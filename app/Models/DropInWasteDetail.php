@@ -14,10 +14,10 @@ class DropInWasteDetail extends Model
     protected $fillable=['wasteDetailId','dropInId'];
 
     public function wasteDetail(){
-        return $this->hasOne(WasteDetails::class);
+        return $this->hasOne(WasteDetails::class,'wasteDetailId','wasteDetailId');
     }
 
     public function dropIn(){
-        return $this->belongsTo(DropIn::class);
+        return $this->belongsTo(DropIn::class,'dropInId','dropInId');
     }
 }
