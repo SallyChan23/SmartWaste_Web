@@ -57,6 +57,15 @@ class DropInValidationController extends Controller
             'pointsGenerated' => $points,
             'validationDate' => now(),
         ]);
+
+        if ($request->status === 'Verified') {
+            $dropIn = DropIn::find($id);
+            if ($dropIn) {
+                $dropIn->points += $points;
+                $dropIn->status = 'Verified'; // Update DropIn status as well
+                $dropIn->save();
+            }
+        }
     
         // Update drop_in table
         

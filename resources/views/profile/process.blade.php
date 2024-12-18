@@ -29,6 +29,8 @@
                                 </form>
                             @elseif($dropIn->status == 'Declined')
                                 <span class="text-danger">Declined</span>
+                            @elseif($dropIn->status === 'Pending')
+                                <span style="color: orange;">Pending</span>
                             @else
                                 <span class="text-success">Already Dropped</span>
                             @endif
