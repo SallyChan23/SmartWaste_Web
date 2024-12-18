@@ -40,12 +40,20 @@
             display: flex;
             flex-direction: column;
         }
+
+        .article-card {
+            width:90%;
+        }
     }
 
     @media(max-width:576px){
         .waste-type{
             width:40%;
             height: auto;
+        }
+
+        .article-card {
+            width:80%;
         }
     }
 
@@ -287,14 +295,14 @@
     <div class="container my-5">
     <h2 class="text-center mb-4 fs-1 pt-2 fw-bold" style="color: #183F23;">@lang('home.news')</h2>
     <hr class="mb-5" style="width: 50%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
-        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 d-flex justify-content-center">
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm d-flex justify-content-center">
             @foreach($articles as $article)
-                <div class="col-md-3 mb-5 justify-content-center d-flex">
-                    <div class="card h-100 border-1 col-10">
+                <div class="article-card col-md-3 mb-5 justify-content-center d-flex">
+                    <div class="card h-100 w-100 border-1 col-10">
                         <img src="{{ asset( $article->articlePicture) }}" alt="{{ $article->articleTitle }}" class="card-img-top" style="height: 200px;">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title ms-2">{{ $article->articleTitle }}</h5>
-                            <a href="{{ $article->articleUrl }}" class="d-flex justify-content-end mt-auto text-decoration-none fw-light" style="color: #183F23" target="_blank">@lang('home.read_more')</a>
+                            <h6 class="card-title ms-2 fs-5 mb-2">{{ $article->articleTitle }}</h6>
+                            <a href="{{ $article->articleUrl }}" class="d-flex justify-content-end mt-auto text-decoration-none fw-light" style="color: #183F23; font-size: 14px;" target="_blank">@lang('home.read_more')</a>
                         </div>
                     </div>
                 </div>
