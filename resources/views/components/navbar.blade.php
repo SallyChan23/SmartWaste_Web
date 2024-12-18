@@ -48,23 +48,20 @@
 </nav>
 
 <style>
-    /* Custom styles for larger screens */
-@media (min-width: 992px) { /* 992px is the default breakpoint for medium screens in Bootstrap */
-    .wide-gap {
-        gap: 60px; /* Adjust the gap as needed */
-    }
-}
-
-/* Styles for mobile screens */
-@media (max-width: 768px) { /* 768px is the default breakpoint for small screens in Bootstrap */
-    .wide-gap {
-        gap: 1px; /* Adjust the gap as needed for smaller screens */
+    @media (min-width: 992px) { 
+        .wide-gap {
+            gap: 60px; 
+        }
     }
 
-    .offcanvas {
-        max-width: 250px; /* Adjust the maximum width for the entire offcanvas container */
-        font-size: 12px; 
-    }
-}
+    @media (max-width: 768px) { 
+        .wide-gap {
+            gap: 1px; 
+        }
 
+        .offcanvas {
+            max-width: 250px; 
+            font-size: 12px; 
+        }
+    }
 </style>
