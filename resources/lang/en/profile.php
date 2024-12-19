@@ -11,6 +11,7 @@ return [
     'report' => 'History',
     'redeemed_vouchers' => 'Redeemed Vouchers',
     'my_profile' => 'My Profile',
+    'process' => 'Drop-In Process',
     'usernames' => 'Username',
     'phone_number' => 'Phone Number',
     'emails' => 'Email',
