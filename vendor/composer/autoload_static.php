@@ -515,6 +515,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DropInController' => __DIR__ . '/../..' . '/app/Http/Controllers/DropInController.php',
+        'App\\Http\\Controllers\\DropInValidationController' => __DIR__ . '/../..' . '/app/Http/Controllers/DropInValidationController.php',
         'App\\Http\\Controllers\\FaqController' => __DIR__ . '/../..' . '/app/Http/Controllers/FaqController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\MissionController' => __DIR__ . '/../..' . '/app/Http/Controllers/MissionController.php',

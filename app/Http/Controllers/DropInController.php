@@ -145,7 +145,9 @@ class DropInController extends Controller
             })
             ->get();
 
-        return view('profile.report', compact('validatedDropIns'));
-    }
+        $dropIns = DropIn::where('userId', Auth::id())->get();
 
+        
+        return view('profile.report', compact('validatedDropIns', 'dropIns'));
+    }
 }
