@@ -12,7 +12,6 @@ class DropInValidationController extends Controller
     // Show the validation form
     public function showValidationForm($id)
     {
-        // Retrieve or create a validation record for this DropIn
         $validation = DropInValidation::firstOrCreate(
             ['dropInId' => $id],
             [
@@ -63,7 +62,7 @@ class DropInValidationController extends Controller
             $dropIn = DropIn::find($id);
             if ($dropIn) {
                 $dropIn->points += $points;
-                $dropIn->status = 'Verified'; // Update DropIn status as well
+                $dropIn->status = 'Verified'; 
                 $dropIn->save();
             }
         }

@@ -26,14 +26,6 @@
         text-decoration: underline;
     }
 
-    /* .navbar{
-        left:0;
-        right: 0;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        z-index: 1000;
-    } */
 
     .nav-link{
         transition: color 0.3s ease;

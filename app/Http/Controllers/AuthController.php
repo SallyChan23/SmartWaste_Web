@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
-    // Show the login form
+
     public function showLoginForm()
     {
         return view('auth.login');
@@ -28,7 +28,6 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
     
-            // Redirect to the home page
             return redirect()->route('home');
         }
     
@@ -42,7 +41,6 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    // Handle registration logic
     public function register(Request $request)
     {
         $request->validate([
@@ -56,7 +54,7 @@ class AuthController extends Controller
         User::create([
             'username' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // Always hash passwords
+            'password' => Hash::make($request->password), 
             'phoneNumber' => $request->phoneNumber,
             'role' => 'user',
         ]);

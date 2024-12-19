@@ -60,7 +60,6 @@
                     </div>
 
                     <script>
-                        // Waste details JSON fetched from backend
                         const wasteDetails = @json($wasteDetails);
 
                         function toggleFields(wasteTypeId) {
@@ -68,10 +67,8 @@
                             const weightField = document.getElementById('weightField');
                             const wasteDetailsContainer = document.getElementById('wasteDetailsContainer');
 
-                            // Clear previous waste details
                             wasteDetailsContainer.innerHTML = '';
 
-                            // Filter and display relevant waste details
                             const filteredDetails = wasteDetails.filter(detail => detail.wasteTypeId == wasteTypeId);
                             filteredDetails.forEach(detail => {
                                 const div = document.createElement('div');
@@ -82,11 +79,10 @@
                                 wasteDetailsContainer.appendChild(div);
                             });
 
-                            // Toggle visibility of fields based on waste type
-                            if (wasteTypeId == 1) { // Organic Waste: Show only Weight
+                            if (wasteTypeId == 1) { 
                                 quantityField.style.display = 'none';
                                 weightField.style.display = 'block';
-                            } else if (wasteTypeId == 2) { // Non-Organic Waste: Show Quantity and Weight
+                            } else if (wasteTypeId == 2) { 
                                 quantityField.style.display = 'block';
                                 weightField.style.display = 'block';
                             }

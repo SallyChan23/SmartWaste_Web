@@ -11,7 +11,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Ambil hanya 2 misi dari database
         $missions = Mission::take(2)->get();
         $vouchers = Voucher::take(4)->get();
         $articles = Article::all();

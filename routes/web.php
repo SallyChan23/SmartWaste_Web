@@ -63,7 +63,6 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
 });
 
 // Routes for admins
-// Routes for admin validation and management under `/drop_in`
 Route::middleware(['auth', 'CheckRole:admin'])->prefix('admin/drop_in')->group(function () {
     Route::get('/', [AdminDropInController::class, 'index'])->name('admin.dropin.index');
     Route::post('/{id}/accept', [AdminDropInController::class, 'accept'])->name('admin.dropin.accept');
@@ -72,7 +71,6 @@ Route::middleware(['auth', 'CheckRole:admin'])->prefix('admin/drop_in')->group(f
     Route::post('/drop_in/{id}/decline', [AdminDropInController::class, 'decline'])->name('admin.dropin.decline');
 
 });
-
 
 
 Route::get('/set-locale/{locale}', function($locale) {

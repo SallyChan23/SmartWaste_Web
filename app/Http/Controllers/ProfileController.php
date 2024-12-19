@@ -29,16 +29,12 @@ class ProfileController extends Controller
 
     public function profile()
     {
-        // Fetch the currently authenticated user
         $user = Auth::user();
 
-        // Fetch total user points
         $userPoints = DropIn::where('userId', auth()->id())->sum('points');
 
-        // Fetch history of verified drop-ins
         $history = DropInValidation::where('status', 'Verified')->get();
 
-        // Pass all necessary data to the view
         return view('profile.profile', compact('user', 'userPoints', 'history'));
     }
 

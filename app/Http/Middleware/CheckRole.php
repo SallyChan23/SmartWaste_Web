@@ -22,13 +22,10 @@ class CheckRole
     
         $userRole = Auth::user()->role;
     
-        // Jika $roles adalah string (misalnya 'user,admin'), pecah menjadi array
         if (count($roles) === 1 && str_contains($roles[0], ',')) {
             $roles = explode(',', $roles[0]);
         }
-    
-        \Log::info('User Role: ' . $userRole);
-        \Log::info('Allowed Roles: ' . implode(', ', $roles));
+
     
         if (!in_array($userRole, $roles)) {
             return abort(403, 'Unauthorized');
