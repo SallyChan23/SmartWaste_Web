@@ -104,9 +104,10 @@ class DropInController extends Controller
 
     public function processPage()
     {
+        // proses yang diliat logged in user
         $user = Auth::user(); 
         $dropIns = DropIn::with(['location'])
-        ->where('userId', auth()->id()) 
+        ->where('userId', auth()->id()) // hanya untuk login user
         ->whereIn('status', ['Waiting for Dropped In', 'Declined', 'Pending'])
         ->paginate(2);
 
