@@ -4,16 +4,13 @@
 
 <div class="container-fluid min-vh-100">
 
-    <p class='text-center fs-1 pt-4 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>Drop In Request and Validation</p>
+    <p class='text-center fs-1 pt-4 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont)'>@lang('dropInAdmin.banner_title')</p>
 
     <!-- Pending Requests -->
-    <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>Drop In Requests</p>
+    <p class='text-start fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('dropInAdmin.drop_request')</p>
     @if($pending->where('status', 'Pending')->count() === 0)
-        <p class='text-start fs-6 'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>No drop in requested</p>
-           
+        <p class='text-start fs-6 'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('dropInAdmin.drop_validation')</p>    
     @endif
-
-    
 
     <div class="container d-flex justify-content-center align-items-center flex-column px-4" >
         <div class=" row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1 g-5 " style="width:100%" >
@@ -28,15 +25,15 @@
                         <p class="fs-6 fw-bold" style="color:var(--darkgreen);margin:0">{{ $dropIn->user->username ?? 'Unknown User' }}</p>
                     </div>
                     <div class="card-body d-flex flex-column ">
-                        <p style="margin:0"> <span class="fw-semibold"style="color:var(--darkgreen)">Location:</span> {{ $dropIn->location->locationName ?? 'Unknown Location' }}</p>
+                        <p style="margin:0"> <span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.location')</span> {{ $dropIn->location->locationName ?? 'Unknown Location' }}</p>
                         @foreach ($dropIn->wasteTypes as $wasteType)
-                            <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Waste Type:</span> {{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</p>
+                            <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.waste_type')</span> {{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</p>
                         @endforeach
-                        <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Waste Detail:</span></p>
+                        <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.waste_detail')</span></p>
                         @foreach ($dropIn->wasteDetails as $detail)
                             <li>{{ $detail->wasteDetailName ?? 'Unknown Detail' }}</li>
                         @endforeach
-                        <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Date:</span> {{ \Carbon\Carbon::parse($dropIn->date)->format('d F Y') }}</p>
+                        <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.date')</span> {{ \Carbon\Carbon::parse($dropIn->date)->format('d F Y') }}</p>
 
                     </div>
 
@@ -53,12 +50,12 @@
                                         <div class="d-flex flex-column justify-content-center align-items-center gap-4" >
                                             <img src="{{ asset($dropIn->wastePicture) }}" alt="" class='img-fluid' style="object-fit:contain; height: 150px; width:auto">
                                             <div class="d-flex flex-column justify-content-between gap-1" >
-                                                <p style="margin:0"> <span class="fw-semibold"style="color:var(--darkgreen)">Location:</span> {{ $dropIn->location->locationName ?? 'Unknown Location' }}</p>
+                                                <p style="margin:0"> <span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.location')</span> {{ $dropIn->location->locationName ?? 'Unknown Location' }}</p>
                     
                                                 @foreach ($dropIn->wasteTypes as $wasteType)
-                                                    <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Waste Type:</span> {{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</p>
+                                                    <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.waste_type')</span> {{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</p>
                                                 @endforeach
-                                                <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Waste Detail:</span></p>
+                                                <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.waste_detail')</span></p>
                                                 @foreach ($dropIn->wasteDetails as $detail)
                                                     <li>{{ $detail->wasteDetailName ?? 'Unknown Detail' }}</li>
                                                 @endforeach
@@ -72,36 +69,33 @@
                                     <div class="d-flex flex-row justify-content-center align-items-center gap-4">
                                         <form action="{{ route('admin.dropin.accept', $dropIn->dropInId) }}" method="POST" style="display: inline;">
                                             @csrf
-                                            <button type="submit" class="btn btn-success">Accept</button>
+                                            <button type="submit" class="btn btn-success">@lang('dropInAdmin.accept')</button>
                                         </form>
 
                                         <form action="{{ route('admin.dropin.decline', $dropIn->dropInId) }}" method="POST" style="display: inline;">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger">Decline</button>
+                                            <button type="submit" class="btn btn-danger">@lang('dropInAdmin.decline')</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        </div>
-                    
+                    </div>     
                 </div>
-            
-            </div>
-            
+            </div> 
         @endforeach
         </div>
     </div>
 
 
 
-<!-- Dropped In Requests -->
 
-    <p class='text-start pt-5 fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>Drop In Validation</p>
+    <!-- Dropped In Requests -->
+
+    <p class='text-start pt-5 fs-3 fw-bold'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('dropInAdmin.drop_validation')</p>
 
     @if($waiting->whereIn('status', ['Waiting for Dropped In', 'Already Dropped In'])->count() === 0)
-        <p class='text-start fs-6 'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>No drop-in require validation at this time.</p>
+        <p class='text-start fs-6 'style='color:var(--darkgreen); font-family:var(-primaryFont); padding-left:7rem; padding-right:7rem'>@lang('dropInAdmin.no_validation')</p>
     @endif
 
     <div class="container d-flex justify-content-center align-items-center flex-column px-4 pb-5" >
@@ -117,15 +111,15 @@
                         <p class="fs-6 fw-bold" style="color:var(--darkgreen);margin:0">{{ $dropIn->user->username ?? 'Unknown User' }}</p>
                     </div>
                     <div class="card-body d-flex flex-column ">
-                        <p style="margin:0"> <span class="fw-semibold"style="color:var(--darkgreen)">Location:</span> {{ $dropIn->location->locationName ?? 'Unknown Location' }}</p>
+                        <p style="margin:0"> <span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.location')</span> {{ $dropIn->location->locationName ?? 'Unknown Location' }}</p>
                         @foreach ($dropIn->wasteTypes as $wasteType)
-                            <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Waste Type:</span> {{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</p>
+                            <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.waste_type')</span> {{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</p>
                         @endforeach
-                        <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Waste Detail:</span></p>
+                        <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.waste_detail')</span></p>
                         @foreach ($dropIn->wasteDetails as $detail)
                             <li>{{ $detail->wasteDetailName ?? 'Unknown Detail' }}</li>
                         @endforeach
-                        <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Date:</span> {{ \Carbon\Carbon::parse($dropIn->date)->format('d F Y') }}</p>
+                        <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.date')</span> {{ \Carbon\Carbon::parse($dropIn->date)->format('d F Y') }}</p>
 
                     </div>
 
@@ -142,12 +136,12 @@
                                         <div class="d-flex flex-column justify-content-center align-items-center gap-4" >
                                             <img src="{{ asset($dropIn->wastePicture) }}" alt="" class='img-fluid' style="object-fit:contain; height: 150px; width:auto">
                                             <div class="d-flex flex-column justify-content-between gap-1" >
-                                                <p style="margin:0"> <span class="fw-semibold"style="color:var(--darkgreen)">Location:</span> {{ $dropIn->location->locationName ?? 'Unknown Location' }}</p>
+                                                <p style="margin:0"> <span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.location')</span> {{ $dropIn->location->locationName ?? 'Unknown Location' }}</p>
                     
                                                 @foreach ($dropIn->wasteTypes as $wasteType)
-                                                    <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Waste Type:</span> {{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</p>
+                                                    <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.waste_type')</span> {{ $wasteType->wasteTypeName ?? 'Unknown Type' }}</p>
                                                 @endforeach
-                                                <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">Waste Detail:</span></p>
+                                                <p style="margin:0"><span class="fw-semibold"style="color:var(--darkgreen)">@lang('dropInAdmin.waste_detail')</span></p>
                                                 @foreach ($dropIn->wasteDetails as $detail)
                                                     <li>{{ $detail->wasteDetailName ?? 'Unknown Detail' }}</li>
                                                 @endforeach
@@ -159,25 +153,20 @@
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center " style="border-top: 1px solid var(--lightgreen)">
                                     @if ($dropIn->status==='Waiting for Dropped In')
-                                        <button type="button" class="btn btn-secondary" disabled>Validate</button>
+                                        <button type="button" class="btn btn-secondary" disabled>@lang('dropInAdmin.validate')</button>
                                     @elseif($dropIn->status==='Already Dropped In')
-                                        <a href="{{ route('admin.validateDropIn', $dropIn->dropInId) }}" class="btn btn-success">Validate</a>
+                                        <a href="{{ route('admin.validateDropIn', $dropIn->dropInId) }}" class="btn btn-success">@lang('dropInAdmin.validate')</a>
                                     @endif
                                     
                                 </div>
                             </div>
                         </div>
-
-                        </div>
-                    
+                    </div>
                 </div>
-            
             </div>
             @endforeach
         </div>
     </div>
-
-
 </div>
 @endsection
 

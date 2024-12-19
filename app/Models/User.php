@@ -14,8 +14,8 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $table ='user';
-    protected $primaryKey = 'userId'; // Define the primary key column name
-    public $incrementing = true; // Specify the primary key is auto-incrementing
+    protected $primaryKey = 'userId'; 
+    public $incrementing = true; 
     protected $keyType = 'int';
 
     protected $fillable = [

@@ -19,9 +19,5 @@ class Voucher extends Model
         return $this->hasMany(VoucherTransaction::class,'voucherId','Id');
     }
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class, 'userId', 'userId');
-    // }
     
 }

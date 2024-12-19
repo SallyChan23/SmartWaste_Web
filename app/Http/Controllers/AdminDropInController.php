@@ -17,7 +17,6 @@ class AdminDropInController extends Controller
         ->where('status', 'Pending')
         ->get();
 
-        
         $droppedInRequests = DropIn::with(['user', 'location'])
         ->where('status', 'Already Dropped In')
         ->orWhere('status', 'Waiting for Dropped In')
@@ -36,7 +35,6 @@ class AdminDropInController extends Controller
         return view('admin.dropins.index', compact('pendingDropIns', 'droppedInRequests','pending','waiting'));
     }
 
-    // Accept Drop-In Request
     public function accept($id)
     {
         $dropIn = DropIn::findOrFail($id);
@@ -54,7 +52,6 @@ class AdminDropInController extends Controller
     }
 
 
-    // Show Validation Form
     public function showValidationForm($id)
     {
         $dropIn = DropIn::findOrFail($id);
@@ -69,7 +66,6 @@ class AdminDropInController extends Controller
             return redirect()->back()->with('error', 'This request is not yet accepted.');
         }
 
-        // Update status to 'Dropped In'
         $dropIn->update([
             'status' => 'Dropped In'
         ]);
@@ -77,8 +73,6 @@ class AdminDropInController extends Controller
         return redirect()->back()->with('success', 'Drop In confirmed successfully!');
     }
 
-
-    // Validate Drop-In Request
     public function validateDropIn(Request $request, $id)
     {
         $request->validate([
@@ -87,7 +81,6 @@ class AdminDropInController extends Controller
             'status' => 'required|in:Verified,Declined',
         ]);
 
-        // Update drop_in_validation table
         DropInValidation::create([
             'dropInId' => $id,
             'quantity' => $request->quantity,
@@ -97,7 +90,6 @@ class AdminDropInController extends Controller
             'validationDate' => now(),
         ]);
 
-        // Update drop_in table status
         $dropIn = DropIn::with(['wasteTypes','wasteDetails'])->findOrFail($id);
         $dropIn->status = $request->status;
         $dropIn->save();

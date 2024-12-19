@@ -22,7 +22,6 @@ class DropInValidation extends Model
         'validationDate',
     ];
 
-    // Relationship to DropIn model
     public function dropIn()
     {
         return $this->belongsTo(DropIn::class, 'dropInId');
