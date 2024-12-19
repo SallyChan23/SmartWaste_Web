@@ -56,8 +56,8 @@
             width:80%;
         }
     }
-
 </style>
+
 <div>
     <!-- Banner Section -->
     <div class="banner"style="position: relative;">

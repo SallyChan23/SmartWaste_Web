@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mb-5">
-        <h1 style="color: #183F23" class="d-flex justify-content-center my-5 fw-bold">@lang('createDropIn.title')</h1>
+        <h1 class="title d-flex justify-content-center my-5 fw-bold" style="color: #183F23">@lang('createDropIn.title')</h1>
 
         <!-- Display Success or Error Notifications -->
         @if (session('success'))
@@ -25,10 +25,8 @@
                 <!-- Use dynamic location ID -->
                 <input type="hidden" name="locationId" value="{{ $location->locationId }}">
 
-
-                <h4 class="fw-bold mb-3" style="color: #183F23;">@lang('createDropIn.step2')</h4>
-                <div class="mb-3 p-5 rounded-3" style="background-color: #F4F7F0; width: 75rem">
-                    
+                <h4 class="step fw-bold mb-3" style="color: #183F23;">@lang('createDropIn.step2')</h4>
+                <div class="form-container mb-3 p-5 rounded-3" style="background-color: #F4F7F0; width: 75rem">
                     <!-- Waste Type -->
                     <div class="mb-3">
                         <label class="fs-5 fw-medium mb-1" style="color: #183F23">@lang('createDropIn.wasteType')</label>
@@ -117,3 +115,19 @@
         </div>
     </div>
 @endsection
+
+<style>
+    @media (max-width: 768px) {
+        .title{
+            font-size: 50px !important;
+        }
+
+        .step{
+            font-size: 25px !important;
+        }
+
+        .form-container{
+            width: 80% !important;
+        }
+    }
+</style>
