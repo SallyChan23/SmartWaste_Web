@@ -34,20 +34,20 @@
                     <img src="{{ asset('assets/profile3.png') }}" alt="" class="me-2" style="width: 30px">
                     <a href="{{ route('profile.show') }}" class="text-decoration-none text-dark" >@lang('profile.profile_title')</a>
                 </li>
-                <li class="mb-4">
-                    <img src="{{ asset('assets/profile2.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('profile.report') }}" class="text-decoration-none fw-semibold text-success">@lang('profile.report')</a>
-                    <hr style="width: 50%; margin-top: 0.3rem; margin-left: 40px; border-top: 2px solid #5eaf60; font-family: var(--primaryFont);">
-                </li>
-                <li class="mb-4">
-                    <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">@lang('profile.redeemed_vouchers')</a>
-                    
-                </li>
-                <li class="mb-4">
-                    <img src="{{ asset('assets/profile4.png') }}" alt="" class="me-1 ms-0" style="width: 35px">
-                    <a href="{{ route('drop_in.process') }}" class="text-decoration-none text-dark">@lang('profile.process')</a>
-                </li>
+                @if (Auth::user()->role === 'user')
+                    <li class="mb-4">
+                        <img src="{{ asset('assets/profile2.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
+                        <a href="{{ route('profile.report') }}" class="text-decoration-none text-dark">@lang('profile.report')</a>
+                    </li>
+                    <li class="mb-4">
+                        <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
+                        <a href="{{ route('redeem') }}" class="text-decoration-none text-dark">@lang('profile.redeemed_vouchers')</a>
+                    </li>
+                    <li class="mb-4">
+                        <img src="{{ asset('assets/profile4.png') }}" alt="" class="me-1 ms-0" style="width: 35px">
+                        <a href="{{ route('drop_in.process') }}" class="text-decoration-none text-dark">@lang('profile.process')</a>
+                    </li>
+                @endif
                 @if (Auth::check())
                     <li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST">

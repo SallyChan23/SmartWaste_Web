@@ -10,6 +10,26 @@
                 display: flex;
                 justify-content: center;
             }
+            .why-column{
+                width: 100%;
+                margin-left: 0 !important;
+            }
+            .all-title{
+                font-size: 24px !important;
+            }
+            .howImg{
+                margin-bottom: 50px;
+                margin-top: 50px;
+            }
+            .box{
+                width:100%;
+                padding-left: 50px;
+                padding-right: 50px;
+                margin-top: 50px;
+            }
+            .get-title{
+                font-size: 30px !important;
+            }
         }
     </style>
 
@@ -44,7 +64,7 @@
                     <div class="card-body d-flex align-items-center my-2">
                         <img src="{{ asset('assets/vision-icon.png') }}" alt="Vision Icon" style="width: 60px; height: 60px; margin-right: 20px"/>
                         <div>
-                            <h5 class="card-title mb-2" style="font-size: 26px; color: #183F23">@lang('aboutUs.vision_title')</h5>
+                            <h5 class="all-title card-title mb-2" style="font-size: 26px; color: #183F23">@lang('aboutUs.vision_title')</h5>
                             <p class="card-text">
                             @lang('aboutUs.vision_description')
                             </p>
@@ -57,7 +77,7 @@
                     <div class="card-body d-flex align-items-center my-2">
                         <img src="{{ asset('assets/mission-icon.png') }}" alt="Mission Icon" style="width: 60px; height: 60px; margin-right: 20px"/>
                         <div>
-                            <h5 class="card-title mb-2" style="font-size: 26px; color: #183F23">@lang('aboutUs.mission_title')</h5>
+                            <h5 class="all-title card-title mb-2" style="font-size: 26px; color: #183F23">@lang('aboutUs.mission_title')</h5>
                                 <p class="card-text">
                                 @lang('aboutUs.mission_description')
                                 </p>
@@ -73,7 +93,7 @@
             <h5 class="card-title fs-1 fw-bold pt-5 mb-5" style="color: #183F23;">@lang('aboutUs.how_smartwaste_works_title')</h5>
             <div class="row mb-5 mx-5 px-5 d-flex flex-row align-items-center justify-content-center w-100">
                 <div class="col-md-2  d-flex justify-content-center ">
-                    <img src="{{ asset('assets/drop-in-picture.png') }}" alt="Drop-in" class="img-fluid rounded" style="max-width: 100%; height: auto;" />
+                    <img src="{{ asset('assets/drop-in-picture.png') }}" alt="Drop-in" class="howImg img-fluid rounded" style="max-width: 100%; height: auto;" />
                 </div>
                 <div class="col-lg-8 col-md-9">
                     <div class="card" style="background-color: #A0B948; border-radius: 20px; border: none;">
@@ -93,7 +113,7 @@
 
             <div class="row mb-5 mx-5 px-5 d-flex flex-row align-items-center justify-content-center w-100">
                 <div class="col-md-2  d-flex justify-content-center">
-                    <img src="{{ asset('assets/earn-picture.png') }}" alt="Earn" class="img-fluid rounded" style="max-width: 100%; height: auto;" />
+                    <img src="{{ asset('assets/earn-picture.png') }}" alt="Earn" class="howImg img-fluid rounded" style="max-width: 100%; height: auto;" />
                 </div>
                 <div class="col-lg-8 col-md-9">
                     <div class="card" style="background-color: #A0B948; border-radius: 20px; border: none;">
@@ -113,7 +133,7 @@
             
             <div class="row mb-5 mx-5 px-5 d-flex flex-row align-items-center justify-content-center w-100">
                 <div class="col-md-2  d-flex justify-content-center">
-                    <img src="{{ asset('assets/redeem-picture.png') }}" alt="Redeem" class="img-fluid rounded" style="max-width: 100%; height: auto;" />
+                    <img src="{{ asset('assets/redeem-picture.png') }}" alt="Redeem" class="howImg img-fluid rounded" style="max-width: 100%; height: auto;" />
                 </div>
                 <div class="col-lg-8 col-md-9">
                     <div class="card" style="background-color: #A0B948; border-radius: 20px; border: none;">
@@ -134,13 +154,13 @@
     </section>
 
     <div class="container p-5" style="">
-        <h5 class="card-title fs-1 fw-bold  pt-5 mb-5" style="color: #183F23;">@lang('aboutUs.accepted_waste_types_title')</h5>
+        <h5 class="card-title fs-1 fw-bold text-center pt-5 mb-5" style="color: #183F23;">@lang('aboutUs.accepted_waste_types_title')</h5>
         <div class="row row-cols-lg-2 row-cols-md-1 justify-content-center gap-5">
             <div class="col-md-7 col-lg-4 col-8 mb-3  "> 
                 <div class="card py-3" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 350px;">
                     <div class="card-body align-items-center ">
                         <div>
-                            <h5 class="card-title mb-3 text-center" style="font-size: 26px; color: #183F23">@lang('aboutUs.organic_waste_title')</h5>
+                            <h5 class="all-title card-title mb-3 text-center" style="font-size: 26px; color: #183F23">@lang('aboutUs.organic_waste_title')</h5>
                             <ol class="card-text px-5">
                                 <li>@lang('aboutUs.organic_waste_items')</li>
                                 <li>@lang('aboutUs.organic_waste_items2')</li>
@@ -153,7 +173,7 @@
                 <div class="card py-3" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 350px;">
                     <div class="card-body justify-content-center align-items-center  ">
                         <div>
-                            <h5 class="card-title mb-3 text-center" style="font-size: 26px; color: #183F23">@lang('aboutUs.non_organic_waste_title')</h5>
+                            <h5 class="all-title card-title mb-3 text-center" style="font-size: 26px; color: #183F23">@lang('aboutUs.non_organic_waste_title')</h5>
                             <ol class="card-text px-xl-5 px-lg-4 px-md">
                                 <li>@lang('aboutUs.non_organic_waste_items')</li>
                                 <li>@lang('aboutUs.non_organic_waste_items2')</li>
@@ -170,26 +190,26 @@
 
     <div class="container-fluid p-5" style=" background-color: #183F23">
         <h5 class="card-title fs-1 fw-bold mt-5 mb-5 text-center text-white">@lang('aboutUs.why_choose_us_title')</h5>
-        <div class="row mx-5 my-5 px-5">
+        <div class="why-column row mx-5 my-5 px-5">
             <div class="col" style="border: 1px solid white;">
                 <img src="{{ asset('assets/convenience.png') }}" alt="Convenience" class="img-fluid mt-5 mx-5 my-3" style="max-width: 100%; height: auto;" />
-                <h5 class="card-title mb-3 text-white mx-5" style="font-size: 26px;">Convenience</h5>
+                <h5 class="all-title card-title mb-3 text-white mx-5" style="font-size: 26px;">Convenience</h5>
                 <p class="card-text text-white mx-5 mb-5">
-                @lang('aboutUs.why_choose_us_options.convenience')
+                    @lang('aboutUs.why_choose_us_options.convenience')
                 </p>
             </div>
             <div class="col" style="border: 1px solid white;">
                 <img src="{{ asset('assets/reward.png') }}" alt="Reward" class="img-fluid mt-5 mx-5 my-3" style="max-width: 100%; height: auto;" />
-                <h5 class="card-title mb-3 text-white mx-5" style="font-size: 26px;">Rewards</h5>
+                <h5 class="all-title card-title mb-3 text-white mx-5" style="font-size: 26px;">Rewards</h5>
                 <p class="card-text text-white mx-5 mb-5">
-                @lang('aboutUs.why_choose_us_options.rewards')
+                    @lang('aboutUs.why_choose_us_options.rewards')
                 </p>
             </div>
             <div class="col" style="border: 1px solid white;">
                 <img src="{{ asset('assets/sustainability.png') }}" alt="Sustainability" class="img-fluid mt-5 mx-5 my-3" style="max-width: 100%; height: auto;" />
-                <h5 class="card-title mb-3 text-white mx-5" style="font-size: 26px;">Sustainability Impact</h5>
+                <h5 class="all-title card-title mb-3 text-white mx-5" style="font-size: 26px;">Sustainability Impact</h5>
                 <p class="card-text text-white mx-5 mb-5">
-                @lang('aboutUs.why_choose_us_options.sustainability')
+                    @lang('aboutUs.why_choose_us_options.sustainability')
                 </p>
             </div>
         </div>
@@ -226,7 +246,7 @@
         <h5 class="card-title fs-1 fw-bold mt-5 mb-5 text-center" style="color: #183F23;">@lang('aboutUs.contact_us_title')</h5>
         <div class="row row-cols-md-2 row-cols-md-1 row-cols-1 d-flex justify-content-center ps-5 ms-5">
             <div class="col-md-4  mb-3"> 
-                <div class="card " style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 150px; width: 250px;">
+                <div class="card shadow-lg" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 150px; width: 250px;">
                     <div class="card-body align-items-center my-3 p-2">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                         <img src="{{ asset('assets/phone1.png') }}" alt="Phone" class="img-fluid mb-4" style="width: 20%; height: auto; " />
@@ -236,7 +256,7 @@
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <div class="card" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 150px; width: 250px;">
+                <div class="card shadow-lg" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); height: 150px; width: 250px;">
                     <div class="card-body align-items-center my-3 p-2">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             <img src="{{ asset('assets/mail.png') }}" alt="Email" class="img-fluid mb-4" style="width: 20%; height: auto;" />
@@ -253,7 +273,7 @@
         <div class="row row-cols-lg-1 row-cols-md-1 d-flex justify-content-center gap-1 py-3">
             <div class="col-md-4 col-lg-5 ">
                 <div class="contactUs d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="mb-5 text-left" style="color: #183F23;">@lang('aboutUs.get_in_touch_title')</h2>
+                    <h2 class="get-title mb-5 text-left" style="color: #183F23;">@lang('aboutUs.get_in_touch_title')</h2>
                     <img class="contactUsimg"src="{{ asset('assets/aboutUs-2.png') }}" alt="Contact Us" class="img-fluid mt-5">
                 </div>
             </div>
@@ -261,7 +281,7 @@
                 <div class="contactUs">
                     <div class="box py-5 mb-5" style="background-color: #f3f5f0; border-radius: 8px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                         <div class="contactForm">
-                            <h2 class="mb-5 text-center" style="color: #183F23;">@lang('aboutUs.fill_up_form_title')</h2>
+                            <h2 class="all-title mb-5 text-center" style="color: #183F23;">@lang('aboutUs.fill_up_form_title')</h2>
                             <form action="{{ route('about-us.sendMessage') }}" method="POST" id="formData">
                                 @csrf
                                 <div class="formBox" style="width: 100%">
