@@ -19,8 +19,14 @@ class MissionController extends Controller
 
         $missions = Mission::orderBy($sortField, $sortOrder)->paginate(6);
 
-        $missionTransactions = MissionTransaction::with('mission')->where('status', 'ongoing')->get();
-        $completedTransaction = MissionTransaction::with('mission')->where('status', 'completed')->get();
+        if (!Auth::check()) {
+            return redirect()->route('auth.login')->withErrors('Please log in to view your profile.');
+        }
+
+        $user = Auth::user();
+
+        $missionTransactions = MissionTransaction::where('userId', Auth::id())->with('mission')->where('status', 'ongoing')->get();
+        $completedTransaction = MissionTransaction::where('userId', Auth::id())->with('mission')->where('status', 'completed')->get();
 
         return view('smartwaste.mission', compact('missions', 'missionTransactions', 'completedTransaction', 'sortField', 'sortOrder'));
     }
