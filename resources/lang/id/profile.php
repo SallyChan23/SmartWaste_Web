@@ -11,6 +11,7 @@ return [
     'report' => 'Riwayat',
     'redeemed_vouchers' => 'Voucher yang Diklaim',
     'my_profile' => 'Akun Saya',
+    'process' => 'Proses Drop-In',
     'usernames' => 'Nama Pengguna',
     'phone_number' => 'Nomor Telepon',
     'emails' => 'Email',
