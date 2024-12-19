@@ -60,7 +60,7 @@
         </div>
 
         <div class="col-md-7 p-5 shadow-sm" style="border-radius: 15px; background-color:#F4F7F0">
-            <h4 class="fw-normal mb-2 text-start f2-1">History</h4>
+            <h4 class="fw-normal mb-2 text-start f2-1">@lang('profile.history')</h4>
             <hr class="mb-5" style="width: 100%; margin: 0 auto; border-top: 2px solid #183F23; font-family:var(-primaryFont);">
 
             <div class="row row-cols-2 row-gap-4">
@@ -80,7 +80,7 @@
         
                             <div class="mb-1">
                                 @if ($validated->quantity)
-                                    <div class="mb-1">Non-Organic Waste</div>
+                                    <div class="mb-1">@lang('profile.nonOrganicWaste')</div>
         
                                     <div class="d-flex">
                                         <div class="d-flex me-3">
@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                 @else
-                                    <div>Organic Waste</div>
+                                    <div>@lang('profile.organicWaste')</div>
                                     <div class="d-flex me-3">
                                         <div class="d-flex align-items-center">
                                             <i class="fa-solid fa-weight-hanging"></i>

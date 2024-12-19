@@ -24,4 +24,7 @@ return [
     'placeholder_username' => 'Enter your username',
     'placeholder_phone' => 'Enter your phone num',
     'placeholder_email' => 'Enter your email',
+    'history' => 'History',
+    'organicWaste' => 'Organic Waste',
+    'nonOrganicWaste' => 'Non-organic Waste'
 ];

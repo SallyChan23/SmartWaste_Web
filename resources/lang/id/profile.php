@@ -24,4 +24,7 @@ return [
     'placeholder_username' => 'Masukkan nama pengguna Anda',
     'placeholder_phone' => 'Masukkan nomor HP Anda',
     'placeholder_email' => 'Masukkan email Anda',
+    'history' => 'Riwayat',
+    'organicWaste' => 'Sampah Organik',
+    'nonOrganicWaste' => 'Sampah Tidak Organik'
 ];
