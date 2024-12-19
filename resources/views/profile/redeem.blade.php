@@ -103,8 +103,8 @@
                     <hr style="width: 50%; margin-top: 0.3rem; margin-left: 40px; border-top: 2px solid #5eaf60; font-family: var(--primaryFont);">
                 </li>
                 <li class="mb-4">
-                    <img src="{{ asset('assets/profile1.png') }}" alt="" class="me-2 ms-1" style="width: 25px">
-                    <a href="{{ route('drop_in.process') }}" class="text-decoration-none text-dark">@lang('profile.Process')</a>
+                    <img src="{{ asset('assets/profile4.png') }}" alt="" class="me-1 ms-0" style="width: 35px">
+                    <a href="{{ route('drop_in.process') }}" class="text-decoration-none text-dark">@lang('profile.process')</a>
                 </li>
                 @if (Auth::check())
                     <li>
