@@ -138,6 +138,12 @@ class DropInController extends Controller
 
     public function report()
     {
+        if (!Auth::check()) {
+            return redirect()->route('auth.login')->withErrors('Please log in to view your profile.');
+        }
+
+        $user = Auth::user();
+
         $validatedDropIns = DropInValidation::with('dropIn')
             ->where('status', 'Verified')
             ->whereHas('dropIn', function ($query) {
@@ -148,6 +154,6 @@ class DropInController extends Controller
         $dropIns = DropIn::where('userId', Auth::id())->get();
 
         
-        return view('profile.report', compact('validatedDropIns', 'dropIns'));
+        return view('profile.report', compact('validatedDropIns', 'dropIns', 'user'));
     }
 }
