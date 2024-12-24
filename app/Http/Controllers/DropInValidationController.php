@@ -45,8 +45,12 @@ class DropInValidationController extends Controller
         }
     
        
-        $points = ($request->weight > 0 ? $request->weight * 10 : 0) + 
-                  ($request->quantity > 0 ? $request->quantity* 2: 0);
+        $points = 0;
+
+        if ($request->status === 'Verified') {
+            $points = ($request->weight > 0 ? $request->weight * 10 : 0) +
+                  ($request->quantity > 0 ? $request->quantity * 2 : 0);
+        }
     
         
         $validation->update([
@@ -65,6 +69,14 @@ class DropInValidationController extends Controller
                 $dropIn->status = 'Verified'; 
                 $dropIn->save();
             }
+        }elseif($request->status === 'Declined') {
+                $dropIn = DropIn::find($id);
+                if ($dropIn) {
+                    $dropIn->status = 'Declined'; 
+                    $dropIn->save();
+                }
+                
+            
         }
         $dropIn = DropIn::where('dropInId', $id)->first();
         if ($dropIn) {
@@ -81,6 +93,8 @@ class DropInValidationController extends Controller
                 return redirect()->route('admin.dropin.index')->with('success', 'Drop-In Verified Successfully!');
             }
         }
+
+        
         return redirect()->back()->with('error', 'User or DropIn not found.');
     }
 }
