@@ -18,8 +18,7 @@
                 <h5 class="mb-4 fs-4">@lang('footer.help')</h5>
                 <ul class="list-unstyled fs-6">
                     <li><a href="{{ route('faq') }}" class="text-white">@lang('footer.faq')</a></li>
-                    <li><a href="#" class="text-white">@lang('footer.shipping')</a></li>
-                    <li><a href="#" class="text-white">@lang('footer.drop-in')</a></li>
+                    <li><a href="{{ route('drop_in.process') }}" class="text-white">@lang('footer.drop-in')</a></li>
                 </ul>
             </div>
             <div class="col-md-2 mb-3">
