@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +8,30 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="{{ asset('assets/logoSmall.png') }}" type="image/png">
-    
+
     <style>
-    body {
-    font-family: 'Poppins';
-    }
+        body {
+            font-family: 'Poppins';
+        }
     </style>
     <title>Register</title>
 </head>
+
 <body>
     <div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #F4F7F0;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-7 text-center">
-                    <img src="{{ asset('assets/logreg.png') }}" alt="Login Image" class="img-fluid" style="max-width: 80%; height: auto;">
+                    <img src="{{ asset('assets/logreg.png') }}" alt="Login Image" class="img-fluid"
+                        style="max-width: 80%; height: auto;">
                 </div>
                 <div class="col-md-5 p-4 mb-4 bg-white rounded-4 mx-auto">
                     <div class="d-flex mb-4 justify-content-center align-items-center fs-4">
-                        <a href="{{ route('login') }}" 
-                           class="text-decoration-none me-3" 
-                           style="color: #A0B948;">Login</a>
+                        <a href="{{ route('login') }}" class="text-decoration-none me-3"
+                            style="color: #A0B948;">Login</a>
                         <p class="text-decoration-underline mb-0" style="color: #183F23;">Register</p>
                     </div>
-                
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul class="mb-0">
@@ -39,7 +41,7 @@
                             </ul>
                         </div>
                     @endif
-                
+
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row mb-3">
@@ -58,16 +60,17 @@
                             <div class="col-md-8 mx-auto position-relative">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" name="password" id="password" class="form-control" required>
-                                <i class="fa fa-eye position-absolute" id="togglePassword" 
-                                style="top: 73%; right: 18px; transform: translateY(-50%); cursor: pointer;"></i>
+                                <i class="fa fa-eye position-absolute" id="togglePassword"
+                                    style="top: 73%; right: 18px; transform: translateY(-50%); cursor: pointer;"></i>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8 mx-auto position-relative">
-                                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
-                                <i class="fa fa-eye position-absolute" id="togglePasswordConfirm" 
-                                style="top: 73%; right: 18px; transform: translateY(-50%); cursor: pointer;"></i>
+                                <label for="password" class="form-label">Confirm Password</label>
+                                <input type="password" name="password" id="confirmPassword" class="form-control"
+                                    required>
+                                <i class="fa fa-eye position-absolute" id="toggleConfirmPassword"
+                                    style="top: 73%; right: 18px; transform: translateY(-50%); cursor: pointer;"></i>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -82,35 +85,66 @@
                             </div>
                         </div>
                         <div class="text-center mt-3">
-                            <p style="font-size: 12px;">Already have an account? 
-                                <a href="{{ route('login') }}" class="text-decoration-none" style="color: #183F23;">Login</a>
+                            <p style="font-size: 12px;">Already have an account?
+                                <a href="{{ route('login') }}" class="text-decoration-none"
+                                    style="color: #183F23;">Login</a>
                             </p>
                         </div>
                         <p class="text-center" style="font-size: 10px;">
                             By clicking Register, you agree to SmartWaste's User Agreement, <br>
                             including Subscription Terms and Privacy Policy.
-                        </p>   
-                </div>      
+                        </p>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#password');
+
+    const setPasswordIcon = () => {
+        const type = password.getAttribute('type');
+        if (type === 'password') {
+            togglePassword.classList.remove('fa-eye');
+            togglePassword.classList.add('fa-eye-slash');
+        } else {
+            togglePassword.classList.remove('fa-eye-slash');
+            togglePassword.classList.add('fa-eye');
+        }
+    };
+
+    setPasswordIcon();
+
     togglePassword.addEventListener('click', function () {
         const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
         password.setAttribute('type', type);
-        this.classList.toggle('fa-eye-slash');
+        setPasswordIcon();
     });
 
-    const togglePasswordConfirm = document.querySelector('#togglePasswordConfirm');
-    const passwordConfirm = document.querySelector('#password_confirmation');
-    togglePasswordConfirm.addEventListener('click', function () {
-        const type = passwordConfirm.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordConfirm.setAttribute('type', type);
-        this.classList.toggle('fa-eye-slash');
+    const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+    const confirmPassword = document.querySelector('#confirmPassword');
+
+    const setConfirmPasswordIcon = () => {
+        const type = confirmPassword.getAttribute('type');
+        if (type === 'password') {
+            toggleConfirmPassword.classList.remove('fa-eye');
+            toggleConfirmPassword.classList.add('fa-eye-slash');
+        } else {
+            toggleConfirmPassword.classList.remove('fa-eye-slash');
+            toggleConfirmPassword.classList.add('fa-eye');
+        }
+    };
+
+    setConfirmPasswordIcon();
+
+    toggleConfirmPassword.addEventListener('click', function () {
+        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+        setConfirmPasswordIcon();
     });
+
 </script>
